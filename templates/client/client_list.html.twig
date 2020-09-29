@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+	lista_klientow
+{% endblock %}
+
+
+{% block references %}
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../../assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+	<link href="../../assets/css/layout.min.css" rel="stylesheet" type="text/css">
+	<link href="../../assets/css/components.min.css" rel="stylesheet" type="text/css">
+	<link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script src="../../global_assets/js/main/jquery.min.js"></script>
+	<script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+	<script src="../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script src="../../global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+	<script src="../../global_assets/js/plugins/tables/datatables/extensions/responsive.min.js"></script>
+	<script src="../../global_assets/js/plugins/forms/selects/select2.min.js"></script>
+
+	<script src="../../assets/js/app.js"></script>
+	<script src="../../global_assets/js/demo_pages/datatables_responsive.js"></script>
+	<!-- /theme JS files -->
+
+{% endblock %}
+
+
+{% block content %}
+			<!-- Page header -->
+			<div class="page-header page-header-light">
+
+				<div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+					<div class="d-flex">
+						<div class="breadcrumb">
+							<a href='{{ path('home')}}' class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Dashboard</a>
+
+							<span class="breadcrumb-item active">Lista klientów</span>
+						</div>
+
+						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+					</div>
+
+				</div>
+			</div>
+			<!-- /page header -->
+
+
+			<!-- Content area -->
+			<div class="content">
+
+				<!-- Basic responsive configuration -->
+				<div class="card">
+					<div class="card-header header-elements-inline">
+						<h5 class="card-title">Lista klientów</h5>
+
+					</div>
+
+					<!--wyszukiwanie-->
+					<div class="datatable-header">
+						<div id="DataTables_Table_0_filter" class="dataTables_filter">
+							<label>
+								<span>Filter:</span>
+								<input type="search" class="" placeholder="Wyszukaj" aria-controls="DataTables_Table_0">
+							</label>
+						</div>
+						<div class="dt-buttons">
+							<a class="btn btn-light buttons-copy buttons-html5" href="{{ path('client_add') }}">Dodaj klienta</a>
+
+						</div>
+						<div class="dataTables_length" id="DataTables_Table_0_length">
+								<label>
+									<span>Show:</span> <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+									<option value="10" data-select2-id="3">10</option><option value="25">25</option><option value="50">50
+								</option><option value="100">100</option></select>
+									<span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: auto;">
+										<span class="selection">
+											<span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-DataTables_Table_0_length-j2-container">
+												<span class="select2-selection__rendered" id="select2-DataTables_Table_0_length-j2-container" role="textbox" aria-readonly="true" title="10">10</span>
+												<span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+								</label></div></div>
+					<!--/wyszukiwanie-->
+
+
+					<table class="table datatable-responsive">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nazwa firmy</th>
+								<th>E-mail</th>
+
+								<th>Status</th>
+								<th class="text-center">Akcje</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Enright</td>
+								<td><a href="#">enright@gmail.com</a></td>
+
+								<td><span class="badge badge-success">Active</span></td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item"><i class="icon-user"></i> Podgląd</a>
+												<a href="{{ path('client_edit') }}" class="dropdown-item"><i class="icon-quill2"></i> Edycja</a>
+												<a href="#" class="dropdown-item"><i class="icon-user-block"></i> Zablokowanie</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Weible</td>
+								<td><a href="#">weible@gmail.com</a></td>
+
+								<td><span class="badge badge-secondary">Inactive</span></td>
+								<td class="text-center">
+									<div class="list-icons">
+										<div class="dropdown">
+											<a href="#" class="list-icons-item" data-toggle="dropdown">
+												<i class="icon-menu9"></i>
+											</a>
+
+											<div class="dropdown-menu dropdown-menu-right">
+												<a href="#" class="dropdown-item"><i class="icon-user"></i> Podgląd</a>
+												<a href="{{ path('client_edit') }}" class="dropdown-item"><i class="icon-quill2"></i> Edycja</a>
+												<a href="#" class="dropdown-item"><i class="icon-user-block"></i> Zablokowanie</a>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+				<!-- /basic responsive configuration -->
+
+
+
+
+			</div>
+			<!-- /content area -->
+{% endblock %}

@@ -1,0 +1,595 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edycja projektu {% endblock %}
+{% block references %}
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="../../global_assets/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="../../global_assets/css/icons/material/styles.min.css" rel="stylesheet" type="text/css">
+
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script src="../../global_assets/js/main/jquery.min.js"></script>
+    <script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../global_assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/anytime.min.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script src="../../global_assets/js/plugins/pickers/pickadate/legacy.js"></script>
+    <script src="../../global_assets/js/plugins/notifications/jgrowl.min.js"></script>
+    <script src="../../global_assets/js/demo_pages/picker_date.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <!-- /theme JS files -->
+{% endblock %}
+{% block content %}
+    <!-- Page header -->
+    <div class="page-header page-header-light">
+
+        <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+                <div class="breadcrumb">
+                    <a href="{{ path('home') }}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Dashboard</a>
+
+                    <a href="{{ path('project_list') }}" class="breadcrumb-item active">Lista projektów</a>
+                    <span class="breadcrumb-item active">Podgląd</span>
+                </div>
+
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+            </div>
+
+        </div>
+    </div>
+    <!-- /page header -->
+
+
+    <!-- Content area -->
+    <div class="content">
+
+
+
+        <!-- Rounded basic tabs -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header header-elements-inline">
+                        <h6 class="card-title">Podgląd projektu</h6>
+
+                    </div>
+
+                    <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a href="#basic-rounded-tab1" class="nav-link rounded-top active" data-toggle="tab">Informacje o projekcie</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab2" class="nav-link rounded-top " data-toggle="tab">Test minutowy</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab3" class="nav-link rounded-top" data-toggle="tab">Test badania szybkości</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab4" class="nav-link rounded-top" data-toggle="tab">Test aktualizacji</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Zakladka 1 -->
+                            <div class="tab-pane fade show active" id="basic-rounded-tab1">
+
+                                <!-- Task details -->
+
+
+
+                                <table class="table table-borderless table-xs my-2 col-4">
+                                    <tbody>
+                                    <tr>
+                                        <td><i class="icon-archive mr-2"></i> ID:</td>
+                                        <td class="text-left">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="icon-home mr-2"></i> Domena:</td>
+                                        <td class="text-left">Enright</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><i class="icon-briefcase mr-2"></i> Klient:</td>
+                                        <td class="text-left"><a href="#">enright@gmail.com</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="icon-file-check mr-2"></i> Typ projektu:</td>
+                                        <td class="text-left">Typ1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="icon-file-plus mr-2"></i> Status:</td>
+                                        <td class="text-left ">Aktywny</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><i class="icon-alarm-check mr-2"></i> Utworzenie:</td>
+                                        <td class="text-left text-muted">25 Feb, 2015</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <!-- /task details -->
+
+
+
+                            </div>
+                            <!-- /Zakladka 1 -->
+
+                            <!-- Zakladka 2 -->
+                            <div class="tab-pane fade" id="basic-rounded-tab2">
+
+                                <div class=" header-elements-inline">
+                                    <h5 >Wyniki Testu</h5>
+                                </div>
+                                <div class = "row">
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+														<span class="input-group-prepend">
+															<span class="input-group-text"><i class="icon-calendar5"></i></span>
+														</span>
+                                            <input type="text" class="form-control pickadate" placeholder="Początek">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <div class="input-group">
+														<span class="input-group-prepend">
+															<span class="input-group-text"><i class="icon-calendar5"></i></span>
+														</span>
+                                            <input type="text" class="form-control pickadate" placeholder="Koniec">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="chart-container" style="height: 10rem">
+                                    <canvas id="chart1" ></canvas>
+                                </div>
+
+                                <br>
+                                <div>
+
+
+
+                                </div>
+
+
+
+
+                                <br><br>
+                                <!-- Traffic sources 2-->
+
+                                <div class=" header-elements-inline">
+                                    <h5>Statystyki testu</h5>
+                                </div>
+
+                                <div class=" py-0">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="mi-timeline mr-3 mi-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
+                                                    <span class="text-muted center" style = justify-content:center >5</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="mi-notifications-off mr-3 mi-2x"></i>
+
+                                                </div>
+                                                <div>
+                                                    <div class="font-weight-semibold"> Czas nieaktywności</div>
+                                                    <span class="text-muted">Długi</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">							 	<div class="d-flex align-items-center">
+                                                    <i class="mi-notifications mr-3 mi-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-weight-semibold">Czas aktywności w %</div>
+                                                    <span class="text-muted"><span class=" mr-2"></span> 50%</span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">							 	<div class="d-flex align-items-center">
+                                                    <i class="mi-notifications-off mr-3 mi-2x"></i>
+                                                </div>
+                                                <div>
+                                                    <div class="font-weight-semibold"> Czas nieaktywności w %</div>
+                                                    <span class="text-muted"><span class=" mr-2"></span> 50%</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <!-- Basic responsive table -->
+                                    <br><br>
+
+                                    <div class=" header-elements-inline">
+                                        <h5 > Logi testów</h5>
+
+                                        <button type="button" class="btn btn-light rounded-round">Filtruj po statusie</button>
+
+                                    </div>
+
+
+
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Data</th>
+                                                <th>Godzina i minuta</th>
+                                                <th>Status strony</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Data</td>
+                                                <td>Godzina i minuta</td>
+                                                <td><span class="badge badge-success">Aktywna</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Data</td>
+                                                <td>Godzina i minuta</td>
+                                                <td><span class="badge badge-danger">Nieaktywna</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Data</td>
+                                                <td>Godzina i minuta</td>
+                                                <td><span class="badge badge-success">Aktywna</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Data</td>
+                                                <td>Godzina i minuta</td>
+                                                <td><span class="badge badge-danger">Nieaktywna</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Data</td>
+                                                <td>Godzina i minuta</td>
+                                                <td><span class="badge badge-success">Aktywna</span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- /basic responsive table -->
+
+                                </div>
+
+                                <div class="chart position-relative" id="traffic-sources2"></div>
+
+                                <!-- /traffic sources2 -->
+
+
+                            </div>
+
+                            <!-- /Zakladka 2 -->
+
+                            <!-- Zakladka 3 -->
+                            <div class="tab-pane fade" id="basic-rounded-tab3">
+                                <div class=" header-elements-inline">
+                                    <h5 >Wyniki Testu</h5>
+                                </div>
+
+                                <div>
+
+                                    <div class = "row">
+
+
+
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+														<span class="input-group-prepend">
+															<span class="input-group-text"><i class="icon-calendar5"></i></span>
+														</span>
+                                                <input type="text" class="form-control pickadate" placeholder="Początek">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <div class="input-group">
+														<span class="input-group-prepend">
+															<span class="input-group-text"><i class="icon-calendar5"></i></span>
+														</span>
+                                                <input type="text" class="form-control pickadate" placeholder="Koniec">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+
+
+                                <div   >
+                                    <div class="chart-container" style="height: 10rem" >
+                                        <canvas id="chart2" ></canvas>
+                                    </div>
+                                    <script src="../../assets/js/chart.js"></script>
+
+                                    <br>
+
+
+
+
+                                    <br><br>
+                                    <!-- Traffic sources -->
+
+                                    <div class=" header-elements-inline">
+                                        <h5>Statystyki testu</h5>
+                                    </div>
+
+                                    <div class="py-0">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="mi-timeline mr-3 mi-2x"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
+                                                        <span class="text-muted center" style = justify-content:center >5</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="fas fa-battery-empty mr-3 fa-2x"></i>
+
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-weight-semibold">Najmniejsza prędkość</div>
+                                                        <span class="text-muted">Mała</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="d-flex align-items-center justify-content-center mb-2">							 	<div class="d-flex align-items-center">
+                                                        <i class="fas fa-battery-half mr-3 fa-2x"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-weight-semibold">Średnia prędkość</div>
+                                                        <span class="text-muted"><span class=" mr-2"></span> Średnia</span>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="d-flex align-items-center justify-content-center mb-2">							 	<div class="d-flex align-items-center">
+                                                        <i class="fas fa-battery-half mr-3 fa-2x"></i>
+                                                    </div>
+                                                    <div>
+                                                        <div class="font-weight-semibold">Najwyższa prędkość</div>
+                                                        <span class="text-muted"><span class=" mr-2"></span> Średnia</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <!-- Basic responsive table -->
+                                        <br><br>
+
+                                        <div class="header-elements-inline">
+                                            <h5 > Logi testów</h5>
+
+                                        </div>
+
+
+
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Data</th>
+                                                    <th>Godzina i minuta</th>
+                                                    <th>Wynik Testu</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Data</td>
+                                                    <td>Godzina i minuta</td>
+                                                    <td>Wynik Testu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Data</td>
+                                                    <td>Godzina i minuta</td>
+                                                    <td>Wynik Testu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Data</td>
+                                                    <td>Godzina i minuta</td>
+                                                    <td>Wynik Testu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Data</td>
+                                                    <td>Godzina i minuta</td>
+                                                    <td>Wynik Testu</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Data</td>
+                                                    <td>Godzina i minuta</td>
+                                                    <td>Wynik Testu</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- /basic responsive table -->
+
+                                    </div>
+
+                                    <div class="chart position-relative" id="traffic-sources"></div>
+
+                                    <!-- /traffic sources -->
+                                </div>
+
+                            </div>
+                            <!--/Zakladka 3 -->
+
+                            <!-- Zakladka 4 -->
+                            <div class="tab-pane fade" id="basic-rounded-tab4">
+
+
+
+                                <table class="table table-borderless table-xs my-2 col-4">
+                                    <tbody>
+                                    <tr>
+                                        <td><i class=" "></i>Aktualna wersja WordPress</td>
+                                        <td class="text-left">5.5</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class=" "></i>Najnowsza wersja WordPress</td>
+                                        <td class="text-left">5.5.1</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="datatable-header">
+                                    <div class="card-header header-elements-inline">
+                                        <h5 class="card-title">Lista wtyczek</h5>
+                                    </div>
+                                    <table class="table datatable-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>Wtyczka</th>
+                                            <th>Wersja</th>
+                                            <th>Status</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Wtyczka1</td>
+                                            <td>5.5</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wtyczka2</td>
+                                            <td>3.2</td>
+                                            <td><span class="badge badge-secondary">Aktualizacja</span></td>
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+
+                                <!-- Basic responsive configuration -->
+                                <br>
+                                <div class="card-header header-elements-inline">
+                                    <h5 class="card-title">Logi</h5>
+                                </div>
+
+                                <table class="table datatable-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Godzina</th>
+                                        <th>Wynik</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr>
+                                        <td>12.09.2020</td>
+                                        <td>15:06</td>
+                                        <td>
+                                            <div class="list-icons">
+                                                <div class="dropdown">
+                                                    <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                        <i class="icon-menu2"></i>
+                                                    </a>
+
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <span class="dropdown-item">Aktualna wersja WordPress:</span>
+                                                        <span class="dropdown-item">5.5</span>
+                                                        <span class="dropdown-item">Najnowsza wersja WordPress</span>
+                                                        <span class="dropdown-item">5.5.1</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>11.09.2020</td>
+                                        <td>15:05</td>
+                                        <td>
+                                            <div class="list-icons">
+                                                <div class="dropdown">
+                                                    <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                        <i class="icon-menu2"></i>
+                                                    </a>
+
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <span class="dropdown-item">Aktualna wersja WordPress:</span>
+                                                        <span class="dropdown-item">5.3</span>
+                                                        <span class="dropdown-item">Najnowsza wersja WordPress</span>
+                                                        <span class="dropdown-item">5.3.1</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <!-- /basic responsive configuration -->
+                            </div>
+
+                            <!-- /Zakladka 4 -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /rounded basic tabs -->
+
+
+    </div>
+    <!-- /content area -->
+
+{% endblock %}

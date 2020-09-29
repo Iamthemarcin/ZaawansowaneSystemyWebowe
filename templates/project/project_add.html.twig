@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dodawanie projektu{% endblock %}
+{% block references %}
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="../../global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/css/flex.css" rel = stylesheet type = text/css>
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script src="../../global_assets/js/main/jquery.min.js"></script>
+    <script src="../../global_assets/js/main/bootstrap.bundle.min.js"></script>
+    <script src="../../global_assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script src="../../global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="../../global_assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script src="../../global_assets/js/plugins/forms/styling/switch.min.js"></script>
+
+    <script src="../../assets/js/app.js"></script>
+    <script src="../../global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+    <!-- /theme JS files -->
+{% endblock %}
+{% block content %}
+    <!-- page header-->
+    <div class="page-header page-header-light">
+
+        <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
+            <div class="d-flex">
+                <div class="breadcrumb">
+                    <a href='{{ path("home") }}' class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Dashboard</a>
+
+
+
+                </div>
+
+                <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+            </div>
+
+        </div>
+        <!-- /page header-->
+    </div>
+    <!-- /page header-->
+
+    <!-- Content area -->
+    <div class="content">
+
+        <!-- Form inputs -->
+        <div class="card">
+            <div class="card-header header-elements-inline">
+                <h5 class="card-title">Dodawanie projektu</h5>
+
+            </div>
+
+            <div class="card-body">
+                <div class = "row">
+                    <div class="col-md-6">
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2" >Domena projektu </label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Klient projektu</label>
+                            <div class="col-lg-10">
+                                <select class="form-control form-control-uniform">
+                                    <option value="opt1">Klient 1</option>
+                                    <option value="opt2">Klient 2</option>
+                                    <option value="opt3">Klient 3</option>
+                                    <option value="opt4">Klient 4</option>
+                                    <option value="opt5">Klient 5</option>
+                                    <option value="opt6">Klient 6</option>
+                                    <option value="opt7">Klient 7</option>
+                                    <option value="opt8">Klient 8</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Typ projektu</label>
+                            <div class="col-lg-10">
+                                <select class="form-control form-control-uniform">
+                                    <option value="opt1">Typ 1</option>
+                                    <option value="opt2">Typ 2</option>
+                                    <option value="opt3">Typ 3</option>
+                                    <option value="opt4">Typ 4</option>
+                                    <option value="opt5">Typ 5</option>
+                                    <option value="opt6">Typ 6</option>
+                                    <option value="opt7">Typ 7</option>
+                                    <option value="opt7">Typ 7</option>
+                                    <option value="opt8">Typ 8</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group mb-3 mb-md-2">
+                            <h6>
+                                <br>
+                                <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
+                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked>
+                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>
+                            </div>
+
+                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
+                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </fieldset>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <!-- /form inputs -->
+
+        <!-- /footer -->
+    </div>
+    <!-- /content area -->
+{% endblock %}

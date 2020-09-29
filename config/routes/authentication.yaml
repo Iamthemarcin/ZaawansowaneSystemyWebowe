@@ -1,0 +1,29 @@
+login:
+  path: /login
+  controller: App\Controller\Authentication\SimpleAuthenticateController::login
+
+register:
+  path: /register
+  controller: App\Controller\Authentication\RegistrationController::register
+
+verify_email:
+  path: /verify/email
+  controller: App\Controller\Authentication\RegistrationController::verifyUserEmail
+
+reset_password:
+  path: /reset-password
+  controller: App\Controller\Authentication\ResetPasswordController::request
+
+check_email:
+  path: /reset-password/check-email
+  controller: App\Controller\Authentication\ResetPasswordController::checkEmail
+
+reset_password_token:
+  path: /reset-password/reset/{token}
+  controller: App\Controller\Authentication\ResetPasswordController::reset
+  defaults:
+    token: null
+
+logout:
+  path: /logout
+  controller: App\Controller\Authentication\SimpleAuthenticateController::logout

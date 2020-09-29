@@ -1,0 +1,18 @@
+home:
+   path: '/'
+   controller: App\Controller\HomePageController::index
+
+clientResource:
+   prefix: 'client'
+   resource: 'routes/dashboard/client.yaml'
+
+projectResource:
+   prefix: 'project'
+   resource: 'routes/dashboard/project.yaml'
+
+authauthentication:
+   resource: 'routes/authentication.yaml'
+
+#dashboard:
+#   resource: 'routes/dashboard.yaml'
+#   prefix: '/'

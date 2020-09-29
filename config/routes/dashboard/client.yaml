@@ -1,0 +1,11 @@
+client_list:
+  path: /list
+  controller: App\Controller\Client\ClientList::index
+
+client_add:
+  path: /add
+  controller: App\Controller\Client\ClientAdd::index
+
+client_edit:
+  path: /edit
+  controller: App\Controller\Client\ClientEdit::index
