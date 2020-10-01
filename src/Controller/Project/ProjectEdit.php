@@ -6,6 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProjectEdit extends AbstractController{
 
     function index(){
-        return $this->render('project/project_edit.html.twig');
+        return $this->render('@Project/project_edit.html.twig');
     }
 }

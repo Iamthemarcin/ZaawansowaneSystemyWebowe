@@ -58,8 +58,9 @@
 
             </div>
 
-            <div class="card-body">
-                <form method="POST" action="{{ path('project_add_post') }}">
+            <div class="card-body">  {{ form_start(form) }}    {{ form_widget(form) }}
+                <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>{{ form_start(form) }}
+                <!--<form method="POST" action="{{ path('project_add_post') }}">
                 <div class = "row">
                     <div class="col-md-6">
 
@@ -119,6 +120,7 @@
 
 
 
+
                         <div class="form-group mb-3 mb-md-2">
                             <h6>
                                 <br>
@@ -155,7 +157,7 @@
                         </div>
                     </div>
                 </div>
-                </form>
+                </form>-->
             </div>
         </div>
         <!-- /form inputs -->
