@@ -18,39 +18,39 @@ class Project
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Domain;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Client;
+    private $domain;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $Type;
+    private $client;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $type;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $Status;
+    private $status;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $MinuteTest;
+    private $minuteTest;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $SpeedTest;
+    private $speedTest;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $UpdateTest;
+    private $updateTest;
 
     public function getId(): ?int
     {
@@ -59,84 +59,84 @@ class Project
 
     public function getDomain(): ?string
     {
-        return $this->Domain;
+        return $this->domain;
     }
 
-    public function setDomain(string $Domain): self
+    public function setDomain(?string $domain): self
     {
-        $this->Domain = $Domain;
+        $this->domain = $domain;
 
         return $this;
     }
 
     public function getClient(): ?string
     {
-        return $this->Client;
+        return $this->client;
     }
 
-    public function setClient(string $Client): self
+    public function setClient(?string $client): self
     {
-        $this->Client = $Client;
+        $this->client = $client;
 
         return $this;
     }
 
     public function getType(): ?string
     {
-        return $this->Type;
+        return $this->type;
     }
 
-    public function setType(?string $Type): self
+    public function setType(?string $type): self
     {
-        $this->Type = $Type;
+        $this->type = $type;
 
         return $this;
     }
 
     public function getStatus(): ?bool
     {
-        return $this->Status;
+        return $this->status;
     }
 
-    public function setStatus(bool $Status): self
+    public function setStatus(bool $status): self
     {
-        $this->Status = $Status;
+        $this->status = $status;
 
         return $this;
     }
 
     public function getMinuteTest(): ?bool
     {
-        return $this->MinuteTest;
+        return $this->minuteTest;
     }
 
-    public function setMinuteTest(?bool $MinuteTest): self
+    public function setMinuteTest(?bool $minuteTest): self
     {
-        $this->MinuteTest = $MinuteTest;
+        $this->minuteTest = $minuteTest;
 
         return $this;
     }
 
     public function getSpeedTest(): ?bool
     {
-        return $this->SpeedTest;
+        return $this->speedTest;
     }
 
-    public function setSpeedTest(?bool $SpeedTest): self
+    public function setSpeedTest(?bool $speedTest): self
     {
-        $this->SpeedTest = $SpeedTest;
+        $this->speedTest = $speedTest;
 
         return $this;
     }
 
     public function getUpdateTest(): ?bool
     {
-        return $this->UpdateTest;
+        return $this->updateTest;
     }
 
-    public function setUpdateTest(?bool $UpdateTest): self
+    public function setUpdateTest(?bool $updateTest): self
     {
-        $this->UpdateTest = $UpdateTest;
+        $this->updateTest = $updateTest;
 
         return $this;
     }

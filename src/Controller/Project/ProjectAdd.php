@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProjectAdd extends AbstractController{
 
     function index(){
-        return $this->render('project/project_add.html.twig');
+        return $this->render('@Project/project_add.html.twig');
     }
 
     function addProject(Request $request){
@@ -31,6 +31,6 @@ class ProjectAdd extends AbstractController{
         $entityManager->flush();
 
 
-        return $this->render('project/project_add.html.twig');
+        return $this->render('@Project/project_add.html.twig');
     }
 }
