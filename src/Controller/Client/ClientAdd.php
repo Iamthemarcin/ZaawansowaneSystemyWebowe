@@ -3,6 +3,7 @@
 namespace App\Controller\Client;
 
 use http\Env\Response;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Client\Client;

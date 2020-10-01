@@ -18,24 +18,24 @@ class Client
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $CompanyName;
+    private $companyName;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $Email;
+    private $email;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $CompanyNipNumber;
+    private $companyNipNumber;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $ClientStatus;
+    private $clientStatus;
 
     public function getId(): ?int
     {
@@ -44,48 +44,48 @@ class Client
 
     public function getCompanyName(): ?string
     {
-        return $this->CompanyName;
+        return $this->companyName;
     }
 
-    public function setCompanyName(?string $CompanyName): self
+    public function setCompanyName(?string $companyName): self
     {
-        $this->CompanyName = $CompanyName;
+        $this->companyName = $companyName;
 
         return $this;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(?string $Email): self
+    public function setEmail(?string $email): self
     {
-        $this->Email = $Email;
+        $this->email = $email;
 
         return $this;
     }
 
     public function getCompanyNipNumber(): ?int
     {
-        return $this->CompanyNipNumber;
+        return $this->companyNipNumber;
     }
 
-    public function setCompanyNipNumber(?int $CompanyNipNumber): self
+    public function setCompanyNipNumber(?int $companyNipNumber): self
     {
-        $this->CompanyNipNumber = $CompanyNipNumber;
+        $this->companyNipNumber = $companyNipNumber;
 
         return $this;
     }
 
     public function getClientStatus(): ?bool
     {
-        return $this->ClientStatus;
+        return $this->clientStatus;
     }
 
-    public function setClientStatus(?bool $ClientStatus): self
+    public function setClientStatus(?bool $clientStatus): self
     {
-        $this->ClientStatus = $ClientStatus;
+        $this->clientStatus = $clientStatus;
 
         return $this;
     }
