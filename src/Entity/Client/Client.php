@@ -6,6 +6,10 @@ use App\Repository\ClientRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(options={"auto_increment": 1})
+ */
+
+/**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
 class Client
