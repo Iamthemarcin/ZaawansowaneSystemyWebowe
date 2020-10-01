@@ -31,6 +31,8 @@
 
 	<script src="../../assets/js/app.js"></script>
 	<script src="../../global_assets/js/demo_pages/datatables_responsive.js"></script>
+	<script src="../../global_assets/js/tableSearch.js"></script>
+
 	<!-- /theme JS files -->
 
 {% endblock %}
@@ -71,7 +73,7 @@
 						<div id="DataTables_Table_0_filter" class="dataTables_filter">
 							<label>
 								<span>Filter:</span>
-								<input type="search" class="" placeholder="Wyszukaj" aria-controls="DataTables_Table_0">
+								<input type="text" id = "myInput" onkeyup=tableSearch() placeholder="Wyszukaj" aria-controls="DataTables_Table_0">
 							</label>
 						</div>
 						<div class="dt-buttons">
@@ -92,7 +94,7 @@
 					<!--/wyszukiwanie-->
 
 
-					<table class="table datatable-responsive">
+					<table id = "myTable" class="table datatable-responsive">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -137,5 +139,7 @@
 
 
 			</div>
+
+
 			<!-- /content area -->
 {% endblock %}
