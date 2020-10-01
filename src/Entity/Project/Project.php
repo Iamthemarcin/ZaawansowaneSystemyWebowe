@@ -5,6 +5,7 @@ namespace App\Entity\Project;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
@@ -51,6 +52,12 @@ class Project
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $updateTest;
+
+    /**
+     * @var datetime $created
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDate;
 
     public function getId(): ?int
     {
@@ -137,6 +144,18 @@ class Project
     public function setUpdateTest(?bool $updateTest): self
     {
         $this->updateTest = $updateTest;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
 
         return $this;
     }

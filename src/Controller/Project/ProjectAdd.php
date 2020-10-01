@@ -24,6 +24,7 @@ class ProjectAdd extends AbstractController{
         $project->setClient($client);
         $project->setType($type);
         $project->setStatus($status);
+        $project->setCreationDate(new \DateTime('now'));
 
         $entityManager->persist($project);
 
