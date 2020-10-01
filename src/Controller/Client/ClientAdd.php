@@ -19,16 +19,16 @@ class ClientAdd extends AbstractController
     {
 
         dump($request->getContent());
-        $CompanyName = $request->request->get('CompanyName');
-        $Email= $request->request->get('Email');
-        $CompanyNipNumber = $request->request->get('CompanyNipNumber');
+        $companyName = $request->request->get('companyName');
+        $email= $request->request->get('email');
+        $companyNipNumber = $request->request->get('companyNipNumber');
 
 
         $entityManager = $this->getDoctrine()->getManager();
         $client = new Client();
-        $client->setCompanyName($CompanyName);
-        $client->setEmail($Email);
-        $client->setCompanyNipNumber($CompanyNipNumber);
+        $client->setCompanyName($companyName);
+        $client->setEmail($email);
+        $client->setCompanyNipNumber($companyNipNumber);
 
         $entityManager->persist($client);
         $entityManager->flush();
