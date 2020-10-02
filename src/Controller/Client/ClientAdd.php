@@ -20,8 +20,8 @@ class ClientAdd extends AbstractController
     {
         {
             $client = new Client();
-            $client->setCreationDate(new \DateTime('now'));
-            $form = $this->createForm(ProjectType::class, $client);
+
+            $form = $this->createForm(Client::class, $client);
 
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
