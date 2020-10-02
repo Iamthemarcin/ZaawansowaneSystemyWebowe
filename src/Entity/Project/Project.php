@@ -55,7 +55,7 @@ class Project
 
     /**
      * @var datetime $created
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="date")
      */
     private $creationDate;
 

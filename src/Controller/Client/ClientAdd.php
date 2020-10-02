@@ -20,8 +20,8 @@ class ClientAdd extends AbstractController
     {
         {
             $client = new Client();
-            $form = $this->createForm(ClientType::class, $client);
 
+            $form = $this->createForm(ClientType::class, $client);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
@@ -30,7 +30,7 @@ class ClientAdd extends AbstractController
                 $entityManager->flush();
             }
 
-            return $this->render('@Client/client_add.html.twig', [
+            return $this->render('@Client/cligit pullent_add.html.twig', [
                 'form' => $form->createView(),
             ]);
         }

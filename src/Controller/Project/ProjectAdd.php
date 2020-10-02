@@ -9,33 +9,27 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProjectAdd extends AbstractController{
 
-    function index(){
+
+
+    function index(Request $request){
         $project = new Project();
         $project->setCreationDate(new \DateTime('now'));
         $form = $this->createForm(ProjectType::class, $project);
 
-
-        return $this->render('@Project/project_add.html.twig',[
-            'form' => $form->createView(),
-        ]);
-    }
-
-    function addProject(Request $request)
-    {
-        $project = new Project();
-
-        $form = $this->createForm(ProjectType::class, $project);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->persist($project);
             $entityManager->flush();
-        }
 
+            return $this->redirectToRoute("project_add");
+
+        }
         return $this->render('@Project/project_add.html.twig', [
             'form' => $form->createView(),
         ]);
+
     }
 }
