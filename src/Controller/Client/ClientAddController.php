@@ -7,6 +7,8 @@ use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Client\ClientEntity;
+use App\DTO\Form\Client;
+
 
 
 class ClientAddController extends AbstractController
@@ -21,7 +23,7 @@ class ClientAddController extends AbstractController
         {
             $client = new ClientEntity();
 
-            $form = $this->createForm(ClientType::class, $client);
+            $form = $this->createForm(ClientEntity::class, $client);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
