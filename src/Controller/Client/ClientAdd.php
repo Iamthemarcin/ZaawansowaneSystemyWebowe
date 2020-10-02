@@ -16,7 +16,7 @@ class ClientAdd extends AbstractController
         return $this->render('client/client_add.html.twig');
     }
 
-    public function addClient(Requgitoest $request)
+    public function addClient(Request $request)
     {
 
         dump($request->getContent());
