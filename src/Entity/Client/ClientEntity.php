@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
-class Client
+class ClientEntity
 {
     /**
      * @ORM\Id

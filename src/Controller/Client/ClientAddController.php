@@ -6,7 +6,7 @@ use http\Env\Response;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Client\Client;
+use App\Entity\Client\ClientEntity;
 
 
 class ClientAddController extends AbstractController
@@ -19,7 +19,7 @@ class ClientAddController extends AbstractController
     public function addClient(Request $request)
     {
         {
-            $client = new Client();
+            $client = new ClientEntity();
 
             $form = $this->createForm(ClientType::class, $client);
             $form->handleRequest($request);
@@ -30,7 +30,7 @@ class ClientAddController extends AbstractController
                 $entityManager->flush();
             }
 
-            return $this->render('@Client/cligit pullent_add.html.twig', [
+            return $this->render('@ClientEntity/cligit pullent_add.html.twig', [
                 'form' => $form->createView(),
             ]);
         }
@@ -42,7 +42,7 @@ class ClientAddController extends AbstractController
 
 
         $entityManager = $this->getDoctrine()->getManager();
-        $client = new Client();
+        $client = new ClientEntity();
         $client->setCompanyName($companyName);
         $client->setEmail($email);
         $client->setCompanyNipNumber($companyNipNumber);
