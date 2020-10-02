@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Client\Client;
 
 
-class ClientAdd extends AbstractController
+class ClientAddController extends AbstractController
 {
     public function index()
     {

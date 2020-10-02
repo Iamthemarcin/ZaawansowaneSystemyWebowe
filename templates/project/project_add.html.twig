@@ -58,16 +58,15 @@
 
             </div>
 
-            <div class="card-body">  {{ form_start(form) }}    {{ form_widget(form) }}
-                <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>{{ form_start(form) }}
-                <!--<form method="POST" action="">
+            <div class="card-body">
+                <form method="POST" action="{{ path('project_add') }}">
                 <div class = "row">
                     <div class="col-md-6">
 
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2" >Domena projektu </label>
                             <div class="col-lg-10">
-                                <input name="domain" type="text" class="form-control">
+                                <input name="" type="text" class="form-control">
                             </div>
                         </div>
 
@@ -157,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-                </form>-->
+                </form>
             </div>
         </div>
         <!-- /form inputs -->

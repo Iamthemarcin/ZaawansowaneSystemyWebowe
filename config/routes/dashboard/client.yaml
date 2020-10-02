@@ -1,17 +1,17 @@
 client_list:
   path: /list
-  controller: App\Controller\Client\ClientList::index
+  controller: App\Controller\Client\ClientListController::index
 
 client_add_post:
   path: /add
-  controller: App\Controller\Client\ClientAdd::addClient
+  controller: App\Controller\Client\ClientAddController::addClient
   methods: POST
 
 
 client_add:
   path: /add
-  controller: App\Controller\Client\ClientAdd::index
+  controller: App\Controller\Client\ClientAddController::index
 
 client_edit:
   path: /edit
-  controller: App\Controller\Client\ClientEdit::index
+  controller: App\Controller\Client\ClientEditController::index

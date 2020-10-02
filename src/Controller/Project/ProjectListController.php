@@ -4,7 +4,7 @@
  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use App\Entity\Project\Project;
 
- class ProjectList extends AbstractController{
+ class ProjectListController extends AbstractController{
 
      public function index(){
          $projects = $this->getDoctrine()->getRepository
