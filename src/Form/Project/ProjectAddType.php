@@ -2,10 +2,9 @@
 
 
 namespace App\Form\Project;
+use App\DTO\Form\ProjectAddDTO;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -25,7 +24,7 @@ class ProjectAddType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => AnnouncementDTO::class
+            'data_class' => ProjectAddDTO::class
         ]);
     }
 }
