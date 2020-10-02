@@ -2,19 +2,18 @@
 namespace App\Controller\Project;
 
 use App\Entity\Project\Project;
-use App\Form\Project\ProjectType;
+use App\Form\Project\ProjectAddType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class ProjectAdd extends AbstractController{
+class ProjectAddController extends AbstractController{
 
 
 
     function index(Request $request){
         $project = new Project();
-        $project->setCreationDate(new \DateTime('now'));
-        $form = $this->createForm(ProjectType::class, $project);
+        $form = $this->createForm(ProjectAddType::class);
 
         $form->handleRequest($request);
 

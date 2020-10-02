@@ -6,7 +6,7 @@ use App\Entity\Client\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class ClientList extends AbstractController
+class ClientListController extends AbstractController
 {
     public function index()
     {

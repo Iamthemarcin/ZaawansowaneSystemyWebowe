@@ -3,9 +3,9 @@ namespace App\Controller\Project;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ProjectEdit extends AbstractController{
+class ProjectViewController extends AbstractController{
 
     function index(){
-        return $this->render('@Project/project_edit.html.twig');
+        return $this->render('project/project_view.html.twig');
     }
 }
