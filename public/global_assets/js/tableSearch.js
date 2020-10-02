@@ -1,5 +1,5 @@
 function tableSearch() {
-    var input, filter, table, tr, td, i, cell, j, txtValue, column_number;
+    var input, filter, table, tr, td, i, cell, j;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     table = document.getElementById("myTable");
@@ -10,7 +10,7 @@ function tableSearch() {
         tr[i].style.display = "none";
 
         td = tr[i].getElementsByTagName("td");
-        for (var j = 0; j < td.length; j++) {
+        for (j = 0; j < td.length; j++) {
             cell = tr[i].getElementsByTagName("td")[j];
             if (cell) {
                 if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {

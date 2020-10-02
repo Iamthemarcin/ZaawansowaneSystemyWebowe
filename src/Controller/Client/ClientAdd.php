@@ -16,10 +16,27 @@ class ClientAdd extends AbstractController
         return $this->render('client/client_add.html.twig');
     }
 
-    public function addClient(Requgitoest $request)
+    public function addClient(Request $request)
     {
+        {
+            $client = new Client();
+            $client->setCreationDate(new \DateTime('now'));
+            $form = $this->createForm(ProjectType::class, $client);
 
-        dump($request->getContent());
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+
+                $entityManager->persist($client);
+                $entityManager->flush();
+            }
+
+            return $this->render('@Client/client_add.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+
+        /*dump($request->getContent());
         $companyName = $request->request->get('companyName');
         $email= $request->request->get('email');
         $companyNipNumber = $request->request->get('companyNipNumber');
@@ -34,6 +51,9 @@ class ClientAdd extends AbstractController
         $entityManager->persist($client);
         $entityManager->flush();
 
-        return $this->render('client/client_add.html.twig');
+        return $this->render('client/client_add.html.twig'); */
+
+
+
     }
 }

@@ -25,6 +25,7 @@
 
     <script src="../../assets/js/app.js"></script>
     <script src="../../global_assets/js/demo_pages/datatables_responsive.js"></script>
+    <script src="../../global_assets/js/tableSearch.js"></script>
     <!-- /theme JS files -->
 
 {% endblock %}
@@ -63,7 +64,7 @@
                 <div id="DataTables_Table_0_filter" class="dataTables_filter">
                     <label>
                         <span>Filter:</span>
-                        <input type="search" class="" placeholder="Wyszukaj" aria-controls="DataTables_Table_0">
+                        <input type="text" id = "myInput" onkeyup=tableSearch() placeholder="Wyszukaj" aria-controls="DataTables_Table_0">
                     </label>
                 </div>
                 <div class="dt-buttons">
@@ -84,7 +85,7 @@
             <!--/wyszukiwanie-->
 
 
-            <table class="table datatable-responsive">
+            <table id = "myTable" class="table  datatable-responsive text-center" >
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -98,14 +99,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Enright</td>
-                    <td><a href="#">enright@gmail.com</a></td>
-                    <td><span class="badge badge-success">Aktywny</span></td>
-                    <td><span class="badge badge-success">Sukces</span></td>
-                    <td><span class="badge badge-danger">Błąd</span></td>
-                    <td><span class="badge badge-success">Aktywny</span></td>
+                {% for project in projects %}
+                <tr >
+                    <td>{{ project.id}} </td>
+                    <td>{{ project.domain }}</td>
+                    <td><a href="#">{{ project.client }}</a></td>
+                    <td ><span class="badge badge-success">{{ project.status }}</span></td>
+                    <td><span class="badge badge-success">{{ project.minutetest }}</span></td>
+                    <td><span class="badge badge-danger">{{ project.speedtest }}</span></td>
+                    <td><span class="badge badge-success">{{ project.updatetest }}</span></td>
 
 
                     <td class="text-center">
@@ -126,7 +128,7 @@
                     <td  style="display:none;"><span class="badge badge-success">Aktywny</span></td>
                 </tr>
 
-
+                {% endfor %}
                 </tbody>
             </table>
         </div>
