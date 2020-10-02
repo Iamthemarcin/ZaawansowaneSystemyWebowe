@@ -35,9 +35,6 @@
             <div class="d-flex">
                 <div class="breadcrumb">
                     <a href='{{ path("home") }}' class="breadcrumb-item"><i class="icon-home2 mr-2"></i>Dashboard</a>
-
-
-
                 </div>
 
                 <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -55,59 +52,54 @@
         <div class="card">
             <div class="card-header header-elements-inline">
                 <h5 class="card-title">Dodawanie projektu</h5>
-
             </div>
-
-
             <div class="card-body">
                 <form method="POST" action="{{ path('project_add') }}">
+                    {{ form_row(form._token) }}
 
-                <div class = "row">
+                <div class="row">
                     <div class="col-md-6">
-
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2" >Domena projektu </label>
                             <div class="col-lg-10">
-                                <input name="" type="text" class="form-control">
+                                <input name="{{ form.domain.vars.full_name }}" type="text" class="form-control">
                             </div>
                         </div>
 
+{#                        <div class="form-group row">#}
+{#                            <label class="col-form-label col-lg-2">Klient projektu</label>#}
+{#                            <div class="col-lg-10">#}
+{#                                <select name="client"   class="form-control form-control-uniform">#}
+{#                                    <option style="display:none"></option>#}
+{#                                    <option >Klient 1</option>#}
+{#                                    <option >Klient 2</option>#}
+{#                                    <option >Klient 3</option>#}
+{#                                    <option >Klient 4</option>#}
+{#                                    <option >Klient 5</option>#}
+{#                                    <option >Klient 6</option>#}
+{#                                    <option >Klient 7</option>#}
+{#                                    <option >Klient 8</option>#}
+{#                                </select>#}
+{#                            </div>#}
+{#                        </div>#}
 
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Klient projektu</label>
-                            <div class="col-lg-10">
-                                <select name="client"   class="form-control form-control-uniform">
-                                    <option style="display:none"></option>
-                                    <option >Klient 1</option>
-                                    <option >Klient 2</option>
-                                    <option >Klient 3</option>
-                                    <option >Klient 4</option>
-                                    <option >Klient 5</option>
-                                    <option >Klient 6</option>
-                                    <option >Klient 7</option>
-                                    <option >Klient 8</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-form-label col-lg-2">Typ projektu</label>
-                            <div class="col-lg-10">
-                                <select name="type" class="form-control form-control-uniform">
-                                    <option  style="display:none"></option>
-                                    <option >Typ 1</option>
-                                    <option >Typ 2</option>
-                                    <option >Typ 3</option>
-                                    <option >Typ 4</option>
-                                    <option >Typ 5</option>
-                                    <option >Typ 6</option>
-                                    <option >Typ 7</option>
-                                    <option >Typ 7</option>
-                                    <option >Typ 8</option>
-                                </select>
-                            </div>
-                        </div>
-
+{#                        <div class="form-group row">#}
+{#                            <label class="col-form-label col-lg-2">Typ projektu</label>#}
+{#                            <div class="col-lg-10">#}
+{#                                <select name="type" class="form-control form-control-uniform">#}
+{#                                    <option  style="display:none"></option>#}
+{#                                    <option >Typ 1</option>#}
+{#                                    <option >Typ 2</option>#}
+{#                                    <option >Typ 3</option>#}
+{#                                    <option >Typ 4</option>#}
+{#                                    <option >Typ 5</option>#}
+{#                                    <option >Typ 6</option>#}
+{#                                    <option >Typ 7</option>#}
+{#                                    <option >Typ 7</option>#}
+{#                                    <option >Typ 8</option>#}
+{#                                </select>#}
+{#                            </div>#}
+{#                        </div>#}
 
 
 
@@ -122,24 +114,22 @@
 
 
 
-                        <div class="form-group mb-3 mb-md-2">
-                            <h6>
-                                <br>
-                                <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" value="1" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked>
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>
-                            </div>
 
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" value="0"name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>
-                            </div>
+{#                        <div class="form-group mb-3 mb-md-2">#}
+{#                            <h6>#}
+{#                                <br>#}
+{#                                <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>#}
+{#                            <div class="custom-control custom-control-right custom-radio custom-control-inline">#}
+{#                                <input type="radio" class="custom-control-input" value="1" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked>#}
+{#                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>#}
+{#                            </div>#}
 
-                        </div>
+{#                            <div class="custom-control custom-control-right custom-radio custom-control-inline">#}
+{#                                <input type="radio" class="custom-control-input" value="0"name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">#}
+{#                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>#}
+{#                            </div>#}
 
-
-
+{#                        </div>#}
 
 
 
@@ -151,7 +141,10 @@
 
 
 
-                        </fieldset>
+
+
+
+{#                        </fieldset>#}
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
