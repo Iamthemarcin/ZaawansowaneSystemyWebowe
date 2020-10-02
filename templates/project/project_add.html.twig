@@ -56,7 +56,7 @@
             <div class="card-body">
                 <form method="POST" action="{{ path('project_add') }}">
                     {{ form_row(form._token) }}
-
+                    {{ dump(form.client.vars) }}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group row">
@@ -66,70 +66,40 @@
                             </div>
                         </div>
 
-{#                        <div class="form-group row">#}
-{#                            <label class="col-form-label col-lg-2">Klient projektu</label>#}
-{#                            <div class="col-lg-10">#}
-{#                                <select name="client"   class="form-control form-control-uniform">#}
-{#                                    <option style="display:none"></option>#}
-{#                                    <option >Klient 1</option>#}
-{#                                    <option >Klient 2</option>#}
-{#                                    <option >Klient 3</option>#}
-{#                                    <option >Klient 4</option>#}
-{#                                    <option >Klient 5</option>#}
-{#                                    <option >Klient 6</option>#}
-{#                                    <option >Klient 7</option>#}
-{#                                    <option >Klient 8</option>#}
-{#                                </select>#}
-{#                            </div>#}
-{#                        </div>#}
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Klient projektu</label>
+                            <div class="col-lg-10">
+                                <select name="{{ form.client.vars.full_name }}"   class="form-control form-control-uniform">
+                                    <option style="display:none"></option>
+                                    <option >Klient 1</option>
+                                    <option >Klient 2</option>
+                                    <option >Klient 3</option>
+                                    <option >Klient 4</option>
+                                    <option >Klient 5</option>
+                                    <option >Klient 6</option>
+                                    <option >Klient 7</option>
+                                    <option >Klient 8</option>
+                                </select>
+                            </div>
+                        </div>
 
-{#                        <div class="form-group row">#}
-{#                            <label class="col-form-label col-lg-2">Typ projektu</label>#}
-{#                            <div class="col-lg-10">#}
-{#                                <select name="type" class="form-control form-control-uniform">#}
-{#                                    <option  style="display:none"></option>#}
-{#                                    <option >Typ 1</option>#}
-{#                                    <option >Typ 2</option>#}
-{#                                    <option >Typ 3</option>#}
-{#                                    <option >Typ 4</option>#}
-{#                                    <option >Typ 5</option>#}
-{#                                    <option >Typ 6</option>#}
-{#                                    <option >Typ 7</option>#}
-{#                                    <option >Typ 7</option>#}
-{#                                    <option >Typ 8</option>#}
-{#                                </select>#}
-{#                            </div>#}
-{#                        </div>#}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#                        <div class="form-group mb-3 mb-md-2">#}
-{#                            <h6>#}
-{#                                <br>#}
-{#                                <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>#}
-{#                            <div class="custom-control custom-control-right custom-radio custom-control-inline">#}
-{#                                <input type="radio" class="custom-control-input" value="1" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked>#}
-{#                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>#}
-{#                            </div>#}
-
-{#                            <div class="custom-control custom-control-right custom-radio custom-control-inline">#}
-{#                                <input type="radio" class="custom-control-input" value="0"name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">#}
-{#                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>#}
-{#                            </div>#}
-
-{#                        </div>#}
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Typ projektu</label>
+                            <div class="col-lg-10">
+                                <select name="{{ form.type.vars.full_name }}" class="form-control form-control-uniform">
+                                    <option  style="display:none"></option>
+                                    <option >Typ 1</option>
+                                    <option >Typ 2</option>
+                                    <option >Typ 3</option>
+                                    <option >Typ 4</option>
+                                    <option >Typ 5</option>
+                                    <option >Typ 6</option>
+                                    <option >Typ 7</option>
+                                    <option >Typ 7</option>
+                                    <option >Typ 8</option>
+                                </select>
+                            </div>
+                        </div>
 
 
 
@@ -144,7 +114,37 @@
 
 
 
-{#                        </fieldset>#}
+
+                        <div class="form-group mb-3 mb-md-2">
+                            <h6>
+                                <br>
+                                <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
+                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" value="1" name="{{ form.status.vars.full_name }}" id="custom_radio_inline_right_checked" checked>
+                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>
+                            </div>
+
+                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" value="0"name="{{ form.status.vars.full_name }}" id="custom_radio_inline_right_unchecked">
+                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </fieldset>
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
