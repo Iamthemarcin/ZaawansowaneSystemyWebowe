@@ -2,7 +2,7 @@
 
 namespace App\Controller\Client;
 
-use App\Entity\Client\Client;
+use App\Entity\Client\ClientEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -12,7 +12,7 @@ class ClientListController extends AbstractController
     {
 
         $clients = $this->getDoctrine()->getRepository
-        (Client::class)->findAll();
+        (ClientEntity::class)->findAll();
         return $this->render('client/client_list.html.twig',['clients'=>$clients]);
     }
 }
