@@ -74,6 +74,11 @@
 
                                     {% for client in clients %}
                                     <option >{{ client.companyName }}</option>
+
+                                        {% if client.id%}
+                                            {% else %}
+                                            <option >sda</option>
+                                        {% endif %}
                                     {%  endfor %}
 
 
