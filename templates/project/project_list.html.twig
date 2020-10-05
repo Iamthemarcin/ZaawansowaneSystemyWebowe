@@ -88,6 +88,18 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% if projects == null %}
+                    <tr>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                    </tr>
+                {% endif %}
                 {% for project in projects %}
                 <tr >
                     <td>{{ project.id}} </td>

@@ -75,16 +75,11 @@
 
                                     <option style="display:none"></option>
                                     {% if clients == null %}
-                                    <option> nie ma nic</option>
+                                    <option>Dodaj klienta do bazy danych</option>
                                     {% endif %}
 
                                     {% for client in clients %}
                                     <option >{{ client.companyName }}</option>
-
-                                        {% if client.id%}
-                                            {% else %}
-                                            <option >sda</option>
-                                        {% endif %}
                                     {%  endfor %}
 
 
