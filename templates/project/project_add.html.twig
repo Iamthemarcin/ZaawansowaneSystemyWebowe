@@ -75,7 +75,7 @@
 
                                     <option style="display:none"></option>
                                     {% if clients == null %}
-                                    <option>Dodaj klienta do bazy danych</option>
+                                    <option disabled>Dodaj klienta do bazy danych</option>
                                     {% endif %}
 
                                     {% for client in clients %}
@@ -110,9 +110,12 @@
                                 <br>
                                 <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
 
-                            <div>
-                                <input type="checkbox" id="status" name="{{ form.status.vars.full_name }}" checked>
-                                <label for="status">Aktywny / Nieaktywny</label>
+
+                            <div class="form-check  form-check-switchery">
+                                <label class="form-check-label">
+                                    Aktywny / Nieaktywny
+                                    <input type="checkbox" name="{{ form.status.vars.full_name }}" class="form-check-input-switchery" checked>
+                                </label>
                             </div>
 
                         </div>
