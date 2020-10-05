@@ -5,5 +5,5 @@ twig:
     paths:
         '%kernel.project_dir%/templates/dashboard': 'Dashboard'
         '%kernel.project_dir%/templates/emails': 'Email'
-        '%kernel.project_dir%/templates/client': 'ClientEntity'
+        '%kernel.project_dir%/templates/client': 'Client'
         '%kernel.project_dir%/templates/project': 'Project'

@@ -3,7 +3,6 @@ namespace App\Controller\Project;
 
 use App\Builder\ProjectBuilder;
 use App\DTO\Form\ProjectAddDTO;
-use App\Entity\Project\Project;
 use App\Form\Project\ProjectAddType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
