@@ -13,13 +13,8 @@ class ProjectAddController extends AbstractController{
         $form = $this->createForm(ProjectAddType::class);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             dd($form->getData());
-
             return $this->redirectToRoute("project_add");
 
         }
