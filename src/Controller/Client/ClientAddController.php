@@ -8,12 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ClientAddController extends AbstractController
 {
-    function index(Request $request){
+    public function index(Request $request){
             $form = $this->createForm(ClientAddType::class);
             $form->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
-
-
                 dd($form->getData());
                 return $this->redirectToRoute("client_add");
             }

@@ -28,9 +28,8 @@ class ProjectAddController extends AbstractController {
         $form = $this->createForm(ProjectAddType::class);
         $form->handleRequest($request);
 
-
-
         if ($form->isSubmitted() && $form->isValid()) {
+
             /** @var ProjectAddDTO $dto */
             $dto = $form->getData();
 
