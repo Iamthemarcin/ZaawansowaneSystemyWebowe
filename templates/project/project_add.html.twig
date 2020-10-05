@@ -70,7 +70,13 @@
                             <label class="col-form-label col-lg-2">Klient projektu</label>
                             <div class="col-lg-10">
                                 <select name="{{ form.client.vars.full_name }}"   class="form-control form-control-uniform" required>
+
+
+
                                     <option style="display:none"></option>
+                                    {% if clients == null %}
+                                    <option> nie ma nic</option>
+                                    {% endif %}
 
                                     {% for client in clients %}
                                     <option >{{ client.companyName }}</option>
