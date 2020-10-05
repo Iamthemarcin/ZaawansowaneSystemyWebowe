@@ -1,20 +1,49 @@
 <?php
 namespace App\Controller\Project;
 
+use App\Builder\ProjectBuilder;
+use App\DTO\Form\ProjectAddDTO;
 use App\Entity\Project\Project;
 use App\Form\Project\ProjectAddType;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class ProjectAddController extends AbstractController{
+class ProjectAddController extends AbstractController {
 
-    function index(Request $request){
+    private EntityManagerInterface $em;
+    private ProjectBuilder $projectBuilder;
+
+    public function __construct(
+        EntityManagerInterface $em,
+        ProjectBuilder $projectBuilder
+    ){
+        $this->projectBuilder = $projectBuilder;
+        $this->em = $em;
+    }
+
+    public function index(Request $request){
         $form = $this->createForm(ProjectAddType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($form->getData());
+
+            /** @var ProjectAddDTO $dto */
+            $dto = $form->getData();
+
+
+            try {
+                $newProject = $this->projectBuilder->createFromDTO($dto);
+
+                $this->em->persist($newProject);
+                $this->em->flush();
+
+            } catch (\Exception $e) {
+                dump($e->getMessage());
+            }
+
             return $this->redirectToRoute("project_add");
 
         }
