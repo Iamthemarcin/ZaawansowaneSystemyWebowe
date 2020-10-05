@@ -100,7 +100,13 @@
 								<td>{{ client.companyName }}</td>
 								<td><a href="#">{{ client.email }}</a></td>
 
-								<td><span class="badge badge-success">{{ client.clientStatus }}</span></td>
+								<td><span class="badge badge-success">
+									{% if client.clientStatus == 1  %}
+										Aktywny
+									{% else %}
+										Niekatywny
+									{% endif %}
+									</span></td>
 								<td class="text-center">
 									<div class="list-icons">
 										<div class="dropdown">
