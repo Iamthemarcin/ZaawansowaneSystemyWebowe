@@ -2,12 +2,6 @@ client_list:
   path: /list
   controller: App\Controller\Client\ClientListController::index
 
-client_add_post:
-  path: /add
-  controller: App\Controller\Client\ClientAddController::addClient
-  methods: POST
-
-
 client_add:
   path: /add
   controller: App\Controller\Client\ClientAddController::index

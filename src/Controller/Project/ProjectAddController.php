@@ -21,6 +21,5 @@ class ProjectAddController extends AbstractController{
         return $this->render('@Project/project_add.html.twig', [
             'form' => $form->createView(),
         ]);
-
     }
 }

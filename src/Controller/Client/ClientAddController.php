@@ -2,59 +2,25 @@
 
 namespace App\Controller\Client;
 
-use http\Env\Response;
-use phpDocumentor\Reflection\Types\Integer;
+use App\Form\Client\ClientAddType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Client\ClientEntity;
-use App\DTO\Form\Client;
-
-
 
 class ClientAddController extends AbstractController
 {
-    public function index()
-    {
-        return $this->render('client/client_add.html.twig');
-    }
-
-    public function addClient(Request $request)
-    {
-        {
-            $client = new ClientEntity();
-
-            $form = $this->createForm(ClientEntity::class, $client);
+    function index(Request $request){
+            $form = $this->createForm(ClientAddType::class);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
 
-                $entityManager->persist($client);
-                $entityManager->flush();
+
+                dd($form->getData());
+                return $this->redirectToRoute("client_add");
             }
 
-            return $this->render('@ClientEntity/cligit pullent_add.html.twig', [
+            return $this->render('@Client/client_add.html.twig', [
                 'form' => $form->createView(),
             ]);
-        }
-
-        /*dump($request->getContent());
-        $companyName = $request->request->get('companyName');
-        $email= $request->request->get('email');
-        $companyNipNumber = $request->request->get('companyNipNumber');
-
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $client = new ClientEntity();
-        $client->setCompanyName($companyName);
-        $client->setEmail($email);
-        $client->setCompanyNipNumber($companyNipNumber);
-
-        $entityManager->persist($client);
-        $entityManager->flush();
-
-        return $this->render('client/client_add.html.twig'); */
-
-
 
     }
 }

@@ -1,6 +1,6 @@
 home:
    path: '/'
-   controller: App\Controller\HomePageController::index
+   controller: 'App\Controller\HomePageController::index'
 
 clientResource:
    prefix: 'client'
