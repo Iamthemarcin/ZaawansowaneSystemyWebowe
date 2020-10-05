@@ -3,6 +3,7 @@ namespace App\Controller\Project;
 
 use App\Builder\ProjectBuilder;
 use App\DTO\Form\ProjectAddDTO;
+use App\Entity\Client\ClientEntity;
 use App\Form\Project\ProjectAddType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -46,8 +47,10 @@ class ProjectAddController extends AbstractController {
             return $this->redirectToRoute("project_add");
 
         }
+        $clients = $this->getDoctrine()->getRepository
+        (ClientEntity::class)->findAll();
         return $this->render('@Project/project_add.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView(),'clients'=>$clients
         ]);
     }
 }

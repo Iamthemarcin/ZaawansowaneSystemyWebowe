@@ -62,23 +62,21 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2" >Domena projektu </label>
                             <div class="col-lg-10">
-                                <input name="{{ form.domain.vars.full_name }}" type="text" class="form-control">
+                                <input name="{{ form.domain.vars.full_name }}" type="text" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Klient projektu</label>
                             <div class="col-lg-10">
-                                <select name="{{ form.client.vars.full_name }}"   class="form-control form-control-uniform">
+                                <select name="{{ form.client.vars.full_name }}"   class="form-control form-control-uniform" required>
                                     <option style="display:none"></option>
-                                    <option >Klient 1</option>
-                                    <option >Klient 2</option>
-                                    <option >Klient 3</option>
-                                    <option >Klient 4</option>
-                                    <option >Klient 5</option>
-                                    <option >Klient 6</option>
-                                    <option >Klient 7</option>
-                                    <option >Klient 8</option>
+
+                                    {% for client in clients %}
+                                    <option >{{ client.companyName }}</option>
+                                    {%  endfor %}
+
+
                                 </select>
                             </div>
                         </div>
@@ -86,7 +84,7 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Typ projektu</label>
                             <div class="col-lg-10">
-                                <select name="{{ form.type.vars.full_name }}" class="form-control form-control-uniform">
+                                <select name="{{ form.type.vars.full_name }}" class="form-control form-control-uniform" required>
                                     <option  style="display:none"></option>
                                     <option >Typ 1</option>
                                     <option >Typ 2</option>
@@ -101,50 +99,17 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <div class="form-group mb-3 mb-md-2">
                             <h6>
                                 <br>
                                 <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" value="true" name="{{ form.status.vars.full_name }}" id="custom_radio_inline_right_checked" checked>
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>
-                            </div>
 
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" value="false"name="{{ form.status.vars.full_name }}" id="custom_radio_inline_right_unchecked">
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>
+                            <div>
+                                <input type="checkbox" id="status" name="{{ form.status.vars.full_name }}" checked>
+                                <label for="status">Aktywny / Nieaktywny</label>
                             </div>
 
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </fieldset>
 
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
