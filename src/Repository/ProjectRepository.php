@@ -8,19 +8,19 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method ProjectEntity|null find($id, $lockMode = null, $lockVersion = null)
- * @method Project|null findOneBy(array $criteria, array $orderBy = null)
- * @method Project[]    findAll()
+ * @method ProjectEntity|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ProjectEntity[]    findAll()
  * @method ProjectEntity[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProjectRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Project::class);
+        parent::__construct($registry, ProjectEntity::class);
     }
 
     // /**
-    //  * @return Project[] Returns an array of Project objects
+    //  * @return ProjectEntity[] Returns an array of Project objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ProjectRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Project
+    public function findOneBySomeField($value): ?ProjectEntity
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')
