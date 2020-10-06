@@ -40,19 +40,19 @@ class ProjectEntity extends Base
     private $status;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
      */
-    private $minuteTest;
+    private $minuteTest=0;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
      */
-    private $speedTest;
+    private $speedTest=0;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
      */
-    private $updateTest;
+    private $updateTest=0;
 
 
     public function getId(): ?int

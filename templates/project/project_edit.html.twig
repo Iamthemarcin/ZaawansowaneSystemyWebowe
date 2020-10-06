@@ -59,13 +59,15 @@
             </div>
 
             <div class="card-body">
+                <form method="POST" action="{{ path('project_edit', {id: project.id}) }}">
+                    {{ form_row(form._token) }}
                 <div class = "row">
                     <div class="col-md-6">
 
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2" >Domena projektu </label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control">
+                                <input name="{{ form.domain.vars.full_name }}" value="{{ project.domain}}" type="text" class="form-control">
                             </div>
                         </div>
 
@@ -73,9 +75,10 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Klient projektu</label>
                             <div class="col-lg-10">
-                                <select class="form-control form-control-uniform">
-                                    <option style="display:none"></option>
+                                <select name="{{ form.client.vars.full_name }}" class="form-control form-control-uniform">
+                                    <option style="display:none">{{ project.client}}</option>
                                     {% if clients == null %}
+                                        <option >{{ project.client}}</option>
                                         <option disabled>Dodaj klienta do bazy danych</option>
                                     {% endif %}
 
@@ -89,7 +92,8 @@
                         <div class="form-group row">
                             <label class="col-form-label col-lg-2">Typ projektu</label>
                             <div class="col-lg-10">
-                                <select class="form-control form-control-uniform">
+                                <select name="{{ form.type.vars.full_name }}" class="form-control form-control-uniform">
+                                    <option >{{ project.type}}</option>
                                     <option value="opt1">Typ 1</option>
                                     <option value="opt2">Typ 2</option>
                                     <option value="opt3">Typ 3</option>
@@ -115,7 +119,7 @@
                             <div class="form-check  form-check-switchery">
                                 <label class="form-check-label">
                                     Aktywny / Nieaktywny
-                                    <input type="checkbox" name="#" class="form-check-input-switchery" checked>
+                                    <input name="{{ form.status.vars.full_name }}" type="checkbox" class="form-check-input-switchery" {% if project.status == true %}checked{% endif %}>
                                 </label>
                             </div>
 
@@ -126,7 +130,7 @@
                         <div class="form-check   form-check-switchery">
                             <label class="form-check-label">
                                 Test minutowy
-                                <input type="checkbox" class="form-check-input-switchery"  data-fouc>
+                                <input name="{{ form.minuteTest.vars.full_name }}" type="checkbox" class="form-check-input-switchery"  {% if project.minuteTest == true %}checked{% endif %}>
 
                             </label>
                         </div>
@@ -134,14 +138,14 @@
                         <div class="form-check  form-check-switchery">
                             <label class="form-check-label">
                                 Test badania szybkości
-                                <input type="checkbox" class="form-check-input-switchery" data-fouc>
+                                <input name="{{ form.speedTest.vars.full_name }}" type="checkbox" class="form-check-input-switchery" {% if project.speedTest == true %}checked{% endif %}>
                             </label>
                         </div>
 
                         <div class="form-check  form-check-switchery">
                             <label class="form-check-label">
                                 Test aktualizacji projektu
-                                <input type="checkbox" class="form-check-input-switchery" data-fouc>
+                                <input name="{{ form.updateTest.vars.full_name }}" type="checkbox" class="form-check-input-switchery" {% if project.updateTest == true %}checked{% endif %}>
                             </label>
                         </div>
                         </fieldset>

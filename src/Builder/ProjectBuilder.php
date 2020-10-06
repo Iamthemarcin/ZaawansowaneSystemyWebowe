@@ -5,6 +5,7 @@ namespace App\Builder;
 
 
 use App\DTO\Form\ProjectAddDTO;
+use App\DTO\Form\ProjectEditDTO;
 use App\Entity\Project\ProjectEntity;
 
 class ProjectBuilder
@@ -16,6 +17,17 @@ class ProjectBuilder
         $project->setDomain($dto->getDomain());
         $project->setClient($dto->getClient());
         $project->setType($dto->getType());
+
         return $project;
+    }
+
+    public function createFromEditDTO(ProjectEntity $currentProject, ProjectEditDTO $dto): ProjectEntity
+    {
+        $currentProject->setDomain($dto->getDomain());
+        $currentProject->setMinuteTest($dto->isMinuteTest());
+        $currentProject->setSpeedTest($dto->isSpeedTest());
+        $currentProject->setUpdateTest($dto->isUpdateTest());
+
+        return $currentProject;
     }
 }
