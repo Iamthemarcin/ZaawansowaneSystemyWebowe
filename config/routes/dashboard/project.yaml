@@ -11,5 +11,7 @@ project_view:
   controller: App\Controller\Project\ProjectViewController::index
 
 project_edit:
-  path: /edit
+  path: /edit/{id}
+  requirements:
+    id: '\d+'
   controller: App\Controller\Project\ProjectEditController::index

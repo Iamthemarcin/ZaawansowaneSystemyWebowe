@@ -74,14 +74,14 @@
                             <label class="col-form-label col-lg-2">Klient projektu</label>
                             <div class="col-lg-10">
                                 <select class="form-control form-control-uniform">
-                                    <option value="opt1">Klient 1</option>
-                                    <option value="opt2">Klient 2</option>
-                                    <option value="opt3">Klient 3</option>
-                                    <option value="opt4">Klient 4</option>
-                                    <option value="opt5">Klient 5</option>
-                                    <option value="opt6">Klient 6</option>
-                                    <option value="opt7">Klient 7</option>
-                                    <option value="opt8">Klient 8</option>
+                                    <option style="display:none"></option>
+                                    {% if clients == null %}
+                                        <option disabled>Dodaj klienta do bazy danych</option>
+                                    {% endif %}
+
+                                    {% for client in clients %}
+                                        <option >{{ client.companyName }}</option>
+                                    {%  endfor %}
                                 </select>
                             </div>
                         </div>
@@ -112,14 +112,11 @@
                         <div class="form-group mb-3 mb-md-2">
                             <h6>
                                 <label class="d-block font-weight-semibold pt-3 pt-md-0">Status projektu</label></h6>
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_checked" checked>
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_checked">Aktywny</label>
-                            </div>
-
-                            <div class="custom-control custom-control-right custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" name="custom-inline-radio-right" id="custom_radio_inline_right_unchecked">
-                                <label class="custom-control-label position-static" for="custom_radio_inline_right_unchecked">Nieaktywny</label>
+                            <div class="form-check  form-check-switchery">
+                                <label class="form-check-label">
+                                    Aktywny / Nieaktywny
+                                    <input type="checkbox" name="#" class="form-check-input-switchery" checked>
+                                </label>
                             </div>
 
                         </div>

@@ -88,6 +88,18 @@
                 </tr>
                 </thead>
                 <tbody>
+                {% if projects == null %}
+                    <tr>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                        <td>Brak danych</td>
+                    </tr>
+                {% endif %}
                 {% for project in projects %}
                 <tr >
                     <td>{{ project.id}} </td>
@@ -109,7 +121,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(22px, 1px, 0px);">
                                     <a href="{{ path('project_view') }}" class="dropdown-item"><i class="icon-user"></i> Podgląd</a>
-                                    <a href="{{ path('project_edit') }}" class="dropdown-item"><i class="icon-quill2"></i> Edycja</a>
+                                    <a href="{{ path('project_edit',{'id': project.id}) }}" class="dropdown-item"><i class="icon-quill2"></i> Edycja</a>
                                     <a href="#" class="dropdown-item"><i class="icon-user-block"></i> Zablokowanie</a>
                                 </div>
                             </div>

@@ -94,6 +94,15 @@
 							</tr>
 						</thead>
 						<tbody>
+						{% if clients == null %}
+							<tr>
+								<td>Brak danych</td>
+								<td>Brak danych</td>
+								<td>Brak danych</td>
+								<td>Brak danych</td>
+								<td>Brak danych</td>
+							</tr>
+						{% endif %}
 							{% for client in clients %}
 							<tr>
 								<td>{{ client.id }}</td>
