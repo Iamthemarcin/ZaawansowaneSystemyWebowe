@@ -1,0 +1,24 @@
+App\DTO\Form\ClientAddDTO:
+  properties:
+    companyName:
+      - NotBlank:
+          message: Nazwa firmy nie moze byc pusta
+
+    email:
+      - NotBlank:
+          message: Adres e-mail nie może być pusty
+
+      - Email:
+          message:  Niepoprawny adres E-mail
+    companyNipNumber:
+      - NotBlank:
+          message: Numer NIP firmy nie może być pusty
+
+      - Positive:
+          message: Numer NIP musi być dodatni
+      - Range:
+          min: 999999999
+          max: 9999999999  #DOBRA_WALIDACJAXD~
+          notInRangeMessage: Numer NIP musi być 10-cio cyfrowy
+
+

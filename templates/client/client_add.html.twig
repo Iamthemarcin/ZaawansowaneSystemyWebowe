@@ -60,15 +60,28 @@
 
     <!-- Form inputs -->
     <div class="card">
+
+
       <div class="card-header header-elements-inline">
         <h5 class="card-title">Dodawanie klienta</h5>
 
 
       </div>
+      <div class="card-body" >
+
+
+        {% if errors %}
+          <div class = "col-md-6">
+            {% for error in errors %}
+              <div class="alert alert-danger" role="alert">
+                {{error}}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
 
       <div class = "row">
         <div class="col-md-6">
-          <div class="card-body" >
             <form method="POST" action="{{ path('client_add') }}">
               {{ form_row(form._token) }}
 
@@ -76,7 +89,8 @@
               <label class="col-form-label col-lg-2">Adres e-mail</label>
 
               <div class="col-lg-10" >
-                <input name = '{{ form.email.vars.full_name }}' type="email" class="form-control" >
+                <input name = '{{ form.email.vars.full_name }}' type="email" class="form-control">
+
               </div>
             </div>
 
@@ -87,6 +101,7 @@
               <div class="col-lg-10">
 
                 <input name = {{ form.companyName.vars.full_name }} type="text" class="form-control">
+
               </div>
             </div>
 
@@ -94,38 +109,22 @@
               <label class="col-form-label col-lg-2">NIP</label>
               <div class="col-lg-10">
                 <input name = {{form.companyNipNumber.vars.full_name }} type='number' class="form-control">
+
               </div>
             </div>
+          </fieldset>
 
-
-
-
-
-
-
-            </fieldset>
-
-            <div class="text-right">
+              <div class="text-right">
               <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
             </div>
-            </form>
-          </div>
+          </form>
         </div>
       </div>
     </div>
-
-    <!-- /form inputs -->
-
-
-
-
-
-    <!-- /main content -->
-
-
-
-
   </div>
+    <!-- /form inputs -->
+    <!-- /main content -->
+</div>
   <!-- /Content area -->
 
 {% endblock %}
