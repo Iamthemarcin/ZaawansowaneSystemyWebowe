@@ -49,8 +49,11 @@ class ProjectAddController extends AbstractController {
         }
         $clients = $this->getDoctrine()->getRepository
         (ClientEntity::class)->findAll();
+
+        $errors = $form->getErrors(true, false);
+
         return $this->render('@Project/project_add.html.twig', [
-            'form' => $form->createView(),'clients'=>$clients
+            'form' => $form->createView(),'clients'=>$clients, 'errors' => $errors
         ]);
     }
 }

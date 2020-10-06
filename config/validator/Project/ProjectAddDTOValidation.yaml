@@ -1,0 +1,16 @@
+App\DTO\Form\ProjectAddDTO:
+  properties:
+    domain:
+      - NotBlank:
+          message: Domena projektu nie moze byc pusta
+
+    client:
+      - NotBlank:
+          message: Klient projektu nie może być pusty
+
+    type:
+      - NotBlank:
+          message: Typ projektu nie może być pusty
+
+
+
