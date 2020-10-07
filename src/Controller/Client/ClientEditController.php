@@ -55,7 +55,7 @@ class ClientEditController extends AbstractController
                 $this->em->persist($client);
                 $this->em->flush();
 
-
+                $this->addFlash('successEdit','Zedytowano klienta!');
             } catch (\Exception $e) {
                 dump($e->getMessage());
             }

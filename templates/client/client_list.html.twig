@@ -61,6 +61,11 @@
 
 				<!-- Basic responsive configuration -->
 				<div class="card">
+					{% for message in app.flashes('successEdit')  %}
+						<div class="alert alert-success" role="alert">
+							{{message}}
+						</div>
+					{% endfor %}
 					<div class="card-header header-elements-inline">
 						<h5 class="card-title">Lista klientów</h5>
 
