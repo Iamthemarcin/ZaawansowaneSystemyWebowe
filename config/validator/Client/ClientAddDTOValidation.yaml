@@ -16,17 +16,11 @@ App\DTO\Form\ClientAddDTO:
 
       - Positive:
           message: Numer NIP musi być dodatni
-<<<<<<< HEAD
-      - Range:
-          min: 999999999
-          max: 9999999999
-          notInRangeMessage: Numer NIP musi być 10-cio cyfrowy
-=======
+
       - Length:
           min: 10
           max: 10
           exactMessage: Numer NIP musi być 10-cio cyfrowy
 
->>>>>>> dfaa26f6b28f2303105c83912fb62fd8911c7f2e
 
 
