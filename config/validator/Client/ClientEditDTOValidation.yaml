@@ -1,0 +1,19 @@
+App\DTO\Form\ClientEditDTO:
+  properties:
+    companyName:
+      - NotBlank:
+          message: Nazwa firmy nie moze byc pusta
+
+    companyNipNumber:
+      - NotBlank:
+          message: Numer NIP firmy nie może być pusty
+
+      - Positive:
+          message: Numer NIP musi być dodatni
+
+      - Length:
+          min: 10
+          max: 10
+          exactMessage: Numer NIP musi być 10-cio cyfrowy
+
+
