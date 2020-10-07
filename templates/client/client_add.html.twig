@@ -38,13 +38,13 @@
 {% block content %}
 
 
-{% for label, messages in app.flashes(['success', 'warning']) %}
-  {% for message in messages %}
-    <div class="flash-{{ label }}">
-      {{ message }}
-    </div>
+  {% for label, messages in app.flashes(['success', 'warning']) %}
+    {% for message in messages %}
+      <div class="flash-{{ label }}">
+        {{ message }}
+      </div>
+    {% endfor %}
   {% endfor %}
-{% endfor %}
   <!-- page header-->
   <div class="page-header page-header-light">
 
