@@ -7,5 +7,5 @@ client_add:
   controller: App\Controller\Client\ClientAddController::index
 
 client_edit:
-  path: /edit
+  path: /edit/{id}
   controller: App\Controller\Client\ClientEditController::index

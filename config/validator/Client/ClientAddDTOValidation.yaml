@@ -18,7 +18,7 @@ App\DTO\Form\ClientAddDTO:
           message: Numer NIP musi być dodatni
       - Range:
           min: 999999999
-          max: 9999999999  #DOBRA_WALIDACJAXD~
+          max: 9999999999
           notInRangeMessage: Numer NIP musi być 10-cio cyfrowy
 
 
