@@ -137,16 +137,19 @@
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
                         </div>
+
+                        {% for message in app.flashes('successAddProject')  %}
+                            <br>
+                            <div class="alert alert-success" role="alert">
+                                {{message}}
+                            </div>
+                        {% endfor %}
                     </div>
+
                 </div>
                 </form>
-                {% for message in app.flashes('successAddProject')  %}
-                    <br>
-                    <div class="alert alert-success" role="alert">
-                        {{message}}
-                    </div>
-                {% endfor %}
             </div>
+
         </div>
         <!-- /form inputs -->
 
