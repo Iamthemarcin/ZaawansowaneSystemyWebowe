@@ -21,6 +21,8 @@ App\DTO\Form\ClientAddDTO:
           min: 10
           max: 10
           exactMessage: Numer NIP musi być 10-cio cyfrowy
-
+      - Range:
+          min: 999999999
+          minMessage: Numer NIP nie może zaczyać się od zera
 
 
