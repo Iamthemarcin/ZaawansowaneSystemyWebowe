@@ -30,6 +30,9 @@ class NipValidator extends ConstraintValidator
     /** @inheritDoc */
     public function validate($value, Constraint $constraint)
     {
+        if($value== null){
+            return $this->message->addError('error.nip');
+        }
         if (!$constraint instanceof Nip) {
             throw new UnexpectedTypeException($constraint, Nip::class);
         }
