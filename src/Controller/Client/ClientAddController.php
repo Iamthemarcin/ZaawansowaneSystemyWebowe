@@ -35,6 +35,7 @@ class ClientAddController extends AbstractController
             $dto = $form->getData();
 
 
+
             if ($form->isSubmitted() && $form->isValid()) {
 
                 /** @var ClientAddDTO $dto */
@@ -49,7 +50,9 @@ class ClientAddController extends AbstractController
 
                     $this->em->flush();
 
+
                     $this->addFlash('successAddClient','Dodano klienta!');
+
 
                 } catch (\Exception $e) {
                     dump($e->getMessage());
@@ -63,7 +66,8 @@ class ClientAddController extends AbstractController
             return $this->render('@Client/client_add.html.twig', [
                 'form' => $form->createView(),
                 #WALIDACJA
-                'errors' => $errors
+                'errors' => $errors,
+
             ]);
 
     }

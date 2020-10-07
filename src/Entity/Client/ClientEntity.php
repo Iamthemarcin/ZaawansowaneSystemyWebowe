@@ -22,22 +22,22 @@ class ClientEntity
     private $id;
 
     /**
-     * @ORM\Column(type="text", nullable=true, options={"default":null})
+     * @ORM\Column(type="text", nullable=false, options={"default":null})
      */
     private $companyName;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=false)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      */
     private $companyNipNumber;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=false)
      */
     private $clientStatus;
 

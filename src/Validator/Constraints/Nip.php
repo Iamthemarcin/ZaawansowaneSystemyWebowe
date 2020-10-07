@@ -9,4 +9,5 @@ class Nip extends Constraint
 {
 
     public $message = 'Wprowadź poprawny numer NIP';
+
 }

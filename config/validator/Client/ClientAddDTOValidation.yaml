@@ -11,4 +11,5 @@ App\DTO\Form\ClientAddDTO:
     companyNipNumber:
       - NotBlank:
           message: Numer NIP firmy nie może być pusty
-      - App\Validator\Constraints\Nip: ~
+      - App\Validator\Constraints\Nip:
+          message: Numer NIP jest niepoprawny

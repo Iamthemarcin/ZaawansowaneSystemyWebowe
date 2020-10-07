@@ -36,6 +36,15 @@
 
 
 {% block content %}
+
+
+{% for label, messages in app.flashes(['success', 'warning']) %}
+  {% for message in messages %}
+    <div class="flash-{{ label }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endfor %}
   <!-- page header-->
   <div class="page-header page-header-light">
 
@@ -125,6 +134,15 @@
             </div>
           {% endfor %}
         </div>
+
+        {% if errors == null %}
+          <div class = "col-md-6">
+            <div class="alert alert-danger" role="alert">
+              Pomyślnie dodano klienta
+            </div>
+          </div>
+        {% endif %}
+
       </div>
     </div>
   </div>
