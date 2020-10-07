@@ -117,7 +117,7 @@
             <div class="form-group row">
               <label class="col-form-label col-lg-2">NIP</label>
               <div class="col-lg-10">
-                <input name = {{form.companyNipNumber.vars.full_name }} type='number' class="form-control">
+                <input name = {{form.companyNipNumber.vars.full_name }} type='number' class="form-control" >
 
               </div>
             </div>
@@ -127,6 +127,12 @@
               <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
             </div>
           </form>
+          {% for message in app.flashes('success')  %}
+            <br>
+            <div class="alert alert-success" role="alert">
+              {{message}}
+            </div>
+          {% endfor %}
         </div>
 
         {% if errors == null %}

@@ -7,5 +7,7 @@ use Symfony\Component\Validator\Constraint;
 
 class Nip extends Constraint
 {
-    public $message = 'Wrong nip number';
+
+    public $message = 'Wprowadź poprawny numer NIP';
+
 }
