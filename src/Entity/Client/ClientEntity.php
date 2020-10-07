@@ -32,7 +32,7 @@ class ClientEntity
     private $email;
 
     /**
-     * @ORM\Column(type="bigint", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $companyNipNumber;
 
