@@ -49,7 +49,7 @@ class ClientAddController extends AbstractController
 
                     $this->em->flush();
 
-                    $this->addFlash('success','Dodano klienta!');
+                    $this->addFlash('successAddClient','Dodano klienta!');
 
                 } catch (\Exception $e) {
                     dump($e->getMessage());

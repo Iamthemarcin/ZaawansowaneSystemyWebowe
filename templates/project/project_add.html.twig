@@ -140,6 +140,12 @@
                     </div>
                 </div>
                 </form>
+                {% for message in app.flashes('successAddProject')  %}
+                    <br>
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <!-- /form inputs -->

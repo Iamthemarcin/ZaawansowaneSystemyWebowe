@@ -118,7 +118,7 @@
               <button type="submit" class="btn btn-primary">Zatwierdź <i class="icon-paperplane ml-2"></i></button>
             </div>
           </form>
-          {% for message in app.flashes('success')  %}
+          {% for message in app.flashes('successAddClient')  %}
             <br>
             <div class="alert alert-success" role="alert">
               {{message}}

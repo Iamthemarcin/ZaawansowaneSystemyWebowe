@@ -39,7 +39,7 @@ class ProjectAddController extends AbstractController {
 
                 $this->em->persist($newProject);
                 $this->em->flush();
-
+                $this->addFlash('successAddProject','Dodano klienta!');
             } catch (\Exception $e) {
                 dump($e->getMessage());
             }

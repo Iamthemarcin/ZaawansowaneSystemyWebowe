@@ -46,7 +46,7 @@ class ProjectEditController extends AbstractController{
 
                 $this->em->persist($project);
                 $this->em->flush();
-
+                $this->addFlash('successEditProject','Zedytowano projekt!');
             } catch (\Exception $e) {
                 dump($e->getMessage());
             }
