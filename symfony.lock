@@ -5,6 +5,9 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
+    "ddeboer/vatin": {
+        "version": "2.2.1"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
