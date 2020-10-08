@@ -8,7 +8,7 @@ class ProjectViewController extends AbstractController{
 
     function index(ProjectEntity $projects){
 
-        dd($projects);
+
         return $this->render('project/project_view.html.twig',['project'=>$projects]);
     }
 }
