@@ -12,7 +12,7 @@ class ProjectEditDTO
     private string $type;
     private bool $status;
     private bool $minuteTest;
-    private bool $speedTest;
+    private bool $dayTest;
     private bool $updateTest;
 
     /**
@@ -108,18 +108,18 @@ class ProjectEditDTO
     /**
      * @return bool
      */
-    public function isSpeedTest(): bool
+    public function isDayTest(): bool
     {
-        return $this->speedTest;
+        return $this->dayTest;
     }
 
     /**
-     * @param bool $speedTest
+     * @param bool $dayTest
      * @return ProjectEditDTO
      */
-    public function setSpeedTest(bool $speedTest): ProjectEditDTO
+    public function setDayTest(bool $dayTest): ProjectEditDTO
     {
-        $this->speedTest = $speedTest;
+        $this->dayTest = $dayTest;
         return $this;
     }
 

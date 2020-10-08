@@ -13,7 +13,7 @@ class ProjectFactory
     {
         $project = new ProjectEditDTO();
         $project->setMinuteTest($entity->getMinuteTest());
-        $project->setSpeedTest($entity->getSpeedTest());
+        $project->setDayTest($entity->getDayTest());
         $project->setUpdateTest($entity->getUpdateTest());
 
         return $project;

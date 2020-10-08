@@ -25,7 +25,7 @@ class ProjectBuilder
     {
         $currentProject->setDomain($dto->getDomain());
         $currentProject->setMinuteTest($dto->isMinuteTest());
-        $currentProject->setSpeedTest($dto->isSpeedTest());
+        $currentProject->setDayTest($dto->isDayTest());
         $currentProject->setUpdateTest($dto->isUpdateTest());
 
         return $currentProject;
