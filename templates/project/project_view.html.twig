@@ -76,9 +76,9 @@
                     <div class="card-body">
                         <ul class="nav nav-tabs">
                             <li class="nav-item"><a href="#basic-rounded-tab1" class="nav-link rounded-top active" data-toggle="tab">Informacje o projekcie</a></li>
-                            <li class="nav-item"><a href="#basic-rounded-tab2" class="nav-link rounded-top " data-toggle="tab">Test minutowy</a></li>
-                            <li class="nav-item"><a href="#basic-rounded-tab3" class="nav-link rounded-top" data-toggle="tab">Test badania szybkości</a></li>
-                            <li class="nav-item"><a href="#basic-rounded-tab4" class="nav-link rounded-top" data-toggle="tab">Test aktualizacji</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab2" class="nav-link rounded-top " data-toggle="tab" {% if project.minuteTest== 0 %}style="display: none" {% endif %}>Test minutowy</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab3" class="nav-link rounded-top" data-toggle="tab"  {% if project.dayTest== 0 %}style="display: none" {% endif %}>Test badania szybkości</a></li>
+                            <li class="nav-item"><a href="#basic-rounded-tab4" class="nav-link rounded-top" data-toggle="tab"  {% if project.updateTest== 0 %}style="display: none" {% endif %}>Test aktualizacji</a></li>
                         </ul>
 
                         <div class="tab-content">
@@ -93,29 +93,33 @@
                                     <tbody>
                                     <tr>
                                         <td><i class="icon-archive mr-2"></i> ID:</td>
-                                        <td class="text-left">1</td>
+                                        <td class="text-left">{{ project.id }}</td>
                                     </tr>
                                     <tr>
                                         <td><i class="icon-home mr-2"></i> Domena:</td>
-                                        <td class="text-left">Enright</td>
+                                        <td class="text-left">{{ project.domain }}</td>
                                     </tr>
 
                                     <tr>
                                         <td><i class="icon-briefcase mr-2"></i> Klient:</td>
-                                        <td class="text-left"><a href="#">enright@gmail.com</a></td>
+                                        <td class="text-left"><a href="#">{{ project.client }}</a></td>
                                     </tr>
                                     <tr>
                                         <td><i class="icon-file-check mr-2"></i> Typ projektu:</td>
-                                        <td class="text-left">Typ1</td>
+                                        <td class="text-left">{{ project.type }}</td>
                                     </tr>
                                     <tr>
                                         <td><i class="icon-file-plus mr-2"></i> Status:</td>
-                                        <td class="text-left ">Aktywny</td>
+                                        <td class="text-left ">{% if project.status == 1  %}
+                                                Aktywny
+                                            {% else %}
+                                                Niekatywny
+                                            {% endif %}</td>
                                     </tr>
 
                                     <tr>
                                         <td><i class="icon-alarm-check mr-2"></i> Utworzenie:</td>
-                                        <td class="text-left text-muted">25 Feb, 2015</td>
+                                        <td class="text-left text-muted">{{ project.createdAt|date('Y-m-d') }}</td>
                                     </tr>
                                     </tbody>
                                 </table>

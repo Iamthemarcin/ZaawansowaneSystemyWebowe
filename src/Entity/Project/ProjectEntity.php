@@ -47,7 +47,7 @@ class ProjectEntity extends Base
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
      */
-    private $speedTest=0;
+    private $dayTest=0;
 
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
@@ -120,14 +120,14 @@ class ProjectEntity extends Base
         return $this;
     }
 
-    public function getSpeedTest(): ?bool
+    public function getDayTest(): ?bool
     {
-        return $this->speedTest;
+        return $this->dayTest;
     }
 
-    public function setSpeedTest(?bool $speedTest): self
+    public function setDayTest(?bool $dayTest): self
     {
-        $this->speedTest = $speedTest;
+        $this->dayTest = $dayTest;
 
         return $this;
     }

@@ -14,6 +14,7 @@ class ProjectViewController extends AbstractController{
     function __construct(EntityManagerInterface $em){
         $this->em = $em;
 
+
     }
 
     function index(ProjectEntity $projects, EntityManagerInterface $em){
@@ -22,6 +23,8 @@ class ProjectViewController extends AbstractController{
         dd($test_count);
 
         return $this->render('project/project_view.html.twig',['project'=>$projects,'test_count'=>$test_count]);
+
+
 
     }
 }

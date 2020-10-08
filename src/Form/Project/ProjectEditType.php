@@ -24,7 +24,7 @@ class ProjectEditType extends  AbstractType
             ->add('type', TextType::class)
             ->add('status', CheckboxType::class)
             ->add('minuteTest', CheckboxType::class)
-            ->add('speedTest', CheckboxType::class)
+            ->add('dayTest', CheckboxType::class)
             ->add('updateTest', CheckboxType::class)
         ;
     }
