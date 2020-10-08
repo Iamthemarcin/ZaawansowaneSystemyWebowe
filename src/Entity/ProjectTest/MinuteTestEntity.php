@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\ProjectTest;
 
 use App\Repository\MinuteTestEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
