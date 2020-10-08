@@ -7,7 +7,9 @@ project_add:
   controller: App\Controller\Project\ProjectAddController::index
 
 project_view:
-  path: /view
+  path: /view/{id}
+  requirements:
+    id: '\d+'
   controller: App\Controller\Project\ProjectViewController::index
 
 project_edit:
