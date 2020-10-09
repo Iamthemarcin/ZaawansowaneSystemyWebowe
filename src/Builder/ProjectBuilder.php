@@ -28,9 +28,14 @@ class ProjectBuilder
         $currentProject->setMinuteTest($dto->isMinuteTest());
         $currentProject->setDayTest($dto->isDayTest());
         $currentProject->setUpdateTest($dto->isUpdateTest());
+
         $link = new Links();
+        if($dto->getLinks()==null){}
+        else{
         $link->setLink($dto->getLinks());
         $currentProject->addLink($link);
+        }
+
         return $currentProject;
     }
 }
