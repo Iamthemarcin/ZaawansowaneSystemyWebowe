@@ -6,6 +6,7 @@ namespace App\Builder;
 
 use App\DTO\Form\ProjectAddDTO;
 use App\DTO\Form\ProjectEditDTO;
+use App\Entity\Links;
 use App\Entity\Project\ProjectEntity;
 
 class ProjectBuilder
@@ -27,7 +28,9 @@ class ProjectBuilder
         $currentProject->setMinuteTest($dto->isMinuteTest());
         $currentProject->setDayTest($dto->isDayTest());
         $currentProject->setUpdateTest($dto->isUpdateTest());
-
+        $link = new Links();
+        $link->setLink($dto->getLinks());
+        $currentProject->addLink($link);
         return $currentProject;
     }
 }

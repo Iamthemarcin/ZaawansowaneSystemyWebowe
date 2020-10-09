@@ -3,7 +3,10 @@
 namespace App\Entity\Project;
 
 use App\Entity\Base\Base;
+use App\Entity\Links;
 use App\Repository\ProjectRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -53,6 +56,16 @@ class ProjectEntity extends Base
      * @ORM\Column(type="boolean", nullable=false, options={"default" : "0"})
      */
     private $updateTest=0;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Links::class, mappedBy="Project", cascade={"persist"})
+     */
+    private $links;
+
+    public function __construct()
+    {
+        $this->links = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -140,6 +153,37 @@ class ProjectEntity extends Base
     public function setUpdateTest(?bool $updateTest): self
     {
         $this->updateTest = $updateTest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Links[]
+     */
+    public function getLinks(): Collection
+    {
+        return $this->links;
+    }
+
+    public function addLink(Links $link): self
+    {
+        if (!$this->links->contains($link)) {
+            $this->links[] = $link;
+            $link->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLink(Links $link): self
+    {
+        if ($this->links->contains($link)) {
+            $this->links->removeElement($link);
+            // set the owning side to null (unless already changed)
+            if ($link->getProject() === $this) {
+                $link->setProject(null);
+            }
+        }
 
         return $this;
     }

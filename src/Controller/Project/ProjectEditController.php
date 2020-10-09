@@ -4,9 +4,11 @@ namespace App\Controller\Project;
 use App\Builder\ProjectBuilder;
 use App\DTO\Form\ProjectEditDTO;
 use App\Entity\Client\ClientEntity;
+use App\Entity\Links;
 use App\Entity\Project\ProjectEntity;
 use App\Factory\ProjectFactory;
 use App\Form\Project\ProjectEditType;
+use App\Repository\LinksRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +19,7 @@ class ProjectEditController extends AbstractController{
     private EntityManagerInterface $em;
     private ProjectBuilder $projectBuilder;
     private ProjectFactory $projectFactory;
+
 
     public function __construct(
         EntityManagerInterface $em,
@@ -34,6 +37,8 @@ class ProjectEditController extends AbstractController{
             ProjectEditType::class,
             $this->projectFactory->createFromEditProject($project)
         );
+
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,8 +47,8 @@ class ProjectEditController extends AbstractController{
             $dto = $form->getData();
 
             try {
-               $project = $this->projectBuilder->createFromEditDTO($project, $dto);
 
+               $project = $this->projectBuilder->createFromEditDTO($project, $dto);
                 $this->em->persist($project);
                 $this->em->flush();
                 $this->addFlash('successEditProject','Zedytowano projekt!');

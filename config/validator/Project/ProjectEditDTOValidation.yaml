@@ -11,6 +11,9 @@ App\DTO\Form\ProjectEditDTO:
     type:
       - NotBlank:
           message: Typ projektu nie może być pusty
+    links:
+      - Url:
+          message: Wprowadź poprawny adres URL
 
 
 
