@@ -257,31 +257,19 @@
                                                 <th>Status strony</th>
                                             </thead>
                                             <tbody>
+                                            {% for result in minute_test_logs %}
                                             <tr>
-                                                <td>Data</td>
-                                                <td>Godzina i minuta</td>
-                                                <td><span class="badge badge-success">Aktywna</span></td>
+                                                <td>{{ result.DateTime|date('Y-m-d')}}</td>
+                                                <td>{{ result.DateTime|date('H:i') }}</td>
+
+                                                {% if result.status == 1 %}
+                                                    <td><span class="badge badge-success">Aktywna</span></td>
+                                                {% else %}
+                                                    <td><span class="badge badge-danger">Nieaktywna</span></td>
+                                                {% endif %}
+
                                             </tr>
-                                            <tr>
-                                                <td>Data</td>
-                                                <td>Godzina i minuta</td>
-                                                <td><span class="badge badge-danger">Nieaktywna</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Data</td>
-                                                <td>Godzina i minuta</td>
-                                                <td><span class="badge badge-success">Aktywna</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Data</td>
-                                                <td>Godzina i minuta</td>
-                                                <td><span class="badge badge-danger">Nieaktywna</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Data</td>
-                                                <td>Godzina i minuta</td>
-                                                <td><span class="badge badge-success">Aktywna</span></td>
-                                            </tr>
+                                            {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>
@@ -360,7 +348,7 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
-                                                        <span class="text-muted center" style = justify-content:center >5</span>
+                                                        <span class="text-muted center" style = justify-content:center >{{ speed_test_arr.test_count }}</span>
                                                     </div>
                                                 </div>
 
@@ -374,7 +362,7 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Najmniejsza prędkość</div>
-                                                        <span class="text-muted">Mała</span>
+                                                        <span class="text-muted">{{speed_test_arr.min_avg}}</span>
                                                     </div>
                                                 </div>
 
@@ -386,7 +374,7 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Średnia prędkość</div>
-                                                        <span class="text-muted"><span class=" mr-2"></span> Średnia</span>
+                                                        <span class="text-muted"><span class=" mr-2"></span> {{speed_test_arr.avg_avg}}</span>
                                                     </div>
                                                 </div>
 
@@ -399,7 +387,7 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Najwyższa prędkość</div>
-                                                        <span class="text-muted"><span class=" mr-2"></span> Średnia</span>
+                                                        <span class="text-muted"><span class=" mr-2"></span> {{ speed_test_arr.max_avg }}</span>
                                                     </div>
                                                 </div>
 
@@ -423,34 +411,21 @@
                                                 <tr>
                                                     <th>Data</th>
                                                     <th>Godzina i minuta</th>
-                                                    <th>Wynik Testu</th>
+                                                    <th>Wynik Testu Desktop</th>
+                                                    <th>Wynik Testu Mobile</th>
                                                 </thead>
                                                 <tbody>
+
+                                                {% for result in speed_test_logs %}
                                                 <tr>
-                                                    <td>Data</td>
-                                                    <td>Godzina i minuta</td>
-                                                    <td>Wynik Testu</td>
+                                                    <td>{{ result.DateTime|date('Y-m-d')}}</td>
+                                                    <td>{{ result.DateTime|date('H:i') }}</td>
+                                                    <td>{{ result.desktopAvg }}</td>
+                                                    <td>{{ result.mobileAvg }}</td>
+
                                                 </tr>
-                                                <tr>
-                                                    <td>Data</td>
-                                                    <td>Godzina i minuta</td>
-                                                    <td>Wynik Testu</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Data</td>
-                                                    <td>Godzina i minuta</td>
-                                                    <td>Wynik Testu</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Data</td>
-                                                    <td>Godzina i minuta</td>
-                                                    <td>Wynik Testu</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Data</td>
-                                                    <td>Godzina i minuta</td>
-                                                    <td>Wynik Testu</td>
-                                                </tr>
+                                                {% endfor %}
+
                                                 </tbody>
                                             </table>
                                         </div>
