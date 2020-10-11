@@ -79,6 +79,7 @@ class ProjectViewController extends AbstractController{
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
 
         $id = $projects->getId();
+        $links =$projects->getLinks()->toArray();
 
 
 
@@ -155,9 +156,10 @@ class ProjectViewController extends AbstractController{
             $prev_date = $curr_row_date;
             $prev_row = $row;
         }
-        dump($time_diff,$compare_to);
-        dump(date_diff($compare_to,$time_diff));
-        die();
+//        dump($time_diff,$compare_to);
+//        dump(date_diff($compare_to,$time_diff));
+//        die();
+//            dd($links[0]);
 
 
 
@@ -169,7 +171,8 @@ class ProjectViewController extends AbstractController{
             ['project'=>$projects,
             'speed_test_logs' => $speed_test_logs,
             'speed_test_arr' =>  $speed_test_arr,
-            'minute_test_logs' => $minute_test_logs]);
+            'minute_test_logs' => $minute_test_logs,
+            'links'=>$links]);
     }
 }
 

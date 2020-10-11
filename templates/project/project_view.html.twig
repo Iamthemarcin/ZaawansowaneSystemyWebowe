@@ -121,6 +121,13 @@
                                         <td><i class="icon-alarm-check mr-2"></i> Utworzenie:</td>
                                         <td class="text-left text-muted">{{ project.createdAt|date('Y-m-d') }}</td>
                                     </tr>
+                                    <tr>
+                                        <td> <i class="icon-link mr-2"></i> Linki do projektu:</td>
+                                        {% for testLink in links %}
+                                            <td style="display:block">{{ testLink.link}}</td>
+
+                                        {% endfor %}
+                                    </tr>
                                     </tbody>
                                 </table>
 
