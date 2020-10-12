@@ -114,20 +114,23 @@ class ProjectViewController extends AbstractController{
         $minute_test_count = count($query->getResult());
 
         $ActiveTime = $this->calculating_time(1);
-        $ActiveTime2 = $ActiveTime-> format('%d dni %h godzin %i minut %s sekund');
+        $ActiveTime = $ActiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
 
 
 
         $InactiveTime = $this->calculating_time(0);
+        $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
-        dd($ActiveTime2);
 
-        dump($InactiveTime);
+        //$Percent_active_time = $ActiveTime/($ActiveTime +$InactiveTime) * 100;
+
 
         $minute_test_arr = ["minute_test_count" => $minute_test_count,
             'ActiveTime' => $ActiveTime,
-            'InactiveTime' => $InactiveTime];
+            'InactiveTime' => $InactiveTime,
+            //'Percent_active_time' => $Percent_active_time
+        ];
 
 
 
