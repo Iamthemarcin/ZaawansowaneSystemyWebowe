@@ -23,9 +23,9 @@ class ProjectViewController extends AbstractController{
 
     }
 
-    public function calculating_time(EntityManagerInterface $em, $status){
+    public function calculating_time($status):DateInterval{
 
-
+        $em = $this->em;
         $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u');
         $iterableResult = $q->iterate();
 
@@ -49,14 +49,14 @@ class ProjectViewController extends AbstractController{
                 $diff = date_diff($prev_date, $curr_row_date);}
 
             if ($prev_row !== null) {
-                if ($prev_row[0]->getStatus() == 1) {
+                if ($prev_row[0]->getStatus() == $status) {
                     $time_diff->add($diff);
                 }
             };
 
             if ($row[0]->getId() == $numItems){
 
-                if($row[0]->getStatus() == 1){
+                if($row[0]->getStatus() == $status){
                     $diff = date_diff($curr_row_date, $now);
                     $time_diff->add($diff);
                 }
@@ -110,54 +110,23 @@ class ProjectViewController extends AbstractController{
         $minute_test_logs = ($query->getResult());
 
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);
-        $test_count = count($query->getResult());
+        $minute_test_count = count($query->getResult());
+
+        $ActiveTime = $this->calculating_time(1);
+        $ActiveTime2 = $ActiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
 
 
-        $prev_row = null;
-        $prev_date = null;
-        $diff = null;
-        $numItems = count($query->getScalarResult());
 
-        $now = new DateTime();
-        $time_diff = new DateTime('2010-01-01 T00:00:00');
-        $compare_to = new DateTime('2010-01-01 T00:00:00');
+        $InactiveTime = $this->calculating_time(0);
 
-        $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u');
-        $iterableResult = $q->iterate();
+        dd($ActiveTime2);
 
-        foreach ($iterableResult as $row) {
+        dump($InactiveTime);
 
-            $curr_row_date = ($row[0]->getDateTime());
-
-            if ($prev_date !== null) {
-                $diff = date_diff($prev_date, $curr_row_date);}
-
-            if ($prev_row !== null) {
-                if ($prev_row[0]->getStatus() == 1) {
-                    $time_diff->add($diff);
-                    dump($time_diff,$compare_to);
-                    dump($diff);
-                }
-            };
-
-            if ($row[0]->getId() == $numItems){
-
-                if($row[0]->getStatus() == 1){
-                    $diff = date_diff($curr_row_date, $now);
-                    $time_diff->add($diff);
-                    dump($time_diff,$compare_to);
-                    dump($diff);
-                }
-            }
-
-
-            $prev_date = $curr_row_date;
-            $prev_row = $row;
-        }
-        dump($time_diff,$compare_to);
-        dump(date_diff($compare_to,$time_diff));
-        die();
+        $minute_test_arr = ["minute_test_count" => $minute_test_count,
+            'ActiveTime' => $ActiveTime,
+            'InactiveTime' => $InactiveTime];
 
 
 
@@ -169,7 +138,8 @@ class ProjectViewController extends AbstractController{
             ['project'=>$projects,
             'speed_test_logs' => $speed_test_logs,
             'speed_test_arr' =>  $speed_test_arr,
-            'minute_test_logs' => $minute_test_logs]);
+            'minute_test_logs' => $minute_test_logs,
+            'minute_test_arr' => $minute_test_arr]);
     }
 }
 
