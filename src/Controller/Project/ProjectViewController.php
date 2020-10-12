@@ -52,7 +52,7 @@ class ProjectViewController extends AbstractController{
                 if ($prev_row[0]->getStatus() == $status) {
                     $time_diff->add($diff);
                 }
-            };
+            }
 
             if ($row[0]->getId() == $numItems){
 
