@@ -123,6 +123,12 @@
                                     </tr>
                                     <tr>
                                         <td> <i class="icon-link mr-2"></i> Linki do projektu:</td>
+                                        {% if links == null %}
+
+
+                                            <td class="text-muted">Dodaj link do testu</td>
+
+                                        {% endif %}
                                         {% for testLink in links %}
                                             <td style="display:block">{{ testLink.link}}</td>
 
@@ -146,6 +152,12 @@
                                 </div>
                                 <form>
                                     <select class="form-control form-control-uniform">
+                                        {% if links == null %}
+
+                                            <option  style="display: none"></option>
+                                            <option class="text-muted">Dodaj link do testu</option>
+
+                                        {% endif %}
                                         {% for testLink in links %}
                                             <option>{{ testLink.link }}</option>
 
@@ -312,6 +324,12 @@
                                 </div>
                                 <form>
                                     <select class="form-control form-control-uniform">
+                                        {% if links == null %}
+
+                                            <option  style="display: none"></option>
+                                            <option class="text-muted">Dodaj link do testu</option>
+
+                                        {% endif %}
                                         {% for testLink in links %}
                                             <option>{{ testLink.link }}</option>
 
