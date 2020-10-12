@@ -35,6 +35,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="../../global_assets/js/tableSearch.js"></script>
 
     <!-- /theme JS files -->
 {% endblock %}
@@ -271,15 +272,15 @@
 
                                     <div class=" header-elements-inline">
                                         <h5 > Logi testów</h5>
-
-                                        <button type="button" class="btn btn-light rounded-round">Filtruj po statusie</button>
+                                        <script> var undo = false;</script>
+                                        <button type="button" class="btn btn-light rounded-round" onclick="statusSearch()">Filtruj po statusie</button>
 
                                     </div>
 
 
 
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table" id = "myStatusTable">
                                             <thead>
                                             <tr>
                                                 <th>Data</th>
