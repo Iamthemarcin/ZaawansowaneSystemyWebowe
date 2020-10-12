@@ -129,15 +129,23 @@ class ProjectViewController extends AbstractController{
 
         $ActiveTime = $this->calculating_time(1);
         $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
-        $ActiveTime = $ActiveTime-> format('%d dni %h godzin %i minut %s sekund');
+        $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
 
 
         $InactiveTime = $this->calculating_time(0);
         $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
         $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
-        $Percent_active_time = round($ActiveTimeSeconds/($ActiveTimeSeconds +$InactiveTimeSeconds) * 100,2);
-        $Percent_inactive_time = round($InactiveTimeSeconds/($InactiveTimeSeconds +$ActiveTimeSeconds) * 100,2);
+        if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0){
+            $Percent_active_time = round($ActiveTimeSeconds / ($ActiveTimeSeconds + $InactiveTimeSeconds) * 100, 2);
+            $Percent_inactive_time = round($InactiveTimeSeconds / ($InactiveTimeSeconds + $ActiveTimeSeconds) * 100, 2);}
+
+
+            else{
+                $Percent_active_time = 'we cos wrzuc mordo';
+                $Percent_inactive_time = 'we cos wrzuc mordo';
+            }
+
 
 
 
