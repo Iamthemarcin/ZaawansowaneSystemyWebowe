@@ -72,6 +72,19 @@ class ProjectViewController extends AbstractController{
         return date_diff($compare_to,$time_diff);
     }
 
+    public function interval_to_seconds(DateInterval $d){
+
+        $months = $d->y * 12;
+        $days = $d->m+$months*30;
+        $hours = $d->h + $days* 24;
+        $minutes = $d->i + $hours * 60;
+        $seconds = $d->s + $minutes * 60;
+
+        return $seconds;
+
+
+    }
+
 
 
 
@@ -113,23 +126,26 @@ class ProjectViewController extends AbstractController{
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);
         $minute_test_count = count($query->getResult());
 
+
         $ActiveTime = $this->calculating_time(1);
+        $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
         $ActiveTime = $ActiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
 
-
-
         $InactiveTime = $this->calculating_time(0);
+        $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
         $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
+        $Percent_active_time = round($ActiveTimeSeconds/($ActiveTimeSeconds +$InactiveTimeSeconds) * 100,2);
+        $Percent_inactive_time = round($InactiveTimeSeconds/($InactiveTimeSeconds +$ActiveTimeSeconds) * 100,2);
 
-        //$Percent_active_time = $ActiveTime/($ActiveTime +$InactiveTime) * 100;
 
 
         $minute_test_arr = ["minute_test_count" => $minute_test_count,
             'ActiveTime' => $ActiveTime,
             'InactiveTime' => $InactiveTime,
-            //'Percent_active_time' => $Percent_active_time
+            'Percent_active_time' => $Percent_active_time,
+            'Percent_inactive_time' =>$Percent_inactive_time
         ];
 
 
