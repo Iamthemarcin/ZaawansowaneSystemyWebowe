@@ -79,6 +79,7 @@ class ProjectViewController extends AbstractController{
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
 
         $id = $projects->getId();
+        $links =$projects->getLinks()->toArray();
 
 
 
@@ -133,13 +134,13 @@ class ProjectViewController extends AbstractController{
 
 
 
-
         return $this->render('project/project_view.html.twig',
             ['project'=>$projects,
             'speed_test_logs' => $speed_test_logs,
             'speed_test_arr' =>  $speed_test_arr,
             'minute_test_logs' => $minute_test_logs,
-            'minute_test_arr' => $minute_test_arr]);
+            'minute_test_arr' => $minute_test_arr,
+            'links'=>$links]);
     }
 }
 

@@ -14,20 +14,20 @@ class ProjectEditDTO
     private bool $minuteTest;
     private bool $dayTest;
     private bool $updateTest;
-    private string $links;
+    private ?string $links = null;
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getLinks(): string
+    public function getLinks(): ?string
     {
         return $this->links;
     }
 
     /**
-     * @param string $links
+     * @param ?string $links
      */
-    public function setLinks(string $links): void
+    public function setLinks(?string $links): void
     {
         $this->links = $links;
     }
