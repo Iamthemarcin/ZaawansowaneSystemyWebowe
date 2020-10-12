@@ -81,20 +81,13 @@ class ProjectViewController extends AbstractController{
         $seconds = $d->s + $minutes * 60;
 
         return $seconds;
-
-
     }
-
-
-
 
 
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
 
         $id = $projects->getId();
         $links =$projects->getLinks()->toArray();
-
-
 
 ##RZECZY DO TESTU BADANIA SZYBKOSCI
 
@@ -148,16 +141,12 @@ class ProjectViewController extends AbstractController{
 
 
 
-
         $minute_test_arr = ["minute_test_count" => $minute_test_count,
             'ActiveTime' => $ActiveTime,
             'InactiveTime' => $InactiveTime,
             'Percent_active_time' => $Percent_active_time,
             'Percent_inactive_time' =>$Percent_inactive_time
         ];
-
-
-
 
 
 
