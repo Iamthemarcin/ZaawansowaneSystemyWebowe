@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User extends Base implements UserInterface
+class User extends Base implements UserInterface, \Serializable
 {
   /**
    * @ORM\Id()
@@ -177,5 +177,23 @@ class User extends Base implements UserInterface
     $this->lastName = $lastName;
     
     return $this;
+  }
+  public function serialize()
+  {
+      return serialize([
+          $this->id,
+            $this->firstName,
+            $this->email,
+            $this->password
+      ]);
+  }
+  public function unserialize($string)
+  {
+        list(
+            $this->id,
+            $this->firstName,
+            $this->email,
+            $this->password
+            ) =$this->unserialize($string, ['allowed_classes'=> false]);
   }
 }
