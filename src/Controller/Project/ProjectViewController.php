@@ -135,8 +135,8 @@ class ProjectViewController extends AbstractController{
 
 
             else{
-                $Percent_active_time = 'we cos wrzuc mordo';
-                $Percent_inactive_time = 'we cos wrzuc mordo';
+                $Percent_active_time = 'brak danych';
+                $Percent_inactive_time = 'brak danych';
             }
 
 

@@ -271,14 +271,16 @@
                                     <br><br>
 
                                     <div class=" header-elements-inline">
+
                                         <h5 > Logi testów</h5>
-                                        <script> var undo = false;</script>
-                                        <button type="button" class="btn btn-light rounded-round" onclick="statusSearch()">Filtruj po statusie</button>
-
+                                        <div class='btn-toolbar  pull-right'>
+                                            <div class='btn-group '>
+                                                <button  type="button" class="btn btn-info rounded-round mr-5 ml-5 " onclick="FilterStatus('')">Pokaż wszystko</button>
+                                                <button type="button" class="btn btn-success rounded-round mr-5 ml-5 " onclick="FilterStatus('Nieaktywna')">Tylko aktywne</button>
+                                                <button type="button" class="btn btn-danger rounded-round mr-5 ml-5" onclick="FilterStatus('Aktywna')">Tylko nieaktywne</button>
+                                            </div>
+                                        </div>
                                     </div>
-
-
-
                                     <div class="table-responsive">
                                         <table class="table" id = "myStatusTable">
                                             <thead>
@@ -286,8 +288,10 @@
                                                 <th>Data</th>
                                                 <th>Godzina i minuta</th>
                                                 <th>Status strony</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
+
                                             {% for result in minute_test_logs %}
                                             <tr>
                                                 <td>{{ result.DateTime|date('Y-m-d')}}</td>

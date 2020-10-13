@@ -23,15 +23,13 @@ function tableSearch() {
 }
 
 
-function statusSearch() {
+function ActiveStatusSearch() {
     var filter, table, tr, td, i, cell, j;
 
     filter = 'NIEAKTYWNA'
     table = document.getElementById("myStatusTable");
     tr = table.getElementsByTagName("tr");
 
-    if (undo == true){
-        undo = false;
         for (i = 1; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td");
             for (j = 0; j < td.length; j++) {
@@ -39,18 +37,53 @@ function statusSearch() {
             }
         }
     }
+function FilterStatus(filter) {
+    // Declare variables
+    var Status_column, filter, table, tr, td, i, txtValue, ths, th;
+
+    filter = filter.toUpperCase();
+    table = document.getElementById("myStatusTable");
+    ths = table.getElementsByTagName("th");
+    for (i = 0; i <ths.length; i++){
+        th = ths[i]
+        txtValue = th.textContent || th.innerText;
+        if(txtValue == 'Status strony'){
+            Status_column = i;
+
+        };
+    }
+
+    tr = table.getElementsByTagName("tr");
 
 
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            console.log(txtValue);
+            if (txtValue.toUpperCase() == filter) {
+                tr[i].style.display = "none";
+
+            } else {
+                tr[i].style.display = "";
+            }
+        }
+    }
+}
 
 
-else{
+function InactiveStatusSearch() {
+    var filter, table, tr, td, i, cell, j;
+
+    filter = 'NIEAKTYWNA'
+    table = document.getElementById("myStatusTable");
+    tr = table.getElementsByTagName("tr");
 
         console.log(undo)
         undo = true;
         for (i = 1; i < tr.length; i++) {
-
-
-
 
 
             td = tr[i].getElementsByTagName("td");
@@ -68,8 +101,4 @@ else{
                 }
             }
         }
-
-    }
-
-
 }
