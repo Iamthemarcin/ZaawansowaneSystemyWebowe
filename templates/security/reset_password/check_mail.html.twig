@@ -1,0 +1,32 @@
+{% extends 'securityBase.html.twig' %}
+{% block title %}Zmiana hasła{% endblock %}
+{% block content %}
+
+    <!-- Password recovery form -->
+    <form class="login-form" action="index.html">
+        <div class="card mb-0">
+            <div class="card-body">
+                <div class="text-center mb-3">
+                    <img  src = global_assets/images/logo.png>
+                    <h5 class="mb-0">Zmiana hasła</h5>
+                    <span class="d-block text-muted">Otrzymasz wiadomość z instrukcjami</span>
+                </div>
+
+                <div class="form-group form-group-feedback form-group-feedback-right">
+                    <input type="email" class="form-control" placeholder="Twój email">
+                    <div class="form-control-feedback">
+                        <i class="icon-mail5 text-muted"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn bg-blue btn-block"><i class="icon-lock2"></i> Zmień hasło</button>
+            </div>
+        </div>
+    </form>
+    <!-- /password recovery form -->
+
+
+{% endblock content %}
+
+
+

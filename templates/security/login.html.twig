@@ -1,0 +1,42 @@
+{% extends 'securityBase.html.twig' %}
+{% block title %}Logowanie{% endblock %}
+{% block content %}
+    <!-- Login form -->
+    <form class="login-form" action="index.html">
+                <div class="card mb-0">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+
+                            <img  src = global_assets/images/logo.png>
+                            <h5 class="mb-0">Logowanie</h5>
+                            <span class="d-block text-muted">Wpisz swoje dane</span>
+                        </div>
+
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="email" class="form-control" placeholder="E-mail">
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="password" class="form-control" placeholder="Hasło">
+                            <div class="form-control-feedback">
+                                <i class="icon-lock2 text-muted"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Zaloguj się <i class="icon-circle-right2 ml-2"></i></button>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="odzyskanie_hasla.html">Zmień hasło</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    <!-- /login form -->
+{% endblock content %}
