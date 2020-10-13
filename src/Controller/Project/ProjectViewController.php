@@ -42,7 +42,6 @@ class ProjectViewController extends AbstractController{
 
 
         foreach ($iterableResult as $row) {
-
             $curr_row_date = ($row[0]->getDateTime());
 
             if ($prev_date !== null) {
@@ -57,8 +56,12 @@ class ProjectViewController extends AbstractController{
             if ($row[0]->getId() == $numItems){
 
                 if($row[0]->getStatus() == $status){
+
                     $diff = date_diff($curr_row_date, $now);
                     $time_diff->add($diff);
+
+
+
                 }
             }
 
@@ -72,13 +75,13 @@ class ProjectViewController extends AbstractController{
         return date_diff($compare_to,$time_diff);
     }
 
-    public function interval_to_seconds(DateInterval $d){
-
-        $months = $d->y * 12;
-        $days = $d->m+$months*30;
-        $hours = $d->h + $days* 24;
-        $minutes = $d->i + $hours * 60;
-        $seconds = $d->s + $minutes * 60;
+    public function interval_to_seconds(DateInterval $dateInterval){
+        $years = $dateInterval->y;
+        $months = $dateInterval->m * + $years * 12;
+        $days = $dateInterval->d+ $months*30;
+        $hours = $dateInterval->h + $days* 24;
+        $minutes = $dateInterval->i + $hours * 60;
+        $seconds = $dateInterval->s + $minutes * 60;
 
         return $seconds;
     }
@@ -128,6 +131,9 @@ class ProjectViewController extends AbstractController{
         $InactiveTime = $this->calculating_time(0);
         $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
         $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
+
+
+
 
         if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0){
             $Percent_active_time = round($ActiveTimeSeconds / ($ActiveTimeSeconds + $InactiveTimeSeconds) * 100, 2);
