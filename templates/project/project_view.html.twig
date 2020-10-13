@@ -131,7 +131,9 @@
 
                                         {% endif %}
                                         {% for testLink in links %}
-                                            <td style="display:block">{{ testLink.link}}</td>
+                                            <td style="display:block">
+                                                <a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{ testLink.link}}></a>
+                                            </td>
 
                                         {% endfor %}
                                     </tr>
@@ -160,7 +162,7 @@
 
                                         {% endif %}
                                         {% for testLink in links %}
-                                            <option>{{ testLink.link }}</option>
+                                            <option>{{ testLink.link }} </option>
 
                                         {% endfor %}
 

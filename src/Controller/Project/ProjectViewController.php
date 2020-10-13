@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Project;
 
+use App\Entity\Links;
 use App\Entity\Project\ProjectEntity;
 use App\Entity\ProjectTest\SpeedTestEntity;
 use DateInterval;
@@ -23,10 +24,16 @@ class ProjectViewController extends AbstractController{
 
     }
 
-    public function calculating_time($status):DateInterval{
+    public function calculating_time($status,$link = null):DateInterval{
 
         $em = $this->em;
-        $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u');
+        if($link != null){
+            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u WHERE u.linkId = :link_id')->setParameter("link_id",$link);
+        }
+        else{
+            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u');
+        }
+
         $iterableResult = $q->iterate();
 
         $prev_row = null;
@@ -87,6 +94,100 @@ class ProjectViewController extends AbstractController{
     }
 
 
+    public function from_link(ProjectEntity $projects, EntityManagerInterface $em, Links $link)
+{
+        $link_id = $link->getId();
+        $id = $projects->getId();
+        $links =$projects->getLinks()->toArray();
+
+##RZECZY DO TESTU BADANIA SZYBKOSCI
+
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u');
+        $speed_test_logs = ($query->getResult());
+
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
+        $test_count = count($query->getResult());
+
+
+        $query = $em->createQuery('SELECT MIN(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
+        $min_avg = $query->getResult()[0][1];
+
+        $query = $em->createQuery('SELECT AVG(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
+        $avg_avg = round($query->getResult()[0][1],2);
+
+        $query = $em->createQuery('SELECT MAX(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
+        $max_avg =  $query->getResult()[0][1];
+
+        $speed_test_arr = ["test_count" => $test_count,
+            'min_avg' => $min_avg,
+            'avg_avg' => $avg_avg,
+            'max_avg' => $max_avg];
+
+##RZECZY DO TESTU MINUTOWEGO
+
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u');
+        $minute_test_logs = ($query->getResult());
+
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
+        $minute_test_count = count($query->getResult());
+
+
+        $ActiveTime = $this->calculating_time(1,$link_id);
+        $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
+        $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
+
+
+        $InactiveTime = $this->calculating_time(0,$link_id);
+        $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
+        $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
+
+
+
+        if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0){
+            $Percent_active_time = round($ActiveTimeSeconds / ($ActiveTimeSeconds + $InactiveTimeSeconds) * 100, 2);
+            $Percent_inactive_time = round($InactiveTimeSeconds / ($InactiveTimeSeconds + $ActiveTimeSeconds) * 100, 2);}
+
+
+        else{
+            $Percent_active_time = 'brak danych';
+            $Percent_inactive_time = 'brak danych';
+        }
+
+
+
+        $minute_test_arr = ["minute_test_count" => $minute_test_count,
+            'ActiveTime' => $ActiveTime,
+            'InactiveTime' => $InactiveTime,
+            'Percent_active_time' => $Percent_active_time,
+            'Percent_inactive_time' =>$Percent_inactive_time
+        ];
+
+        return $this->render('@Project/project_view.html.twig',
+            ['project'=>$projects,
+                'speed_test_logs' => $speed_test_logs,
+                'speed_test_arr' =>  $speed_test_arr,
+                'minute_test_logs' => $minute_test_logs,
+                'minute_test_arr' => $minute_test_arr,
+                'links'=>$links]);
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
 
         $id = $projects->getId();
@@ -134,7 +235,6 @@ class ProjectViewController extends AbstractController{
 
 
 
-
         if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0){
             $Percent_active_time = round($ActiveTimeSeconds / ($ActiveTimeSeconds + $InactiveTimeSeconds) * 100, 2);
             $Percent_inactive_time = round($InactiveTimeSeconds / ($InactiveTimeSeconds + $ActiveTimeSeconds) * 100, 2);}
@@ -154,9 +254,7 @@ class ProjectViewController extends AbstractController{
             'Percent_inactive_time' =>$Percent_inactive_time
         ];
 
-
-
-        return $this->render('project/project_view.html.twig',
+        return $this->render('@Project/project_view.html.twig',
             ['project'=>$projects,
             'speed_test_logs' => $speed_test_logs,
             'speed_test_arr' =>  $speed_test_arr,

@@ -6,6 +6,13 @@ project_add:
   path: /add
   controller: App\Controller\Project\ProjectAddController::index
 
+project_view_from_link:
+  path: /view/Project{id}/Link{link}
+  requirements:
+    id: '\d+'
+    link: '\d+'
+  controller: App\Controller\Project\ProjectViewController::from_link
+
 project_view:
   path: /view/{id}
   requirements:
@@ -17,3 +24,4 @@ project_edit:
   requirements:
     id: '\d+'
   controller: App\Controller\Project\ProjectEditController::index
+
