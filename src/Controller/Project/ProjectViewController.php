@@ -93,7 +93,7 @@ class ProjectViewController extends AbstractController{
         return $seconds;
     }
 
-
+#TU PRZECHODZISZ Z ID LINKU TESTU
     public function from_link(ProjectEntity $projects, EntityManagerInterface $em, Links $link)
 {
         $link_id = $link->getId();
@@ -187,7 +187,7 @@ class ProjectViewController extends AbstractController{
 
 
 
-
+#TU PRZECHODZISZ Z LISTY PROJEKTOW, JAK NIE MASZ LINKU
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
 
         $id = $projects->getId();
