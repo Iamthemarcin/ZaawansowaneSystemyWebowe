@@ -2,7 +2,8 @@
 
 namespace App\Security;
 
-use App\Entity\User\User;
+
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,32 +20,24 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
 
     public const LOGIN_ROUTE = 'login';
-  
-    private EntityManagerInterface $entityManager;
-    private UrlGeneratorInterface $urlGenerator;
-    private CsrfTokenManagerInterface $csrfTokenManager;
-    private UserPasswordEncoderInterface $passwordEncoder;
-    private TranslatorInterface $translator;
 
-    public function __construct(
-      EntityManagerInterface $entityManager,
-      UrlGeneratorInterface $urlGenerator,
-      CsrfTokenManagerInterface $csrfTokenManager,
-      UserPasswordEncoderInterface $passwordEncoder,
-      TranslatorInterface $translator
-    ){
-      $this->entityManager = $entityManager;
-      $this->urlGenerator = $urlGenerator;
-      $this->csrfTokenManager = $csrfTokenManager;
-      $this->passwordEncoder = $passwordEncoder;
-      $this->translator = $translator;
+    private $entityManager;
+    private $urlGenerator;
+    private $csrfTokenManager;
+    private $passwordEncoder;
+
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->entityManager = $entityManager;
+        $this->urlGenerator = $urlGenerator;
+        $this->csrfTokenManager = $csrfTokenManager;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports(Request $request)
@@ -78,11 +71,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
 
         if (!$user) {
-            throw new CustomUserMessageAuthenticationException($this->translator->trans('login.user_not_found'));
-        }
-        
-        if(!$user->isVerified()) {
-          throw new CustomUserMessageAuthenticationException($this->translator->trans('login.user_not_verified'));
+            // fail authentication with a custom error
+            throw new CustomUserMessageAuthenticationException('Email could not be found.');
         }
 
         return $user;
@@ -107,7 +97,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate('home'));
+          // redirect to some "app_homepage" route - of wherever you want
+           return new RedirectResponse($this->urlGenerator->generate('home'));
     }
 
     protected function getLoginUrl()

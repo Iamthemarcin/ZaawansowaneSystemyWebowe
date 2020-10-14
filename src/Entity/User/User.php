@@ -184,7 +184,8 @@ class User extends Base implements UserInterface, \Serializable
           $this->id,
             $this->firstName,
             $this->email,
-            $this->password
+            $this->password,
+            $this->salt,
       ]);
   }
   public function unserialize($string)
@@ -193,7 +194,8 @@ class User extends Base implements UserInterface, \Serializable
             $this->id,
             $this->firstName,
             $this->email,
-            $this->password
+            $this->password,
+            $this->salt
             ) =$this->unserialize($string, ['allowed_classes'=> false]);
   }
 }
