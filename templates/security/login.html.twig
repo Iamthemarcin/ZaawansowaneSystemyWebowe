@@ -38,7 +38,7 @@
 {#                            <a href="odzyskanie_hasla.html">Zmień hasło</a>#}
 {#                        </div>#}
 {#                    </form>#}
-                        <form method="POST" action="{{ path('login') }}">
+                        <form method="post" >
 
                             {% if error %}
                                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
