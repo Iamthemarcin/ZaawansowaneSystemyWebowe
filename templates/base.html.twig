@@ -24,7 +24,7 @@ margin-top: 5px;">
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('global_assets/images/placeholders/placeholder.jpg') }}" class="rounded-circle mr-2" height="34" alt="">
-                    <span>Victoria</span>
+                    <span>{{ app.user.firstName}} {{ app.user.lastName }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="{{ path('logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
