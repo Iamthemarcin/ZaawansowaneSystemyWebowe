@@ -15,10 +15,6 @@ security:
             anonymous: true
             lazy: true
             provider: app_user_provider
-            form_login:
-                login_path: /login
-                check_path: /login
-                provider: app_user_provider
             remember_me:
                 secret: "%env(APP_SECRET)%"
                 lifetime: 2592000
