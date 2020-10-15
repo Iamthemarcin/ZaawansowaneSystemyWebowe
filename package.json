@@ -1,5 +1,5 @@
 {
-    "name": "Effe Symfony",
+    "name": "effe_symfony",
     "version": "1.0.0",
     "description": "Effe - FrontEnd SCSS/JS",
     "private": true,
@@ -12,11 +12,11 @@
     "devDependencies": {
         "@symfony/webpack-encore": "^0.28.2",
         "core-js": "^3.0.0",
+        "jquery": "^3.5.1",
         "node-sass": "^4.13.1",
         "regenerator-runtime": "^0.13.2",
         "sass-loader": "^7.3.1",
         "webpack-notifier": "^1.6.0"
     },
-    "dependencies": {
-    }
+    "dependencies": {}
 }
