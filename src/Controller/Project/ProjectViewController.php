@@ -102,8 +102,9 @@ class ProjectViewController extends AbstractController{
 
 ##RZECZY DO TESTU BADANIA SZYBKOSCI
 
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u');
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
         $speed_test_logs = ($query->getResult());
+
 
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
         $test_count = count($query->getResult());
@@ -125,7 +126,7 @@ class ProjectViewController extends AbstractController{
 
 ##RZECZY DO TESTU MINUTOWEGO
 
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u');
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
         $minute_test_logs = ($query->getResult());
 
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
