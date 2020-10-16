@@ -22,6 +22,14 @@ class UserFixture extends Fixture
         $user->setLastName('Kowalski');
         $user->setPassword($this->encoder->encodePassword($user,'root'));
         $user->setRoles($user->getRoles());
+
+        $admin= new User\User();
+        $admin->setEmail('admin@admin.pl');
+        $admin->setFirstName('Admin');
+        $admin->setPassword($this->encoder->encodePassword($admin,'admin'));
+        $admin->setRoles(["ROLE_ADMIN"]);
+
+        $manager->persist($admin);
         $manager->persist($user);
 
         $manager->flush();

@@ -30,8 +30,11 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/*, roles: [ 'ROLE_USER' ] }
-        - { path: ^/*, roles: [ 'ROLE_ADMIN' ]}
+        - { path: ^/client/add, roles: [ 'ROLE_ADMIN' ]}
+        - { path: ^/client/edit/, roles: [ 'ROLE_ADMIN' ]}
+        - { path: ^/project/add, roles: [ 'ROLE_ADMIN' ]}
+        - { path: ^/project/view/, roles: [ 'ROLE_ADMIN' ]}
+        - { path: ^/project/edit/, roles: [ 'ROLE_ADMIN' ]}
 
     role_hierarchy:
         ROLE_ADMIN: [ 'ROLE_ADMIN',]
