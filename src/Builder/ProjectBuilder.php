@@ -30,10 +30,9 @@ class ProjectBuilder
         $currentProject->setUpdateTest($dto->isUpdateTest());
 
         $link = new Links();
-        if($dto->getLinks()==null){}
-        else{
-        $link->setLink($dto->getLinks());
-        $currentProject->addLink($link);
+        if($dto->getLinks() !== null){
+            $link->setLink($dto->getLinks());
+            $currentProject->addLink($link);
         }
 
         return $currentProject;
