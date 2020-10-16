@@ -30,6 +30,9 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dashboard, roles: [ 'ROLE_USER' ]}
+        - { path: ^/client/list, roles: [ 'ROLE_USER' ]}
+        - { path: ^/project/list, roles: [ 'ROLE_USER' ]}
         - { path: ^/client/add, roles: [ 'ROLE_ADMIN' ]}
         - { path: ^/client/edit/, roles: [ 'ROLE_ADMIN' ]}
         - { path: ^/project/add, roles: [ 'ROLE_ADMIN' ]}
