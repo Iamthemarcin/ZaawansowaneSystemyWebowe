@@ -170,10 +170,6 @@ class ProjectViewController extends AbstractController{
                 'minute_test_logs' => $minute_test_logs,
                 'minute_test_arr' => $minute_test_arr,
                 'links'=>$links]);
-
-
-
-
 }
 
 
