@@ -24,6 +24,7 @@
 
 
     <!-- Theme JS files -->
+    <script src="{{ asset('assets/js/minuteTest.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
@@ -35,6 +36,7 @@
     <script src="{{ asset('global_assets/js/demo_pages/picker_date.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js@2.8.0') }}"></script>
     <script src="{{ asset('global_assets/js/tableSearch.js') }}"></script>
+
 
     <!-- /theme JS files -->
 {% endblock %}
@@ -154,19 +156,23 @@
                                 <div class=" header-elements-inline">
                                     <h5 >Link Testu</h5>
                                 </div>
+
                                 <form>
-                                    <select class="form-control form-control-uniform">
+                                    <select name="linklist" onchange="showMinuteTestData(this.value)" class="form-control form-control-uniform">
                                         {% if links == null %}
 
                                             <option  style="display: none"></option>
-                                            <option class="text-muted">Dodaj link do testu</option>
+                                            <option class="text-muted" disabled>Dodaj link do testu</option>
 
-                                        {% endif %}
+                                        }
+                                        {% else %}
+                                            <option   selected="selected" class="text-muted" disabled> Wybierz link strony</option>
                                         {% for testLink in links %}
-                                            <option><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+
+                                            <option  value=[{{ testLink.id }},{{ project.id }}] ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
 
                                         {% endfor %}
-
+                                        {% endif %}
                                     </select>
                                 </form>
                                 <div class=" header-elements-inline">
@@ -223,7 +229,7 @@
                                                 </div>
                                                 <div>
                                                     <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
-                                                    <span class="text-muted center" style = justify-content:center >{{ minute_test_arr.minute_test_count }}</span>
+                                                    <span id="testCount "class="text-muted center" style = justify-content:center ></span>
                                                 </div>
                                             </div>
 
