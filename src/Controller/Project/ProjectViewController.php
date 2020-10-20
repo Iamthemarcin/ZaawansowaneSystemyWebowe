@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 
 
@@ -264,38 +265,30 @@ class ProjectViewController extends AbstractController{
             'links'=>$links]);
     }
 
-//    public function ajaxAction(Request $request, EntityManagerInterface $em)
-//    {
-//
-//        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u');
-//        $minute_test_logs = ($query->getResult());
-//
-//        $value = $minute_test_logs;
-//
-//
-//
-//
-//        return new JsonResponse($query->getArrayResult());
-//
-//    }
+
     public function ajaxAction(Request $request) {
-        $students = $this->getDoctrine()
+        $minTest = $this->getDoctrine()
             ->getRepository(MinuteTestEntity::class)
             ->findAll();
 
         if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
             $jsonData = array();
             $idx = 0;
-            foreach($students as $student) {
+            foreach($minTest as $test) {
                 $temp = array(
-                    'name' => $student->getName(),
-                    'address' => $student->getAddress(),
+                    'dataBaseLinkId'=> $test->getId(),
+                    'projectId'=> $test->getProjectId(),
+                    'date'=> $test->getDateTime(),
+                    'status'=>$test->getStatus(),
+                    'link'=> $test-> getLinkId(),
+
+
                 );
                 $jsonData[$idx++] = $temp;
             }
             return new JsonResponse($jsonData);
         } else {
-            return $this->render('student/ajax.html.twig');
+            return $this->render('@Project/project_view.html.twig');
         }
     }
 }
