@@ -3,12 +3,16 @@ namespace App\Controller\Project;
 
 use App\Entity\Links;
 use App\Entity\Project\ProjectEntity;
+use App\Entity\ProjectTest\MinuteTestEntity;
 use App\Entity\ProjectTest\SpeedTestEntity;
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 
 class ProjectViewController extends AbstractController{
@@ -274,6 +278,26 @@ class ProjectViewController extends AbstractController{
 //        return new JsonResponse($query->getArrayResult());
 //
 //    }
+    public function ajaxAction(Request $request) {
+        $students = $this->getDoctrine()
+            ->getRepository(MinuteTestEntity::class)
+            ->findAll();
+
+        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
+            $jsonData = array();
+            $idx = 0;
+            foreach($students as $student) {
+                $temp = array(
+                    'name' => $student->getName(),
+                    'address' => $student->getAddress(),
+                );
+                $jsonData[$idx++] = $temp;
+            }
+            return new JsonResponse($jsonData);
+        } else {
+            return $this->render('student/ajax.html.twig');
+        }
+    }
 }
 
 
