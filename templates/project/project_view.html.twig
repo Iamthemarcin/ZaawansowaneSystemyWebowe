@@ -169,7 +169,7 @@
                                             <option   selected="selected" class="text-muted" disabled> Wybierz link strony</option>
                                         {% for testLink in links %}
 
-                                            <option  value=[{{ testLink.id }},{{ project.id }}] ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+                                            <option  value="{{ testLink.id }}{{ project.id }}" ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
 
                                         {% endfor %}
                                         {% endif %}
@@ -290,6 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div id="txtHint">Customer info will be listed here...</div>
                                     <div class="table-responsive">
                                         <table class="table" id = "myStatusTable">
                                             <thead>
@@ -303,6 +304,7 @@
 
                                             {% for result in minute_test_logs %}
                                             <tr>
+
                                                 <td>{{ result.DateTime|date('Y-m-d')}}</td>
                                                 <td>{{ result.DateTime|date('H:i') }}</td>
 
