@@ -259,6 +259,21 @@ class ProjectViewController extends AbstractController{
             'minute_test_arr' => $minute_test_arr,
             'links'=>$links]);
     }
+
+//    public function ajaxAction(Request $request, EntityManagerInterface $em)
+//    {
+//
+//        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u');
+//        $minute_test_logs = ($query->getResult());
+//
+//        $value = $minute_test_logs;
+//
+//
+//
+//
+//        return new JsonResponse($query->getArrayResult());
+//
+//    }
 }
 
 
@@ -272,3 +287,4 @@ class ProjectViewController extends AbstractController{
 //                )AS datediff
 //FROM    minute_test_entity
 //WHERE project_id = 1 ORDER BY date_time;
+
