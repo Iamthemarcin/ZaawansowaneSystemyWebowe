@@ -8,6 +8,11 @@ function showMinuteTestData(ids) {
                 async:      true,
 
                 success: function(data, status) {
+                    let prevsec = 0;
+                    let active_time_diff = 0;
+                    let inactive_time_diff = 0;
+                    let prev_status
+
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
                     //deletes all previous link logs
@@ -24,6 +29,7 @@ function showMinuteTestData(ids) {
                     }
 
                     for(i = 0; i < dataAccordingToLink.length; i++) {
+
                         let test = dataAccordingToLink[i];
                         let testDateTime = new Date(test.date.date);
                         let h = addZero(testDateTime.getHours());
@@ -39,13 +45,32 @@ function showMinuteTestData(ids) {
                                 var e = $('<tr><td id = "date"></td><td id = "time"></td><td><span class="badge badge-success">Aktywna</span></td></tr>');
 
                             }
-                            else {
+                        else {
                                 var e = $('<tr><td id = "date"></td><td id = "time"></td><td><span class="badge badge-danger">Nieaktywna</span></td></tr>');
-                            }
+                        }
+
+                        let status = test['status'];
+                        let sec= testDateTime.getTime()/1000;
+                        if (prevsec != 0 && prev_status == 1){
+                            active_time_diff += (sec - prevsec);
+                        }
+                        else if(prev_status == 0){
+                                inactive_time_diff += (sec - prevsec);
+                        }
+
+
+
+
+                        prevsec = sec
+                        prev_status = status
+                        console.log(prevsec, sec);
+                        console.log(active_time_diff);
+                        console.log(inactive_time_diff);
 
                         $('#date', e).html(logDate);
                         $('#time', e).html(logTime);
                         $('#minTestLogs').append(e);
+                        //time index
                         let timeID = 'time' + i;
                         $('#time').attr('id',timeID);
                     }
