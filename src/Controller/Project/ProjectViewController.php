@@ -24,14 +24,15 @@ class ProjectViewController extends AbstractController{
 
     }
 
-    public function calculating_time($status,$link = null):DateInterval{
+    public function calculating_time($status,$projectId,$link = null):DateInterval{
 
+        $id = $projectId;
         $em = $this->em;
         if($link != null){
-            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u WHERE u.linkId = :link_id')->setParameter("link_id",$link);
+            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link]);
         }
         else{
-            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u');
+            $q = $em->createQuery('select u from App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id')->setParameter('id',$id);
         }
 
         $iterableResult = $q->iterate();
@@ -45,27 +46,30 @@ class ProjectViewController extends AbstractController{
         $compare_to = new DateTime('2010-01-01 T00:00:00');
         $numItems = count($q->getScalarResult());
 
-
+        $i = 0;
 
 
         foreach ($iterableResult as $row) {
             $curr_row_date = ($row[0]->getDateTime());
-
+            $i += 1;
             if ($prev_date !== null) {
                 $diff = date_diff($prev_date, $curr_row_date);}
 
             if ($prev_row !== null) {
                 if ($prev_row[0]->getStatus() == $status) {
                     $time_diff->add($diff);
+                    dump($time_diff);
                 }
             }
 
-            if ($row[0]->getId() == $numItems){
+
+            if ($i == $numItems){
 
                 if($row[0]->getStatus() == $status){
 
                     $diff = date_diff($curr_row_date, $now);
                     $time_diff->add($diff);
+
 
 
 
@@ -133,12 +137,13 @@ class ProjectViewController extends AbstractController{
         $minute_test_count = count($query->getResult());
 
 
-        $ActiveTime = $this->calculating_time(1,$link_id);
+        $ActiveTime = $this->calculating_time(1,$id,$link_id);
+
         $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
         $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
 
 
-        $InactiveTime = $this->calculating_time(0,$link_id);
+        $InactiveTime = $this->calculating_time(0,$id,$link_id);
         $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
         $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
 
@@ -192,7 +197,7 @@ class ProjectViewController extends AbstractController{
 
 ##RZECZY DO TESTU BADANIA SZYBKOSCI
 
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u');
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);;
         $speed_test_logs = ($query->getResult());
 
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);
@@ -214,19 +219,21 @@ class ProjectViewController extends AbstractController{
 
 ##RZECZY DO TESTU MINUTOWEGO
 
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u');
+        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);;
         $minute_test_logs = ($query->getResult());
 
         $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id')->setParameter("id", $id);
         $minute_test_count = count($query->getResult());
 
 
-        $ActiveTime = $this->calculating_time(1);
+        $ActiveTime = $this->calculating_time(1,$id);
+        dump($ActiveTime);
         $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
         $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
 
 
-        $InactiveTime = $this->calculating_time(0);
+        $InactiveTime = $this->calculating_time(0,$id);
+
         $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
         $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
 

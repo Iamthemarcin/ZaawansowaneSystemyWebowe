@@ -13,6 +13,8 @@
     <link href="{{ asset('global_assets/css/icons/fontawesome/styles.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('global_assets/css/icons/material/styles.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('global_assets/js/plugins/ui/jquery-ui-1.12.1/jquery-ui.css') }}" rel="stylesheet" type="text/css">
+
 
     <!-- /global stylesheets -->
 
@@ -20,21 +22,25 @@
     <script src="{{ asset('global_assets/js/main/jquery.min.js') }}"></script>
     <script src="{{ asset('global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/loaders/blockui.min.js') }}"></script>
+
     <!-- /core JS files -->
 
 
     <!-- Theme JS files -->
+
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/pickers/anytime.min.js') }}"></script>
+    <script src="{{ asset('global_assets/js/plugins/ui/jquery-ui-1.12.1/jquery-ui.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/pickers/pickadate/picker.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
-    <script src="{{ asset('global_assets/js/plugins/pickers/pickadate/legacy.js') }}"></script>
+    <script src="{{ asset('global_assets/js/plugins/pickers/pickadate/picker.time.js') }}"></script>
     <script src="{{ asset('global_assets/js/plugins/notifications/jgrowl.min.js') }}"></script>
     <script src="{{ asset('global_assets/js/demo_pages/picker_date.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js@2.8.0') }}"></script>
     <script src="{{ asset('global_assets/js/tableSearch.js') }}"></script>
+
 
     <!-- /theme JS files -->
 {% endblock %}
@@ -166,7 +172,6 @@
                                             <option><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
 
                                         {% endfor %}
-
                                     </select>
                                 </form>
                                 <div class=" header-elements-inline">
@@ -178,7 +183,8 @@
 														<span class="input-group-prepend">
 															<span class="input-group-text"><i class="icon-calendar5"></i></span>
 														</span>
-                                            <input type="text" class="form-control pickadate" placeholder="Początek">
+                                            <input type="text" class="form-control datepicker" id = "datepicker_from" placeholder="Początek">
+                                            <script> $("#datepicker_from").datepicker();</script>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -187,7 +193,8 @@
 														<span class="input-group-prepend">
 															<span class="input-group-text"><i class="icon-calendar5"></i></span>
 														</span>
-                                            <input type="text" class="form-control pickadate" placeholder="Koniec">
+                                            <input type="text" class="form-control datepicker" id = "datepicker_to" placeholder="Koniec">
+                                            <script> $("#datepicker_to").datepicker();</script>
                                         </div>
                                     </div>
                                 </div>
@@ -361,6 +368,7 @@
 															<span class="input-group-text"><i class="icon-calendar5"></i></span>
 														</span>
                                                 <input type="text" class="form-control pickadate" placeholder="Początek">
+
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -384,7 +392,6 @@
                                     <script src="{{ asset('assets/js/chart.js') }}"></script>
 
                                     <br>
-
 
 
 

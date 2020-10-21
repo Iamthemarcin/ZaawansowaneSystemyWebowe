@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <title>{% block title %}{% endblock %}</title>
     {% block references %}{% endblock %}
+
 </head>
 <body>
 <!-- Main navbar -->
@@ -24,7 +26,10 @@ margin-top: 5px;">
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('global_assets/images/placeholders/placeholder.jpg') }}" class="rounded-circle mr-2" height="34" alt="">
-                    <span>{{ app.user.firstName}} {{ app.user.lastName }}</span>
+
+                    {% if app.user != null %}
+                        <span>{{ app.user.firstName}} {{ app.user.lastName }}</span>
+                    {% endif %}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="{{ path('logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
