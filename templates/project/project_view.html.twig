@@ -229,7 +229,7 @@
                                                 </div>
                                                 <div>
                                                     <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
-                                                    <span id="testCount" class="text-muted center" style = justify-content:center ></span>
+                                                    <span id="testCountMin" class="text-muted center" style = justify-content:center ></span>
                                                 </div>
                                             </div>
 
@@ -290,7 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="txtHint">Customer info will be listed here...</div>
+
                                     <div class="table-responsive">
                                         <table class="table" id = "myStatusTable">
                                             <thead>
@@ -300,22 +300,9 @@
                                                 <th>Status strony</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="minTestLogs">
 
-                                            {% for result in minute_test_logs %}
-                                            <tr>
 
-                                                <td>{{ result.DateTime|date('Y-m-d')}}</td>
-                                                <td>{{ result.DateTime|date('H:i') }}</td>
-
-                                                {% if result.status == 1 %}
-                                                    <td><span class="badge badge-success">Aktywna</span></td>
-                                                {% else %}
-                                                    <td><span class="badge badge-danger">Nieaktywna</span></td>
-                                                {% endif %}
-
-                                            </tr>
-                                            {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>

@@ -61,6 +61,12 @@ class AppFixtures extends Fixture
         $mintest2_4->setProjectId(1);
         $mintest2_4->setStatus(1);
 
+        $mintest2_5= new MinuteTestEntity();
+        $mintest2_5->setDateTime(new \DateTime("2020-09-26 21:11:40"));
+        $mintest2_5->setLinkId(2);
+        $mintest2_5->setProjectId(1);
+        $mintest2_5->setStatus(1);
+
 
 
 
@@ -72,6 +78,7 @@ class AppFixtures extends Fixture
         $manager->persist($mintest2_2);
         $manager->persist($mintest2_3);
         $manager->persist($mintest2_4);
+        $manager->persist($mintest2_5);
 
         $manager->flush();
     }

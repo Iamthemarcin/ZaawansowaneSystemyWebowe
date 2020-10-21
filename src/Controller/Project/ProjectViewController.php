@@ -271,25 +271,7 @@ class ProjectViewController extends AbstractController{
             ->getRepository(MinuteTestEntity::class)
             ->findAll();
 
-        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-            $jsonData = array();
-            $idx = 0;
-            foreach($minTest as $test) {
-                $temp = array(
-                    'dataBaseLinkId'=> $test->getId(),
-                    'projectId'=> $test->getProjectId(),
-                    'date'=> $test->getDateTime(),
-                    'status'=>$test->getStatus(),
-                    'link'=> $test-> getLinkId(),
-
-
-                );
-                $jsonData[$idx++] = $temp;
-            }
-            return new JsonResponse($jsonData);
-        } else {
-            return $this->render('@Project/project_view.html.twig');
-        }
+            return new JsonResponse($minTest);
     }
 }
 
