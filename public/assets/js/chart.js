@@ -72,12 +72,7 @@ function randomData(startX, endX){
 }
 
 
-$(function() {
-    $("#datepicker_from").change(function() {
-        var date = $(this).datepicker("getDate");
 
-    });
-});
 $('.datepicker').change( function() {
     var minValue = $( "#datepicker_from" ).val();
     var maxValue = $ ( "#datepicker_to" ).val();
@@ -152,6 +147,11 @@ $( function() {
 // });
 
 //chart2
+
+
+
+
+
 var ctx2 = document.getElementById('chart2').getContext('2d');
 Chart.defaults.global.legend.display = false;
 
@@ -161,30 +161,61 @@ var chart2 = new Chart(ctx2, {
 
     // The data for our dataset
     data: {
-        labels: ['Pon', 'Wt', 'Śr', 'Czw', 'Pią', 'Sob', 'Nied'],
         datasets: [{
             lineTension:0.2,
             backgroundColor: 'rgb(20,14,207,0.2)',
             borderColor: 'rgb(20,14,207)',
-            data: [300, 222, 110, 345, 123, 34, 67]
+            data: x2 = randomData(new Date(2020, 9, 1), new Date())
         }]
     },
 
     // Configuration options go here
-    options: { responsive: true,
+    options: {  responsive: true,
         maintainAspectRatio: false,
         tooltips: {
             enabled: false
         },
         scales:{
-            yAxes:[{
+            xAxes:[{
+                type: 'time',
+                time:{
+                    minUnit: 'minute',
+                    displayFormats: {
+                        day : 'MMM D'
+                    }
+                },
                 ticks:{
-                    beginAtZero:true,
-
 
                 }
             }]
         }
     }
 });
+
+$('.datepicker2').change( function() {
+    var minValue = $( "#datepicker_from2" ).val();
+    var maxValue = $ ( "#datepicker_to2" ).val();
+
+    var FirstDate = new Date(minValue)
+    var LastDate = new Date(maxValue)
+    //
+    // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
+    // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
+
+    console.log(FirstDate.getTime());
+    console.log(LastDate.getTime());
+
+
+    if( FirstDate.getTime() < LastDate.getTime()){
+
+        var y = randomData(FirstDate,LastDate);
+        chart2.data.datasets[0].data = y;
+        chart2.update();
+    }
+});
+$( function() {
+    $("#datepicker_from2").datepicker({dateFormat: "d M yy"});
+    $("#datepicker_to2").datepicker({dateFormat: "d M yy"});
+});
+
 
