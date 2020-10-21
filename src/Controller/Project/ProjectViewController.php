@@ -3,12 +3,17 @@ namespace App\Controller\Project;
 
 use App\Entity\Links;
 use App\Entity\Project\ProjectEntity;
+use App\Entity\ProjectTest\MinuteTestEntity;
 use App\Entity\ProjectTest\SpeedTestEntity;
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 
 
 class ProjectViewController extends AbstractController{
@@ -266,6 +271,15 @@ class ProjectViewController extends AbstractController{
             'minute_test_arr' => $minute_test_arr,
             'links'=>$links]);
     }
+
+
+    public function ajaxAction(Request $request) {
+        $minTest = $this->getDoctrine()
+            ->getRepository(MinuteTestEntity::class)
+            ->findAll();
+
+            return new JsonResponse($minTest);
+    }
 }
 
 
@@ -279,3 +293,4 @@ class ProjectViewController extends AbstractController{
 //                )AS datediff
 //FROM    minute_test_entity
 //WHERE project_id = 1 ORDER BY date_time;
+
