@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
         $mintest2_2->setStatus(0);
 
         $mintest2_3= new MinuteTestEntity();
-        $mintest2_3->setDateTime(new \DateTime("202-09-26 21:09:40"));
+        $mintest2_3->setDateTime(new \DateTime("2020-09-26 21:09:40"));
         $mintest2_3->setLinkId(2);
         $mintest2_3->setProjectId(1);
         $mintest2_3->setStatus(1);
