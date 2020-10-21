@@ -4,11 +4,12 @@ namespace App\Entity\ProjectTest;
 
 use App\Repository\MinuteTestEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass=MinuteTestEntityRepository::class)
  */
-class MinuteTestEntity
+class MinuteTestEntity implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -88,5 +89,16 @@ class MinuteTestEntity
         $this->status = $status;
 
         return $this;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'dataBaseLinkId'=> $this->getId(),
+            'projectId'=> $this->getProjectId(),
+            'date'=> $this->getDateTime(),
+            'status'=>$this->getStatus(),
+            'link'=> $this-> getLinkId(),
+        ];
     }
 }

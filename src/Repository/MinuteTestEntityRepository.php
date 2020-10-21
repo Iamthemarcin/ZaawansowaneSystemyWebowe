@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\MinuteTestEntity;
+use App\Entity\ProjectTest\MinuteTestEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

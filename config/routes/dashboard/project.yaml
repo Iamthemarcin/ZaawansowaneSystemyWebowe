@@ -13,6 +13,10 @@ project_view_from_link:
     link: '\d+'
   controller: App\Controller\Project\ProjectViewController::from_link
 
+project_view_ajax:
+  path: /ajax
+  controller: App\Controller\Project\ProjectViewController::ajaxAction
+
 project_view:
   path: /view/{id}
   requirements:
