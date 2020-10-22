@@ -30,6 +30,7 @@ function showMinuteTestData(ids) {
                     let inactive_time_diff = 0;
                     let prev_status
                     let chartdata1= [];
+                    let chartdata2 = [];
 
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
@@ -86,10 +87,14 @@ function showMinuteTestData(ids) {
                         let timeID = 'time' + i;
                         $('#time').attr('id',timeID);
 
-                        chartdata1.push( [test['date']+ test['status']] );
+                        chartdata1.push(test['date']['date'])
+                        chartdata2.push(test['status']);
+
+                        console.log(chartdata1);
 
 
                     }
+
                     for(i=0;i<testCount;i++){
 
                        let ax = $("#time"+i).text();
@@ -111,45 +116,41 @@ function showMinuteTestData(ids) {
 
                     var ctx = document.getElementById('chartview1').getContext('2d');
                     Chart.defaults.global.legend.display = false;
-
                     //console.log(chartdata1);
                     // let chartValues = chartdata1.toString();
                     // console.log(chartValues);
                     // var obj = JSON.parse('{"0":"8.4113","2":"9.5231","3":"9.0655","4":"7.8400"}');
 
                     var chart = new Chart(ctx, {
-
-                        // The type of chart we want to create
                         type: 'line',
-
-                        // The data for our dataset
                         data: {
-
+                            labels: chartdata1,
                             datasets: [{
-                                lineTension:0.0,
-                                backgroundColor: 'rgb(20,14,207,0.2)',
-                                borderColor: 'rgb(20,14,207)',
-                                data: chartValues
+                                data: chartdata2,
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
                             }]
                         },
-
-                        // Configuration options go here
-                        options: {  responsive: true,
-                            maintainAspectRatio: false,
-                            tooltips: {
-                                enabled: false
-                            },
-                            scales:{
-                                xAxes:[{
-                                    type: 'time',
-                                    time:{
-                                        minUnit: 'minute',
-                                        displayFormats: {
-                                            day : 'MMM D'
-                                        }
-                                    },
-                                    ticks:{
-
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
                                     }
                                 }]
                             }
@@ -208,6 +209,8 @@ function showMinuteTestData(ids) {
                         $("#datepicker_from").datepicker({dateFormat: "d M yy"});
                         $("#datepicker_to").datepicker({dateFormat: "d M yy"});
                     });
+
+
 
 
 
