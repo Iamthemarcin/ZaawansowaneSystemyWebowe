@@ -417,7 +417,7 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold center" >Ilość wszystkich testów</div>
-                                                        <span class="text-muted center" style = justify-content:center >{{ speed_test_arr.test_count }}</span>
+                                                        <span id="testCountSp"class="text-muted center" style = justify-content:center ></span>
                                                     </div>
                                                 </div>
 
@@ -483,17 +483,8 @@
                                                     <th>Wynik Testu Desktop</th>
                                                     <th>Wynik Testu Mobile</th>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="speedTestLogs">
 
-                                                {% for result in speed_test_logs %}
-                                                <tr>
-                                                    <td>{{ result.DateTime|date('Y-m-d')}}</td>
-                                                    <td>{{ result.DateTime|date('H:i') }}</td>
-                                                    <td>{{ result.desktopAvg }}</td>
-                                                    <td>{{ result.mobileAvg }}</td>
-
-                                                </tr>
-                                                {% endfor %}
 
                                                 </tbody>
                                             </table>
