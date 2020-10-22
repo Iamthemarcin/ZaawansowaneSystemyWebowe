@@ -102,97 +102,6 @@ class ProjectViewController extends AbstractController{
         return $seconds;
     }
 
-#TU PRZECHODZISZ Z ID LINKU TESTU
-    public function from_link(ProjectEntity $projects, EntityManagerInterface $em, Links $link)
-{
-        $link_id = $link->getId();
-        $id = $projects->getId();
-        $links =$projects->getLinks()->toArray();
-
-##RZECZY DO TESTU BADANIA SZYBKOSCI
-
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
-        $speed_test_logs = ($query->getResult());
-
-
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
-        $test_count = count($query->getResult());
-
-
-        $query = $em->createQuery('SELECT MIN(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
-        $min_avg = $query->getResult()[0][1];
-
-        $query = $em->createQuery('SELECT AVG(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
-        $avg_avg = round($query->getResult()[0][1],2);
-
-        $query = $em->createQuery('SELECT MAX(u.desktopAvg) FROM App\Entity\ProjectTest\SpeedTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
-        $max_avg =  $query->getResult()[0][1];
-
-        $speed_test_arr = ["test_count" => $test_count,
-            'min_avg' => $min_avg,
-            'avg_avg' => $avg_avg,
-            'max_avg' => $max_avg];
-
-##RZECZY DO TESTU MINUTOWEGO
-
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id' )->setParameters(["id" => $id,"link_id" => $link_id]);
-        $minute_test_logs = ($query->getResult());
-
-        $query = $em->createQuery('SELECT u FROM App\Entity\ProjectTest\MinuteTestEntity u WHERE u.projectId = :id AND u.linkId = :link_id')->setParameters(["id" => $id,"link_id" => $link_id]);
-        $minute_test_count = count($query->getResult());
-
-
-        $ActiveTime = $this->calculating_time(1,$id,$link_id);
-
-        $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
-        $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
-
-
-        $InactiveTime = $this->calculating_time(0,$id,$link_id);
-        $InactiveTimeSeconds = $this->interval_to_seconds($InactiveTime);
-        $InactiveTime = $InactiveTime-> format('%d dni %h godzin %i minut %s sekund');
-
-
-
-        if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0){
-            $Percent_active_time = round($ActiveTimeSeconds / ($ActiveTimeSeconds + $InactiveTimeSeconds) * 100, 2);
-            $Percent_inactive_time = round($InactiveTimeSeconds / ($InactiveTimeSeconds + $ActiveTimeSeconds) * 100, 2);}
-
-
-        else{
-            $Percent_active_time = 'brak danych';
-            $Percent_inactive_time = 'brak danych';
-        }
-
-
-
-        $minute_test_arr = ["minute_test_count" => $minute_test_count,
-            'ActiveTime' => $ActiveTime,
-            'InactiveTime' => $InactiveTime,
-            'Percent_active_time' => $Percent_active_time,
-            'Percent_inactive_time' =>$Percent_inactive_time
-        ];
-
-        return $this->render('@Project/project_view.html.twig',
-            ['project'=>$projects,
-                'speed_test_logs' => $speed_test_logs,
-                'speed_test_arr' =>  $speed_test_arr,
-                'minute_test_logs' => $minute_test_logs,
-                'minute_test_arr' => $minute_test_arr,
-                'links'=>$links]);
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 #TU PRZECHODZISZ Z LISTY PROJEKTOW, JAK NIE MASZ LINKU
     public function index(ProjectEntity $projects, EntityManagerInterface $em){
@@ -293,12 +202,4 @@ class ProjectViewController extends AbstractController{
 
 
 
-//SELECT
-//      id,
-//      status,
-//      date_time,
-//      (LEAD(date_time) OVER (ORDER BY date_time)  - date_time
-//                )AS datediff
-//FROM    minute_test_entity
-//WHERE project_id = 1 ORDER BY date_time;
 
