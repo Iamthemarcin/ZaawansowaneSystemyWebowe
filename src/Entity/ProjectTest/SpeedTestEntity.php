@@ -4,11 +4,11 @@ namespace App\Entity\ProjectTest;
 
 use App\Repository\SpeedTestEntityRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use JsonSerializable;
 /**
  * @ORM\Entity(repositoryClass=SpeedTestEntityRepository::class)
  */
-class SpeedTestEntity
+class SpeedTestEntity implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -122,5 +122,17 @@ class SpeedTestEntity
         $this->JSON = $JSON;
 
         return $this;
+    }
+    public function jsonSerialize()
+    {
+        return [
+            'dataBaseLinkId'=> $this->getId(),
+            'projectId'=> $this->getProjectId(),
+            'date'=> $this->getDateTime(),
+            'mobileAvg'=>$this->getMobileAvg(),
+            'desktopAvg'=>$this->getDesktopAvg(),
+            'json'=>$this->getJSON(),
+            'link'=> $this-> getLinkId(),
+        ];
     }
 }

@@ -280,6 +280,14 @@ class ProjectViewController extends AbstractController{
 
             return new JsonResponse($minTest);
     }
+
+    public function ajaxActionSpeed(Request $request) {
+        $speedTest = $this->getDoctrine()
+            ->getRepository(SpeedTestEntity::class)
+            ->findAll();
+
+        return new JsonResponse($speedTest);
+    }
 }
 
 
