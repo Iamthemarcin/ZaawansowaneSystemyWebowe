@@ -111,7 +111,7 @@ function showMinuteTestData(ids) {
                     var ctx = document.getElementById('chartview1').getContext('2d');
                     Chart.defaults.global.legend.display = false;
 
-                    console.log(chartdata1);
+                    //console.log(chartdata1);
                     // let chartValues = chartdata1.toString();
                     // console.log(chartValues);
                     // var obj = JSON.parse('{"0":"8.4113","2":"9.5231","3":"9.0655","4":"7.8400"}');
