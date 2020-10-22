@@ -51,8 +51,7 @@ function randomData(startX, endX){
     var date_iter = 0;
     var i = 0;
 
-    console.log(startX.getTime());
-    console.log(endX.getTime());
+
     while (date_iter < endX.getTime()) {
         date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
         if (i > 1000){
@@ -83,8 +82,7 @@ $('.datepicker').change( function() {
     // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
     // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
 
-    console.log(FirstDate.getTime());
-    console.log(LastDate.getTime());
+
 
 
     if( FirstDate.getTime() < LastDate.getTime()){
@@ -202,8 +200,7 @@ $('.datepicker2').change( function() {
     // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
     // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
 
-    console.log(FirstDate.getTime());
-    console.log(LastDate.getTime());
+
 
 
     if( FirstDate.getTime() < LastDate.getTime()){

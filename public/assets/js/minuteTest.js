@@ -29,6 +29,7 @@ function showMinuteTestData(ids) {
                     let active_time_diff = 0;
                     let inactive_time_diff = 0;
                     let prev_status
+                    var chart1= []
 
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
@@ -82,6 +83,9 @@ function showMinuteTestData(ids) {
                         //time index
                         let timeID = 'time' + i;
                         $('#time').attr('id',timeID);
+
+                        chart1.push([test['date'], test['status']]);
+
                     }
                     for(i=0;i<testCount;i++){
 
@@ -98,6 +102,7 @@ function showMinuteTestData(ids) {
                         $('#Percent_inactive_time').text(Percent_inactive_time);
 
                     }
+                    console.log(chart1);
                 },
                 error : function(xhr, textStatus, errorThrown) {
                     alert('Ajax request failed.');
