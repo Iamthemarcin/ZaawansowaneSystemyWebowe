@@ -1,12 +1,13 @@
 
 
 
-var ctx = document.getElementById('chart1').getContext('2d');
+var ctx = document.getElementById('chartview1').getContext('2d');
 Chart.defaults.global.legend.display = false;
 
 
 
 var chart = new Chart(ctx, {
+
     // The type of chart we want to create
     type: 'line',
 
@@ -17,7 +18,7 @@ var chart = new Chart(ctx, {
             lineTension:0.0,
             backgroundColor: 'rgb(20,14,207,0.2)',
             borderColor: 'rgb(20,14,207)',
-            data: x = randomData(new Date(2020, 9, 1), new Date())
+            data: null
         }]
     },
 
@@ -89,7 +90,7 @@ $('.datepicker').change( function() {
 
         var y = randomData(FirstDate,LastDate);
         chart.data.datasets[0].data = y;
-        chart.update();
+
     }
 });
 $( function() {
@@ -163,7 +164,7 @@ var chart2 = new Chart(ctx2, {
             lineTension:0.2,
             backgroundColor: 'rgb(20,14,207,0.2)',
             borderColor: 'rgb(20,14,207)',
-            data: x2 = randomData(new Date(2020, 9, 1), new Date())
+            data: null
         }]
     },
 
@@ -207,7 +208,7 @@ $('.datepicker2').change( function() {
 
         var y = randomData(FirstDate,LastDate);
         chart2.data.datasets[0].data = y;
-        chart2.update();
+
     }
 });
 $( function() {
