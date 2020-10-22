@@ -18,7 +18,7 @@ function showSpeedTestData(ids){
 
             let testCount = dataAccordingToLink.length;
             $('#testCountSp').text(testCount);
-
+            console.log(dataAccordingToLink);
             function addZero(i) {
                 if (i < 10) {
                     i = "0" + i;
@@ -72,16 +72,8 @@ function showSpeedTestData(ids){
                 let ax = $("#time"+i).text();
 
             }
-            $('#ActiveTime').text(active_time_diff);
-            if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0) {
-                let Percent_active_time = round(active_time_diff / (active_time_diff + inactive_time_diff) * 100, 2);
-                let Percent_inactive_time = round(inactive_time_diff / (inactive_time_diff + active_time_diff) * 100, 2);
 
 
-                $('#Percent_active_time').text(Percent_active_time);
-                $('#Percent_inactive_time').text(Percent_inactive_time);
-
-            }
         },
         error : function(xhr, textStatus, errorThrown) {
             alert('Ajax request failed.');

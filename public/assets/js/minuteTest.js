@@ -64,6 +64,7 @@ function showMinuteTestData(ids) {
 
                         let status = test['status'];
                         let sec= testDateTime.getTime()/1000;
+
                         if (prevsec != 0 && prev_status == 1){
                             active_time_diff += (sec - prevsec);
                         }
