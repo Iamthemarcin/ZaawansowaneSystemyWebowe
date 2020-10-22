@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\SpeedTestEntity;
+use App\Entity\ProjectTest\SpeedTestEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

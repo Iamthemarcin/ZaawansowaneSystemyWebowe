@@ -27,7 +27,7 @@
 
 
     <!-- Theme JS files -->
-
+    <script src="{{ asset('assets/js/speedTest.js') }}"></script>
     <script src="{{ asset('assets/js/minuteTest.js') }}"></script>
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
@@ -176,7 +176,7 @@
                                         {% for testLink in links %}
 
 
-                                            <option  value="{{ testLink.id }}{{ project.id }}"><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+                                            <option  value="{{ testLink.id }}{{ project.id }}"><a>{{testLink.link}}</a></option>
 
                                         {% endfor %}
                                         {% endif %}
@@ -337,7 +337,7 @@
                                     <h5 >Link Testu</h5>
                                 </div>
                                 <form>
-                                    <select name="linklist" onchange="showMinuteTestData(this.value)" class="form-control form-control-uniform">
+                                    <select name="linklist" onchange="showSpeedTestData(this.value)" class="form-control form-control-uniform">
                                         {% if links == null %}
 
                                             <option  style="display: none"></option>
@@ -349,7 +349,7 @@
                                             {% for testLink in links %}
 
 
-                                                <option  value="{{ testLink.id }}{{ project.id }}" ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+                                                <option  value="{{ testLink.id }}{{ project.id }}" ><a>{{testLink.link}}</a></option>
 
                                             {% endfor %}
                                         {% endif %}

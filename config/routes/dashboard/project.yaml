@@ -17,6 +17,10 @@ project_view_ajax:
   path: /ajax
   controller: App\Controller\Project\ProjectViewController::ajaxAction
 
+project_view_ajax1:
+  path: /ajaxSpeed
+  controller: App\Controller\Project\ProjectViewController::ajaxActionSpeed
+
 project_view:
   path: /view/{id}
   requirements:

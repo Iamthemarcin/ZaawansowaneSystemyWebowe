@@ -63,7 +63,7 @@ function showMinuteTestData(ids) {
                         console.log(prevsec, sec);
                         console.log(active_time_diff);
                         console.log(inactive_time_diff);
-
+                        
                         $('#date', e).html(logDate);
                         $('#time', e).html(logTime);
                         $('#minTestLogs').append(e);
