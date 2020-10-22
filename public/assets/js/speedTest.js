@@ -71,8 +71,8 @@ function showSpeedTestData(ids){
                 $('#mobileAvg', e).html(test['mobileAvg']);
                 $('#speedTestLogs').append(e);
             }
-            let avg_desktop_speed = (total_desktop_speed/testCount).toFixed(2);
-            let avg_mobile_speed = (total_mobile_speed/testCount).toFixed(2);
+            let avg_desktop_speed = parseFloat((total_desktop_speed/testCount).toFixed(2));
+            let avg_mobile_speed = parseFloat((total_mobile_speed/testCount).toFixed(2));
 
             $('#avg_speed').text(avg_desktop_speed + '/' + avg_mobile_speed);
             $('#smallest_speed').text(min_desktop_speed + '/' + min_mobile_speed);
