@@ -6,15 +6,16 @@ function showSpeedTestData(ids){
         async:      true,
 
         success: function(data, status) {
-            let prevsec = 0;
-            let active_time_diff = 0;
-            let inactive_time_diff = 0;
-            let prev_status
-
-            const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
             //deletes all previous link logs
-            $("#minTestLogs").empty();
+            $("#speedTestLogs").empty();
+            const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
+
+            let max_desktop_speed, max_mobile_speed, total_desktop_speed,total_mobile_speed;
+            max_desktop_speed = max_mobile_speed = total_desktop_speed = total_mobile_speed = 0
+
+            let min_desktop_speed = 9999999
+            let min_mobile_speed = 9999999
 
             let testCount = dataAccordingToLink.length;
             $('#testCountSp').text(testCount);
@@ -27,7 +28,7 @@ function showSpeedTestData(ids){
             }
 
             for(i = 0; i < dataAccordingToLink.length; i++) {
-
+                //CZASY
                 let test = dataAccordingToLink[i];
                 let testDateTime = new Date(test.date.date);
                 let h = addZero(testDateTime.getHours());
@@ -40,39 +41,42 @@ function showSpeedTestData(ids){
                 let logDate = y + "-" + month + "-" + d;
                 let logTime = h + ":" + m + ":" + s;
 
+                //PREDKOSC
+
+                let mobile_speed = test['mobileAvg'];
+                let desktop_speed = test['desktopAvg']
+
+                total_mobile_speed += parseInt(mobile_speed);
+                total_desktop_speed += parseInt(desktop_speed);
+
+                if (mobile_speed > max_mobile_speed){
+                    max_mobile_speed = mobile_speed
+                }
+                if (mobile_speed < min_mobile_speed){
+                    min_mobile_speed = mobile_speed
+                }
+                if (desktop_speed > max_desktop_speed){
+                    max_desktop_speed = desktop_speed
+                }
+
+                if (desktop_speed < min_desktop_speed){
+                    min_desktop_speed = desktop_speed
+                }
+
                 var e = $('<tr><td id = "dateSpeed"></td><td id = "timeSpeed"></td><td id ="desktopAvg"></td><td id = "mobileAvg"></td></tr>');
-
-
-
-
-                let status = test['status'];
-                let sec= testDateTime.getTime()/1000;
-                if (prevsec != 0 && prev_status == 1){
-                    active_time_diff += (sec - prevsec);
-                }
-                else if(prev_status == 0){
-                    inactive_time_diff += (sec - prevsec);
-                }
-
-                prevsec = sec
-                prev_status = status
-
 
                 $('#dateSpeed', e).html(logDate);
                 $('#timeSpeed', e).html(logTime);
                 $('#desktopAvg', e).html(test['desktopAvg']);
                 $('#mobileAvg', e).html(test['mobileAvg']);
                 $('#speedTestLogs').append(e);
-                //time index
-                let timeID = 'timeSpeed' + i;
-                $('#timeSpeed').attr('id',timeID);
             }
-            for(i=0;i<testCount;i++){
+            let avg_desktop_speed = (total_desktop_speed/testCount).toFixed(2);
+            let avg_mobile_speed = (total_mobile_speed/testCount).toFixed(2);
 
-                let ax = $("#time"+i).text();
-
-            }
-
+            $('#avg_speed').text(avg_desktop_speed + '/' + avg_mobile_speed);
+            $('#smallest_speed').text(min_desktop_speed + '/' + min_mobile_speed);
+            $('#max_speed').text(max_desktop_speed + '/' + max_mobile_speed);
 
         },
         error : function(xhr, textStatus, errorThrown) {

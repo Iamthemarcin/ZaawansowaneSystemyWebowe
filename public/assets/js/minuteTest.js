@@ -44,6 +44,7 @@ function showMinuteTestData(ids) {
                     for(i = 0; i < dataAccordingToLink.length; i++) {
 
                         let test = dataAccordingToLink[i];
+
                         let testDateTime = new Date(test.date.date);
                         let h = addZero(testDateTime.getHours());
                         let m = addZero(testDateTime.getMinutes());
