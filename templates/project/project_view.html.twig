@@ -140,7 +140,7 @@
                                         {% for testLink in links %}
                                             <td style="display:block">
 
-                                                <a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a>
+                                                <a>{{testLink.link}}</a>
 
                                             </td>
 
@@ -337,17 +337,22 @@
                                     <h5 >Link Testu</h5>
                                 </div>
                                 <form>
-                                    <select class="form-control form-control-uniform">
+                                    <select name="linklist" onchange="showMinuteTestData(this.value)" class="form-control form-control-uniform">
                                         {% if links == null %}
 
                                             <option  style="display: none"></option>
-                                            <option class="text-muted">Dodaj link do testu</option>
+                                            <option class="text-muted" disabled>Dodaj link do testu</option>
 
+                                            }
+                                        {% else %}
+                                            <option   selected="selected" class="text-muted" disabled> Wybierz link strony</option>
+                                            {% for testLink in links %}
+
+
+                                                <option  value="{{ testLink.id }}{{ project.id }}" ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+
+                                            {% endfor %}
                                         {% endif %}
-                                        {% for testLink in links %}
-                                            <option>{{ testLink.link }}</option>
-
-                                        {% endfor %}
 
                                     </select>
                                 </form>
