@@ -433,19 +433,24 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Najmniejsza prędkość</div>
-                                                        <span class="text-muted">{{speed_test_arr.min_avg}}</span>
+                                                        <span class="text-muted"> Desktop/Mobile </span> <br>
+                                                        <span class="text-muted" id = smallest_speed></span>
                                                     </div>
                                                 </div>
 
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <div class="d-flex align-items-center justify-content-center mb-2">							 	<div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center justify-content-center mb-2">
+                                                    <div class="d-flex align-items-center">
                                                         <i class="fas fa-battery-half mr-3 fa-2x"></i>
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Średnia prędkość</div>
-                                                        <span class="text-muted"><span class=" mr-2"></span> {{speed_test_arr.avg_avg}}</span>
+                                                        <span class="text-muted">
+                                                            <span class=" mr-2" > Desktop/Mobile</span><br>
+                                                            <span class=" mr-2" id = avg_speed></span>
+                                                        </span>
                                                     </div>
                                                 </div>
 
@@ -458,7 +463,12 @@
                                                     </div>
                                                     <div>
                                                         <div class="font-weight-semibold">Najwyższa prędkość</div>
-                                                        <span class="text-muted"><span class=" mr-2"></span> {{ speed_test_arr.max_avg }}</span>
+                                                        <span class="text-muted">
+                                                            <span class=" mr-2"> Desktop/Mobile <span><br>
+                                                            <span class=" mr-2" id = max_speed><span>
+
+
+                                                        </span>
                                                     </div>
                                                 </div>
 
