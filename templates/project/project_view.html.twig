@@ -176,7 +176,7 @@
                                         {% for testLink in links %}
 
 
-                                            <option  value="{{ testLink.id }}{{ project.id }}" ><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
+                                            <option  value="{{ testLink.id }}{{ project.id }}"><a href="{{ path('project_view_from_link', {'id': project.id , 'link': testLink.id}) }}">{{testLink.link}}</a></option>
 
                                         {% endfor %}
                                         {% endif %}
@@ -253,7 +253,7 @@
                                                 </div>
                                                 <div>
                                                     <div class="font-weight-semibold"> Czas aktywności </div>
-                                                    <span class="text-muted">{{ minute_test_arr.ActiveTime }}</span>
+                                                    <span class="text-muted" id = ActiveTime></span>
                                                 </div>
                                             </div>
 
@@ -265,7 +265,7 @@
                                                 </div>
                                                 <div>
                                                     <div class="font-weight-semibold">Czas aktywności w %</div>
-                                                    <span class="text-muted"><span class=" mr-2"></span> {{ minute_test_arr.Percent_active_time }} </span>
+                                                    <span class="text-muted" id = Percent_active_time><span class=" mr-2"></span></span>
                                                 </div>
                                             </div>
 
@@ -278,7 +278,8 @@
                                                 </div>
                                                 <div>
                                                     <div class="font-weight-semibold"> Czas nieaktywności w %</div>
-                                                    <span class="text-muted"><span class=" mr-2"></span> {{ minute_test_arr.Percent_inactive_time }}</span>
+                                                    <span class="text-muted" id = Percent_inactive_time>
+                                                        <span class=" mr-2"></span></span>
                                                 </div>
                                             </div>
 

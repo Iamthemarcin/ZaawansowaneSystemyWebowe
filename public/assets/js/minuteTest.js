@@ -58,9 +58,6 @@ function showMinuteTestData(ids) {
                                 inactive_time_diff += (sec - prevsec);
                         }
 
-
-
-
                         prevsec = sec
                         prev_status = status
                         console.log(prevsec, sec);
@@ -77,6 +74,16 @@ function showMinuteTestData(ids) {
                     for(i=0;i<testCount;i++){
 
                        let ax = $("#time"+i).text();
+
+                    }
+                    $('#ActiveTime').text(active_time_diff);
+                    if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0) {
+                        let Percent_active_time = round(active_time_diff / (active_time_diff + inactive_time_diff) * 100, 2);
+                        let Percent_inactive_time = round(inactive_time_diff / (inactive_time_diff + active_time_diff) * 100, 2);
+
+
+                        $('#Percent_active_time').text(Percent_active_time);
+                        $('#Percent_inactive_time').text(Percent_inactive_time);
 
                     }
                 },
