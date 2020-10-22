@@ -29,7 +29,7 @@ function showMinuteTestData(ids) {
                     let active_time_diff = 0;
                     let inactive_time_diff = 0;
                     let prev_status
-                    var chart1= []
+                    let chartdata1= [];
 
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
@@ -86,7 +86,8 @@ function showMinuteTestData(ids) {
                         let timeID = 'time' + i;
                         $('#time').attr('id',timeID);
 
-                        chart1.push([test['date'], test['status']]);
+                        chartdata1.push( [test['date']+ test['status']] );
+
 
                     }
                     for(i=0;i<testCount;i++){
@@ -104,7 +105,115 @@ function showMinuteTestData(ids) {
                         $('#Percent_inactive_time').text(Percent_inactive_time);
 
                     }
-                    console.log(chart1);
+
+
+
+
+                    var ctx = document.getElementById('chartview1').getContext('2d');
+                    Chart.defaults.global.legend.display = false;
+
+                    //console.log(chartdata1);
+                    // let chartValues = chartdata1.toString();
+                    // console.log(chartValues);
+                    // var obj = JSON.parse('{"0":"8.4113","2":"9.5231","3":"9.0655","4":"7.8400"}');
+
+                    var chart = new Chart(ctx, {
+
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+
+                            datasets: [{
+                                lineTension:0.0,
+                                backgroundColor: 'rgb(20,14,207,0.2)',
+                                borderColor: 'rgb(20,14,207)',
+                                data: chartValues
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {  responsive: true,
+                            maintainAspectRatio: false,
+                            tooltips: {
+                                enabled: false
+                            },
+                            scales:{
+                                xAxes:[{
+                                    type: 'time',
+                                    time:{
+                                        minUnit: 'minute',
+                                        displayFormats: {
+                                            day : 'MMM D'
+                                        }
+                                    },
+                                    ticks:{
+
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+
+                    function randomData(startX, endX){
+                        var dps = [];
+                        var xValue, yValue = 0;
+                        var date_iter = 0;
+                        var i = 0;
+
+
+                        while (date_iter < endX.getTime()) {
+                            date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
+                            if (i > 1000){
+                                console.log('no za dluga ta funkcja kolego');
+                                break
+                            }
+                            xValue = new Date(startX.getTime() + (i * 24 * 60 * 60 * 1000));
+                            yValue += (Math.random() * 10 - 5) << 0;
+                            i += 1
+
+                            dps.push({
+                                x: xValue,
+                                y: yValue
+                            });
+                        }
+                        return dps;
+                    }
+
+
+
+                    $('.datepicker').change( function() {
+                        var minValue = $( "#datepicker_from" ).val();
+                        var maxValue = $ ( "#datepicker_to" ).val();
+
+                        var FirstDate = new Date(minValue)
+                        var LastDate = new Date(maxValue)
+                        //
+                        // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
+                        // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
+
+
+
+
+                        if( FirstDate.getTime() < LastDate.getTime()){
+
+                            var y = randomData(FirstDate,LastDate);
+                            chart.data.datasets[0].data = y;
+                            chart.update();
+                        }
+                    });
+                    $( function() {
+                        $("#datepicker_from").datepicker({dateFormat: "d M yy"});
+                        $("#datepicker_to").datepicker({dateFormat: "d M yy"});
+                    });
+
+
+
+
+
+
                 },
                 error : function(xhr, textStatus, errorThrown) {
                     alert('Ajax request failed.');
