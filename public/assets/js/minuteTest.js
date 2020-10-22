@@ -1,3 +1,20 @@
+function secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : ":") : "0:";
+    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : ":") : "0:";
+    var sDisplay = s > 0 ? s + (s == 1 ? " second" : "") : "0";
+    return addZero(hDisplay) + addZero(mDisplay) + addZero(sDisplay);
+}
+function addZero(i) {
+    if (parseInt(i) < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
 function showMinuteTestData(ids) {
 //ids[0] test link ids[1] project link
     //project link ? necessary idk maybe there will be problem between projects need testing
@@ -21,12 +38,7 @@ function showMinuteTestData(ids) {
                     let testCount = dataAccordingToLink.length;
                     $('#testCountMin').text(testCount);
 
-                    function addZero(i) {
-                        if (i < 10) {
-                            i = "0" + i;
-                        }
-                        return i;
-                    }
+
 
                     for(i = 0; i < dataAccordingToLink.length; i++) {
 
@@ -76,11 +88,11 @@ function showMinuteTestData(ids) {
                        let ax = $("#time"+i).text();
 
                     }
-                    $('#ActiveTime').text(active_time_diff);
-                    if($ActiveTimeSeconds != 0 || $InactiveTimeSeconds != 0) {
-                        let Percent_active_time = round(active_time_diff / (active_time_diff + inactive_time_diff) * 100, 2);
-                        let Percent_inactive_time = round(inactive_time_diff / (inactive_time_diff + active_time_diff) * 100, 2);
-
+                    let Active_time = secondsToHms(active_time_diff)
+                    $('#ActiveTime').text(Active_time);
+                    if(active_time_diff != 0 || inactive_time_diff != 0) {
+                        let Percent_active_time = (active_time_diff / (active_time_diff + inactive_time_diff) * 100).toFixed(2);
+                        let Percent_inactive_time = (inactive_time_diff / (inactive_time_diff + active_time_diff) * 100).toFixed(2);
 
                         $('#Percent_active_time').text(Percent_active_time);
                         $('#Percent_inactive_time').text(Percent_inactive_time);
