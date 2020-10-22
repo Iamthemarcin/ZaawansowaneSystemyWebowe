@@ -67,6 +67,7 @@ function randomData(startX, endX){
             y: yValue
         });
     }
+    console.log(dps);
     return dps;
 }
 
