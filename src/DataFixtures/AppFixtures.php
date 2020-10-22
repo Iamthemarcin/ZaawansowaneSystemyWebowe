@@ -2,9 +2,13 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Client\ClientEntity;
+use App\Entity\Links;
+use App\Entity\Project\ProjectEntity;
 use App\Entity\ProjectTest\MinuteTestEntity;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use phpDocumentor\Reflection\DocBlock\Tags\Link;
 
 class AppFixtures extends Fixture
 {
@@ -67,6 +71,28 @@ class AppFixtures extends Fixture
         $mintest2_5->setProjectId(1);
         $mintest2_5->setStatus(1);
 
+        $client1 = new ClientEntity();
+        $client1->setCompanyName('FirmaTestowa');
+        $client1->setCompanyNipNumber(1234567890);
+        $client1->setClientStatus(true);
+        $client1->setEmail('klient@test.com');
+
+        $project1 = new ProjectEntity();
+        $project1->setClient('client1');
+        $project1->setDayTest(true);
+        $project1->setDomain('http://www.project.com');
+        $project1->setMinuteTest(true);
+        $project1->setStatus(true);
+        $project1->setType('TestType');
+        $project1->setUpdateTest(true);
+
+        $link1 = new Links();
+        $link1->setLink('http://www.superlink.com');
+        $link1->setProject($project1);
+
+
+
+
 
 
 
@@ -79,7 +105,9 @@ class AppFixtures extends Fixture
         $manager->persist($mintest2_3);
         $manager->persist($mintest2_4);
         $manager->persist($mintest2_5);
-
+        $manager->persist($client1);
+        $manager->persist($project1);
+        $manager->persist($link1);
         $manager->flush();
     }
 }
