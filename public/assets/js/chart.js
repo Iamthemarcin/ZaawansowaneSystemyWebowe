@@ -32,7 +32,6 @@ var chart = new Chart(ctx, {
             xAxes:[{
                 type: 'time',
                 time:{
-                    minUnit: 'minute',
                     displayFormats: {
                         day : 'MMM D'
                     }
@@ -40,6 +39,19 @@ var chart = new Chart(ctx, {
                 ticks:{
 
                 }
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    maxTicksLimit:2,
+                    callback: function(value, index, values) {
+                        if(value==0){
+                            return 'Offline';}
+                        if(value==1){
+                            return 'Online';}
+                    },
+                }
+
             }]
         }
     }

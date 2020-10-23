@@ -154,6 +154,12 @@ function showMinuteTestData(ids) {
                                     ticks: {
                                         beginAtZero:true,
                                         maxTicksLimit:2,
+                                        callback: function(value, index, values) {
+                                            if(value==0){
+                                                return 'Offline';}
+                                            if(value==1){
+                                                return 'Online';}
+                                        },
                                     }
 
                                 }]
