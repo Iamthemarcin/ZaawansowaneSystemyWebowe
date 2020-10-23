@@ -58,58 +58,7 @@ var chart = new Chart(ctx, {
 });
 
 
-function randomData(startX, endX){
-    var dps = [];
-    var xValue, yValue = 0;
-    var date_iter = 0;
-    var i = 0;
 
-
-    while (date_iter < endX.getTime()) {
-        date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
-        if (i > 1000){
-            console.log('no za dluga ta funkcja kolego');
-            break
-        }
-        xValue = new Date(startX.getTime() + (i * 24 * 60 * 60 * 1000));
-        yValue += (Math.random() * 10 - 5) << 0;
-        i += 1
-
-        dps.push({
-            x: xValue,
-            y: yValue
-        });
-    }
-    console.log(dps);
-    return dps;
-}
-
-
-
-$('.datepicker').change( function() {
-    var minValue = $( "#datepicker_from" ).val();
-    var maxValue = $ ( "#datepicker_to" ).val();
-
-    var FirstDate = new Date(minValue)
-    var LastDate = new Date(maxValue)
-    //
-    // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
-    // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
-
-
-
-
-    if( FirstDate.getTime() < LastDate.getTime()){
-
-        var y = randomData(FirstDate,LastDate);
-        chart.data.datasets[0].data = y;
-
-    }
-});
-$( function() {
-    $("#datepicker_from").datepicker({dateFormat: "d M yy"});
-    $("#datepicker_to").datepicker({dateFormat: "d M yy"});
-});
 
 
 

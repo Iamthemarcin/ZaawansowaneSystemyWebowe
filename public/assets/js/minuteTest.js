@@ -28,8 +28,10 @@ function showMinuteTestData(ids) {
                     let prevsec = 0;
                     let active_time_diff = 0;
                     let inactive_time_diff = 0;
-                    let prev_status
-                    let chartdata1= [];
+                    let prev_status;
+                    let global_chart_data = [];
+                    let global_chart_labels = [];
+                    let chartdata1 = [];
                     let chartdata2 = [];
 
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
@@ -52,7 +54,7 @@ function showMinuteTestData(ids) {
                         let s = addZero(testDateTime.getSeconds());
 
                         let y = testDateTime.getFullYear();
-                        let month = addZero(testDateTime.getMonth());
+                        let month = addZero(testDateTime.getMonth() + 1);
                         let d = addZero(testDateTime.getDay());
                         let logDate = y + "-" + month + "-" + d;
                         let logTime = h + ":" + m + ":" + s;
@@ -76,9 +78,7 @@ function showMinuteTestData(ids) {
 
                         prevsec = sec
                         prev_status = status
-                        console.log(prevsec, sec);
-                        console.log(active_time_diff);
-                        console.log(inactive_time_diff);
+
                         
                         $('#date', e).html(logDate);
                         $('#time', e).html(logTime);
@@ -88,12 +88,17 @@ function showMinuteTestData(ids) {
                         $('#time').attr('id',timeID);
 
                         chartdata1.push(test['date']['date'])
-                        chartdata2.push(test['status']);
+                        global_chart_labels.push(test['date']['date'])
 
-                        console.log(chartdata1);
+                        chartdata2.push(test['status']);
+                        global_chart_data.push(test['status']);
+
+
 
 
                     }
+
+
 
                     for(i=0;i<testCount;i++){
 
@@ -116,10 +121,6 @@ function showMinuteTestData(ids) {
 
                     var ctx = document.getElementById('chartview1').getContext('2d');
                     Chart.defaults.global.legend.display = false;
-                    //console.log(chartdata1);
-                    // let chartValues = chartdata1.toString();
-                    // console.log(chartValues);
-                    // var obj = JSON.parse('{"0":"8.4113","2":"9.5231","3":"9.0655","4":"7.8400"}');
 
                     var chart = new Chart(ctx, {
                         type: 'line',
@@ -174,40 +175,25 @@ function showMinuteTestData(ids) {
                         }
                     });
 
-
-                    function randomData(startX, endX){
-                        var dps = [];
-                        var xValue, yValue = 0;
-                        var date_iter = 0;
-                        var i = 0;
-
-
-                        while (date_iter < endX.getTime()) {
-                            date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
-                            if (i > 1000){
-                                console.log('no za dluga ta funkcja kolego');
-                                break
-                            }
-                            xValue = new Date(startX.getTime() + (i * 24 * 60 * 60 * 1000));
-                            yValue += (Math.random() * 10 - 5) << 0;
-                            i += 1
-
-                            dps.push({
-                                x: xValue,
-                                y: yValue
-                            });
-                        }
-                        return dps;
-                    }
-
+                    $( function() {
+                        $("#datepicker_from").datepicker({dateFormat: "d M yy"});
+                        $("#datepicker_to").datepicker({dateFormat: "d M yy"});
+                    });
 
 
                     $('.datepicker').change( function() {
-                        var minValue = $( "#datepicker_from" ).val();
-                        var maxValue = $ ( "#datepicker_to" ).val();
 
-                        var FirstDate = new Date(minValue)
-                        var LastDate = new Date(maxValue)
+
+                        let newChartData = global_chart_data;
+                        let newChartLabels = global_chart_labels;
+
+
+                        let minValue = $( "#datepicker_from" ).val();
+                        let maxValue = $ ( "#datepicker_to" ).val();
+
+                        let FirstDate = new Date(minValue)
+                        let LastDate = new Date(maxValue)
+
                         //
                         // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
                         // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
@@ -217,21 +203,21 @@ function showMinuteTestData(ids) {
 
                         if( FirstDate.getTime() < LastDate.getTime()){
 
-                            var y = randomData(FirstDate,LastDate);
-                            chart.data.datasets[0].data = y;
+                            for (i = chartdata2.length - 1; i >= 0;i--){
+
+                                console.log(chartdata2.length);
+                                let date_label = new Date(newChartLabels[i]);
+                                if (date_label.getTime() < FirstDate.getTime() || date_label.getTime() > LastDate.getTime()){
+                                    newChartLabels.splice(i,1);
+                                    newChartData.splice(i,1);
+                                    }
+                            }
+                            chart.data.labels = newChartLabels
+                            chart.data.datasets.data = newChartData
+
                             chart.update();
                         }
                     });
-                    $( function() {
-                        $("#datepicker_from").datepicker({dateFormat: "d M yy"});
-                        $("#datepicker_to").datepicker({dateFormat: "d M yy"});
-                    });
-
-
-
-
-
-
 
 
                 },
@@ -239,9 +225,5 @@ function showMinuteTestData(ids) {
                     alert('Ajax request failed.');
                 }
             });
-
-
-
-
 
 }
