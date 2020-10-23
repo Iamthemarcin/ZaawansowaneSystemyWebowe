@@ -38,8 +38,8 @@ function showSpeedTestData(ids){
                 let s = addZero(testDateTime.getSeconds());
 
                 let y = testDateTime.getFullYear();
-                let month = addZero(testDateTime.getMonth());
-                let d = addZero(testDateTime.getDay());
+                let month = addZero(testDateTime.getMonth()+1);
+                let d = addZero(testDateTime.getDate());
                 let logDate = y + "-" + month + "-" + d;
                 let logTime = h + ":" + m + ":" + s;
 
