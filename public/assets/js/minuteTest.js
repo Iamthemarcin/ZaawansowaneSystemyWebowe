@@ -126,15 +126,23 @@ function showMinuteTestData(ids) {
                         data: {
                             labels: chartdata1,
                             datasets: [{
+<<<<<<< HEAD
                                 lineTension:0,
                                 backgroundColor: 'rgb(20,14,207,0.2)',
                                 borderColor: 'rgb(20,14,207)',
                                 data: chartdata2
+=======
+                                data: chartdata2,
+                                backgroundColor: 'rgb(20,14,207,0.2)',
+                                borderColor: 'rgb(20,14,207)',
+                                borderWidth: 1
+>>>>>>> c876a9f963091400820695db77d4a3a00ed0084b
                             }]
                         },
                         options: {  responsive: true,
                             maintainAspectRatio: false,
                             tooltips: {
+<<<<<<< HEAD
                                 enabled: false
                             }
                         }
@@ -163,6 +171,23 @@ function showMinuteTestData(ids) {
                             maintainAspectRatio: false,
                             tooltips: {
                                 enabled: false
+=======
+                            enabled: false
+                            },
+                            scales:{
+                            xAxes:[{
+                                type: 'time',
+                                time:{
+                                    minUnit: 'minute',
+                                displayFormats: {
+                                        day : 'MMM D'
+                                    }
+                                    },
+                                ticks:{
+
+                                }
+                            }]
+>>>>>>> c876a9f963091400820695db77d4a3a00ed0084b
                             }
                         }
                     });
