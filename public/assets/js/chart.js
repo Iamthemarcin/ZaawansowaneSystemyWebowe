@@ -164,7 +164,7 @@ $( function() {
 
 
 
-var ctx2 = document.getElementById('chart2').getContext('2d');
+var ctx2 = document.getElementById('chartview2').getContext('2d');
 Chart.defaults.global.legend.display = false;
 
 var chart2 = new Chart(ctx2, {
@@ -177,7 +177,8 @@ var chart2 = new Chart(ctx2, {
             lineTension:0.2,
             backgroundColor: 'rgb(20,14,207,0.2)',
             borderColor: 'rgb(20,14,207)',
-            data: null
+            data:null,
+
         }]
     },
 
@@ -199,6 +200,14 @@ var chart2 = new Chart(ctx2, {
                 ticks:{
 
                 }
+            }],
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+
+
+                }
+
             }]
         }
     }
