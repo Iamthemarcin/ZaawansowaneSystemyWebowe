@@ -131,9 +131,11 @@ function showMinuteTestData(ids) {
                                 lineTension:0,
                                 data: chartdata2,
 
+
                                 backgroundColor: 'rgb(20,14,207,0.2)',
                                 borderColor: 'rgb(20,14,207)',
-                                data: chartdata2
+                                data: chartdata2,
+                                borderWidth: 1,
 
                             }]
                         },
@@ -182,6 +184,7 @@ function showMinuteTestData(ids) {
 
 
                     $('.datepicker').change( function() {
+
 
 
                         let newChartData = global_chart_data;
