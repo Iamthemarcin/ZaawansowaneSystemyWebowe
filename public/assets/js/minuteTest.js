@@ -126,6 +126,7 @@ function showMinuteTestData(ids) {
                         data: {
                             labels: chartdata1,
                             datasets: [{
+                                lineTension:0,
                                 data: chartdata2,
                                 backgroundColor: 'rgb(20,14,207,0.2)',
                                 borderColor: 'rgb(20,14,207)',
@@ -134,15 +135,14 @@ function showMinuteTestData(ids) {
                         },
                         options: {  responsive: true,
                             maintainAspectRatio: false,
-                            tooltips: {
-                            enabled: false
-                            },
+                                tooltips: {
+                                enabled: false
+                                },
                             scales:{
                             xAxes:[{
                                 type: 'time',
                                 time:{
-                                    minUnit: 'minute',
-                                displayFormats: {
+                                    displayFormats: {
                                         day : 'MMM D'
                                     }
                                     },
