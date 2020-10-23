@@ -126,33 +126,43 @@ function showMinuteTestData(ids) {
                         data: {
                             labels: chartdata1,
                             datasets: [{
-                                data: chartdata2,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
+                                lineTension:0,
+                                backgroundColor: 'rgb(20,14,207,0.2)',
+                                borderColor: 'rgb(20,14,207)',
+                                data: chartdata2
                             }]
                         },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
+                        options: {  responsive: true,
+                            maintainAspectRatio: false,
+                            tooltips: {
+                                enabled: false
+                            }
+                        }
+                    });
+
+                    var ctx2 = document.getElementById('chart2').getContext('2d');
+                    Chart.defaults.global.legend.display = false;
+
+                    var chart2 = new Chart(ctx2, {
+                        // The type of chart we want to create
+                        type: 'line',
+
+                        // The data for our dataset
+                        data: {
+                            labels: chartdata1,
+                            datasets: [{
+                                lineTension:0.2,
+                                backgroundColor: 'rgb(20,14,207,0.2)',
+                                borderColor: 'rgb(20,14,207)',
+                                data: chartdata2
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {  responsive: true,
+                            maintainAspectRatio: false,
+                            tooltips: {
+                                enabled: false
                             }
                         }
                     });
