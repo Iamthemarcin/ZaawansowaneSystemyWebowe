@@ -185,7 +185,7 @@ function showMinuteTestData(ids) {
                         while (date_iter < endX.getTime()) {
                             date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
                             if (i > 1000){
-                                console.log('no za dluga ta funkcja kolego');
+                                console.log('Random data function error');
                                 break
                             }
                             xValue = new Date(startX.getTime() + (i * 24 * 60 * 60 * 1000));
