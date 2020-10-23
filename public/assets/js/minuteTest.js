@@ -55,7 +55,8 @@ function showMinuteTestData(ids) {
 
                         let y = testDateTime.getFullYear();
                         let month = addZero(testDateTime.getMonth() + 1);
-                        let d = addZero(testDateTime.getDay());
+                        console.log(testDateTime);
+                        let d = addZero(testDateTime.getDate());
                         let logDate = y + "-" + month + "-" + d;
                         let logTime = h + ":" + m + ":" + s;
                         if(test['status'] == 1){
@@ -228,5 +229,4 @@ function showMinuteTestData(ids) {
                     alert('Ajax request failed.');
                 }
             });
-
 }
