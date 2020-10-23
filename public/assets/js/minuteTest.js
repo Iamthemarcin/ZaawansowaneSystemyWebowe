@@ -126,18 +126,23 @@ function showMinuteTestData(ids) {
                         data: {
                             labels: chartdata1,
                             datasets: [{
+
                                 lineTension:0,
                                 data: chartdata2,
+
                                 backgroundColor: 'rgb(20,14,207,0.2)',
                                 borderColor: 'rgb(20,14,207)',
-                                borderWidth: 1
+                                data: chartdata2
+
                             }]
                         },
                         options: {  responsive: true,
                             maintainAspectRatio: false,
+
                                 tooltips: {
                                 enabled: false
                                 },
+
                             scales:{
                             xAxes:[{
                                 type: 'time',
@@ -149,6 +154,7 @@ function showMinuteTestData(ids) {
                                 ticks:{
 
                                 }
+
                             }],
                                 yAxes: [{
                                     ticks: {
@@ -163,6 +169,7 @@ function showMinuteTestData(ids) {
                                     }
 
                                 }]
+
                             }
                         }
                     });
