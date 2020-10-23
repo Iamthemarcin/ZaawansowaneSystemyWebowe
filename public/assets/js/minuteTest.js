@@ -55,7 +55,7 @@ function showMinuteTestData(ids) {
 
                         let y = testDateTime.getFullYear();
                         let month = addZero(testDateTime.getMonth() + 1);
-                        let d = addZero(testDateTime.getDay());
+                        let d = addZero(testDateTime.getDate());
                         let logDate = y + "-" + month + "-" + d;
                         let logTime = h + ":" + m + ":" + s;
                         if(test['status'] == 1){
@@ -93,7 +93,7 @@ function showMinuteTestData(ids) {
                         chartdata2.push(test['status']);
                         global_chart_data.push(test['status']);
 
-
+                        console.log(d);
 
 
                     }
