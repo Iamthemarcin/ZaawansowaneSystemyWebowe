@@ -1,3 +1,5 @@
+
+
 function secondsToHms(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
@@ -15,6 +17,7 @@ function addZero(i) {
     }
     return i;
 }
+
 function showMinuteTestData(ids) {
 //ids[0] test link ids[1] project link
     //project link ? necessary idk maybe there will be problem between projects need testing
@@ -33,6 +36,7 @@ function showMinuteTestData(ids) {
                     let global_chart_labels = [];
                     let chartdata1 = [];
                     let chartdata2 = [];
+                    var first_entry = true;
 
                     const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
 
@@ -89,17 +93,18 @@ function showMinuteTestData(ids) {
                         $('#time').attr('id',timeID);
 
                         chartdata1.push(test['date']['date'])
-                        global_chart_labels.push(test['date']['date'])
-
                         chartdata2.push(test['status']);
-                        global_chart_data.push(test['status']);
 
-                        console.log(d);
+
+
+
+
+
 
 
                     }
 
-
+                    first_entry = false;
 
                     for(i=0;i<testCount;i++){
 
@@ -130,9 +135,6 @@ function showMinuteTestData(ids) {
                             datasets: [{
 
                                 lineTension:0,
-                                data: chartdata2,
-
-
                                 backgroundColor: 'rgb(20,14,207,0.2)',
                                 borderColor: 'rgb(20,14,207)',
                                 data: chartdata2,
@@ -187,10 +189,17 @@ function showMinuteTestData(ids) {
                     $('.datepicker').change( function() {
 
 
+                        for(i = 0; i < dataAccordingToLink.length; i++) {
+
+                            let test = dataAccordingToLink[i];
+
+                            global_chart_labels.push(test['date']['date'])
+                            global_chart_data.push(test['status']);
+                            console.log(global_chart_labels);
+                        }
 
                         let newChartData = global_chart_data;
                         let newChartLabels = global_chart_labels;
-
 
                         let minValue = $( "#datepicker_from" ).val();
                         let maxValue = $ ( "#datepicker_to" ).val();
@@ -209,17 +218,22 @@ function showMinuteTestData(ids) {
 
                             for (i = chartdata2.length - 1; i >= 0;i--){
 
-                                console.log(chartdata2.length);
+
                                 let date_label = new Date(newChartLabels[i]);
                                 if (date_label.getTime() < FirstDate.getTime() || date_label.getTime() > LastDate.getTime()){
+
                                     newChartLabels.splice(i,1);
                                     newChartData.splice(i,1);
-                                    }
+
+                                }
                             }
                             chart.data.labels = newChartLabels
                             chart.data.datasets.data = newChartData
 
                             chart.update();
+                            global_chart_labels = []
+                            global_chart_data = []
+
                         }
                     });
 
