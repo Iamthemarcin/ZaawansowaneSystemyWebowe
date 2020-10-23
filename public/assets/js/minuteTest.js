@@ -149,7 +149,14 @@ function showMinuteTestData(ids) {
                                 ticks:{
 
                                 }
-                            }]
+                            }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true,
+                                        maxTicksLimit:2,
+                                    }
+
+                                }]
                             }
                         }
                     });
