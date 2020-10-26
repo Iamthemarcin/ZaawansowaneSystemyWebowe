@@ -330,7 +330,7 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
-	top: 1px;
+	top: 1.8em;
 }
 .ui-datepicker .ui-datepicker-prev {
 	left: 2px;
