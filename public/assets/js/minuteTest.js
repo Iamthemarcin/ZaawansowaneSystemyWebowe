@@ -204,6 +204,16 @@ function showMinuteTestData(ids) {
                         let minValue = $( "#datepicker_from" ).val().split(".");
                         let maxValue = $ ( "#datepicker_to" ).val().split(".");
 
+
+                        if(minValue ==""){
+                            minValue=["25","07","1976"];
+                        }
+
+                        if(maxValue ==""){
+                            maxValue =["14","12","2090"];
+                        }
+
+                        console.log(minValue);
                         let FirstDate = new Date(minValue[2], minValue[1] - 1, minValue[0]);
                         let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
 
