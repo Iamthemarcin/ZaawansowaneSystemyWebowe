@@ -195,7 +195,7 @@ function showMinuteTestData(ids) {
 
                             global_chart_labels.push(test['date']['date'])
                             global_chart_data.push(test['status']);
-                            console.log(global_chart_labels);
+
                         }
 
                         let newChartData = global_chart_data;
@@ -204,8 +204,8 @@ function showMinuteTestData(ids) {
                         let minValue = $( "#datepicker_from" ).val();
                         let maxValue = $ ( "#datepicker_to" ).val();
 
-                        let FirstDate = new Date(minValue)
-                        let LastDate = new Date(maxValue)
+                        let FirstDate = new Date(minValue);
+                        let LastDate = new Date(maxValue);
 
                         //
                         // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
@@ -231,6 +231,7 @@ function showMinuteTestData(ids) {
                             chart.data.datasets.data = newChartData
 
                             chart.update();
+
                             global_chart_labels = []
                             global_chart_data = []
 
