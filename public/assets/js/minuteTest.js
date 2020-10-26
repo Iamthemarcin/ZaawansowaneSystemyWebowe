@@ -213,7 +213,7 @@ function showMinuteTestData(ids) {
                             maxValue =["14","12","2090"];
                         }
 
-                        console.log(minValue);
+
                         let FirstDate = new Date(minValue[2], minValue[1] - 1, minValue[0]);
                         let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
 
