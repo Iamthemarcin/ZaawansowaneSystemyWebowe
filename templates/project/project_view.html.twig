@@ -41,7 +41,7 @@
     <script src="{{ asset('global_assets/js/demo_pages/picker_date.js') }}"></script>
     <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js@2.8.0') }}"></script>
     <script src="{{ asset('global_assets/js/tableSearch.js') }}"></script>
-
+    <script src="{{ asset('assets/js/datepicker_pl.js') }}"type='text/javascript'></script>
 
     <!-- /theme JS files -->
 {% endblock %}
@@ -192,7 +192,7 @@
 															<span class="input-group-text"><i class="icon-calendar5"></i></span>
 														</span>
                                             <input type="text" class="form-control datepicker" id = "datepicker_from" placeholder="Początek">
-                                            <script> $("#datepicker_from").datepicker();</script>
+                                            <script> $("#datepicker_from").datepicker($.datepicker.regional[ "pl" ]);</script>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -202,7 +202,7 @@
 															<span class="input-group-text"><i class="icon-calendar5"></i></span>
 														</span>
                                             <input type="text" class="form-control datepicker" id = "datepicker_to" placeholder="Koniec">
-                                            <script> $("#datepicker_to").datepicker();</script>
+                                            <script> $("#datepicker_to").datepicker($.datepicker.regional[ "pl" ]);</script>
                                         </div>
                                     </div>
                                 </div>
