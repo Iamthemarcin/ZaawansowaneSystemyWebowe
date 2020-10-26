@@ -9,6 +9,8 @@ function showSpeedTestData(ids){
             let chartdata1= [];
             let chartdata2 = [];
             let chartdata3 = [];
+            let global_chart_data = [];
+            let global_chart_labels = [];
             //deletes all previous link logs
             $("#speedTestLogs").empty();
             const dataAccordingToLink = data.filter(({link}) => link == ids[0]);
@@ -21,7 +23,7 @@ function showSpeedTestData(ids){
 
             let testCount = dataAccordingToLink.length;
             $('#testCountSp').text(testCount);
-            console.log(dataAccordingToLink);
+
             function addZero(i) {
                 if (i < 10) {
                     i = "0" + i;
@@ -169,40 +171,47 @@ function showSpeedTestData(ids){
             });
 
 
-            function randomData(startX, endX){
-                var dps = [];
-                var xValue, yValue = 0;
-                var date_iter = 0;
-                var i = 0;
 
 
-                while (date_iter < endX.getTime()) {
-                    date_iter = startX.getTime() + (i * 24 * 60 * 60 * 1000)
-                    if (i > 1000){
-                        console.log('Random data function error');
-                        break
-                    }
-                    xValue = new Date(startX.getTime() + (i * 24 * 60 * 60 * 1000));
-                    yValue += (Math.random() * 10 - 5) << 0;
-                    i += 1
 
-                    dps.push({
-                        x: xValue,
-                        y: yValue
-                    });
+            $( function() {
+                $("#datepicker_from2").datepicker({dateFormat: "d M yy"});
+                $("#datepicker_to2").datepicker({dateFormat: "d M yy"});
+            });
+
+
+            $('.datepicker2').change( function() {
+
+
+                for(i = 0; i < dataAccordingToLink.length; i++) {
+
+                    let test = dataAccordingToLink[i];
+
+                    global_chart_labels.push(test['date']['date'])
+                    global_chart_data.push(test['desktopAVG']);
+
                 }
-                return dps;
-            }
+
+                let newChartData = global_chart_data;
+                let newChartLabels = global_chart_labels;
+
+                let minValue = $( "#datepicker_from2" ).val().split(".");
+                let maxValue = $ ( "#datepicker_to2" ).val().split(".");
 
 
+                if(minValue ==""){
+                    minValue=["25","07","1976"];
+                }
 
-            $('.datepicker').change( function() {
-                var minValue = $( "#datepicker_from" ).val();
-                var maxValue = $ ( "#datepicker_to" ).val();
+                if(maxValue ==""){
+                    maxValue =["14","12","2090"];
+                }
 
-                var FirstDate = new Date(minValue)
-                var LastDate = new Date(maxValue)
-                //
+
+                let FirstDate = new Date(minValue[2], minValue[1] - 1, minValue[0]);
+                let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
+
+
                 // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
                 // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
 
@@ -211,15 +220,29 @@ function showSpeedTestData(ids){
 
                 if( FirstDate.getTime() < LastDate.getTime()){
 
-                    var y = randomData(FirstDate,LastDate);
-                    chart.data.datasets[0].data = y;
+                    for (i = chartdata2.length - 1; i >= 0;i--){
+
+
+                        let date_label = new Date(newChartLabels[i]);
+                        if (date_label.getTime() < FirstDate.getTime() || date_label.getTime() > LastDate.getTime()){
+
+                            newChartLabels.splice(i,1);
+                            newChartData.splice(i,1);
+
+                        }
+                    }
+                    chart.data.labels = newChartLabels
+                    chart.data.datasets.data = newChartData
+
                     chart.update();
+
+                    global_chart_labels = []
+                    global_chart_data = []
+
                 }
             });
-            $( function() {
-                $("#datepicker_from").datepicker({dateFormat: "d M yy"});
-                $("#datepicker_to").datepicker({dateFormat: "d M yy"});
-            });
+
+
         },
         error : function(xhr, textStatus, errorThrown) {
             alert('Ajax request failed.');
