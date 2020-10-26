@@ -201,13 +201,13 @@ function showMinuteTestData(ids) {
                         let newChartData = global_chart_data;
                         let newChartLabels = global_chart_labels;
 
-                        let minValue = $( "#datepicker_from" ).val();
-                        let maxValue = $ ( "#datepicker_to" ).val();
+                        let minValue = $( "#datepicker_from" ).val().split(".");
+                        let maxValue = $ ( "#datepicker_to" ).val().split(".");
 
-                        let FirstDate = new Date(minValue);
-                        let LastDate = new Date(maxValue);
+                        let FirstDate = new Date(minValue[2], minValue[1] - 1, minValue[0]);
+                        let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
 
-                        //
+
                         // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
                         // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
 
