@@ -188,7 +188,7 @@ function showSpeedTestData(ids){
                     let test = dataAccordingToLink[i];
 
                     global_chart_labels.push(test['date']['date'])
-                    global_chart_data.push(test['desktopAVG']);
+                    global_chart_data.push(test['desktopAVG'],test['mobileAVG']);
 
                 }
 
@@ -197,7 +197,6 @@ function showSpeedTestData(ids){
 
                 let minValue = $( "#datepicker_from2" ).val().split(".");
                 let maxValue = $ ( "#datepicker_to2" ).val().split(".");
-
 
                 if(minValue ==""){
                     minValue=["25","07","1976"];
@@ -235,6 +234,7 @@ function showSpeedTestData(ids){
                     chart.data.datasets.data = newChartData
 
                     chart.update();
+                    console.log(global_chart_data);
 
                     global_chart_labels = []
                     global_chart_data = []
