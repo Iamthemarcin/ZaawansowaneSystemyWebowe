@@ -10,9 +10,6 @@
 	$env->loadEnv(__DIR__ . '/.env');
 	
 	set('repository', 'git@bitbucket.org:effectivity/multitudo-sf.git');
-	set('writable_mode', 'chown');
-	set('writable_use_sudo', false);
-	set('writable_chmod_recursive', true);
 	set('keep_releases', 10);
 	set('default_timeout', 1200);
 	set('bin/php', 'php74');
