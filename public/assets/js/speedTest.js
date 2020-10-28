@@ -234,7 +234,6 @@ function showSpeedTestData(ids){
                     chart.data.datasets.data = newChartData
 
                     chart.update();
-                    console.log(global_chart_data);
 
                     global_chart_labels = []
                     global_chart_data = []

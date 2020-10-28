@@ -53,6 +53,7 @@ class ProjectEditController extends AbstractController{
                $project = $this->projectBuilder->createFromEditDTO($project, $dto);
 
                 $this->em->persist($project);
+
                 $this->em->flush();
                 $this->addFlash('successEditProject','Zedytowano projekt!');
             } catch (\Exception $e) {
