@@ -168,9 +168,7 @@ $('.datepicker2').change( function() {
 
     var FirstDate = new Date(minValue)
     var LastDate = new Date(maxValue)
-    //
-    // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
-    // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
+
 
 
 

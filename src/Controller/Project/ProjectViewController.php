@@ -63,7 +63,7 @@ class ProjectViewController extends AbstractController{
             if ($prev_row !== null) {
                 if ($prev_row[0]->getStatus() == $status) {
                     $time_diff->add($diff);
-                    dump($time_diff);
+
                 }
             }
 
@@ -141,7 +141,7 @@ class ProjectViewController extends AbstractController{
 
 
         $ActiveTime = $this->calculating_time(1,$id);
-        dump($ActiveTime);
+
         $ActiveTimeSeconds = $this->interval_to_seconds($ActiveTime);
         $ActiveTime = $ActiveTime-> format('%d dni %h godz %i min %s sek');
 

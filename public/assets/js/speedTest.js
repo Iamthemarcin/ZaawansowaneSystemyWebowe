@@ -90,9 +90,9 @@ function showSpeedTestData(ids){
 
             var ctx = document.getElementById('chartview2').getContext('2d');
             Chart.defaults.global.legend.display = false;
-            //console.log(chartdata1);
+
             // let chartValues = chartdata1.toString();
-            // console.log(chartValues);
+            ;
             // var obj = JSON.parse('{"0":"8.4113","2":"9.5231","3":"9.0655","4":"7.8400"}');
 
             var chart = new Chart(ctx, {
@@ -211,8 +211,7 @@ function showSpeedTestData(ids){
                 let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
 
 
-                // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
-                // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
+
 
 
 
@@ -234,7 +233,7 @@ function showSpeedTestData(ids){
                     chart.data.datasets.data = newChartData
 
                     chart.update();
-                    console.log(global_chart_data);
+
 
                     global_chart_labels = []
                     global_chart_data = []
