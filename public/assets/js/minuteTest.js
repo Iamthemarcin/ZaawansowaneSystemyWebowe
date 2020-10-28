@@ -218,8 +218,7 @@ function showMinuteTestData(ids) {
                         let LastDate = new Date(maxValue[2], maxValue[1] - 1, maxValue[0]);
 
 
-                        // console.log(FirstDate.getDate() + "/" + (FirstDate.getMonth() + 1) + "/" + FirstDate.getFullYear());
-                        // FirstDate.getFullYear(),FirstDate.getMonth(),FirstDate.getDate()
+
 
 
 
