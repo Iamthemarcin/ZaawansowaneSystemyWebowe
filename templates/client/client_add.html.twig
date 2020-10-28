@@ -56,7 +56,26 @@
 
         </div>
 
-        <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        <a href="#" class="header-elements-toggle text-default d-md-none">
+
+
+
+          <div class="list-icons text-default d-md-none" >
+
+            <div class="dropdown">
+              <a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+                <i class="icon-menu9"></i>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(22px, 1px, 0px);">
+                <a href="{{ path('project_list') }}" class="dropdown-item"><i class="icon-database"></i> <span>Lista projektów</span></a>
+                <a href="{{ path('project_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj projekt</span></a>
+                <a href="{{ path('client_list') }}" class="dropdown-item"><i class="icon-address-book"></i> <span>Lista klientów</span></a>
+                <a href="{{ path('client_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj klienta</span></a>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
 
     </div>
