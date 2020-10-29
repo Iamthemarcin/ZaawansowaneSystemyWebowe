@@ -28,6 +28,20 @@
 
 {% endblock %}
 {% block content %}
+    <style>
+        @media (max-width: 767px) {
+            .table-responsive .dropdown-menu {
+                position: static !important;
+            }
+        }
+        @media (min-width: 768px) {
+            .table-responsive {
+                overflow: visible;
+            }
+        }
+
+    </style>
+
     <!-- Page header -->
     <div class="page-header page-header-light">
 
@@ -67,7 +81,7 @@
 
 
     <!-- Content area -->
-    <div class="content">
+    <div class="content" style="overflow:hidden;">
 
         <!-- Basic responsive configuration -->
         <div class="card">
@@ -97,7 +111,7 @@
                     </div>
             <!--/wyszukiwanie-->
 
-            <div class="table-responsive" >
+            <div class="table-responsive"  >
             <table id = "myTable" class="table  dataTable-responsive text-center" >
                 <thead>
                 <tr>
