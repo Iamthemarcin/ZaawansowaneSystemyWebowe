@@ -64,24 +64,23 @@
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none">
+                        <div class="list-icons text-default d-md-none" >
 
+                            <div class="dropdown">
+                                <a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="icon-menu9"></i>
+                                </a>
 
+                                <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(22px, 1px, 0px);">
 
-                    <div class="list-icons text-default d-md-none" >
+                                    <a href="{{ path('project_list') }}" class="dropdown-item"><i class="icon-database"></i> <span>Lista projektów</span></a>
+                                    <a href="{{ path('project_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj projekt</span></a>
+                                    <a href="{{ path('client_list') }}" class="dropdown-item"><i class="icon-address-book"></i> <span>Lista klientów</span></a>
+                                    <a href="{{ path('client_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj klienta</span></a>
 
-                        <div class="dropdown">
-                            <a href="#" class="list-icons-item" data-toggle="dropdown" aria-expanded="false">
-                                <i class="icon-menu9"></i>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(22px, 1px, 0px);">
-                                <a href="{{ path('project_list') }}" class="dropdown-item"><i class="icon-database"></i> <span>Lista projektów</span></a>
-                                <a href="{{ path('project_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj projekt</span></a>
-                                <a href="{{ path('client_list') }}" class="dropdown-item"><i class="icon-address-book"></i> <span>Lista klientów</span></a>
-                                <a href="{{ path('client_add') }}" class="dropdown-item"><i class="icon-add"></i> <span>Dodaj klienta</span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </a>
                 </div>
 
@@ -106,25 +105,14 @@
                         </button>
 
 
-
-
-
                         <button  style="margin-top:0px;"type="button" class="btn bg-warning-400 btn-block btn-float lk" onclick="window.location.href = '{{ path('client_list') }}';">
                             <i class="icon-address-book icon-5x"></i>
                             <span>Lista klientów</span>
                         </button>
-
-
-
                     </div>
                 </div>
             </div>
-
-
             <!-- /basic responsive configuration -->
-
-
-
 
         </div>
         <!-- /content area -->
