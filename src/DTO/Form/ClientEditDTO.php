@@ -3,8 +3,8 @@ namespace App\DTO\Form;
 
 class ClientEditDTO
 {
-    private string $companyName;
-    private string $companyNipNumber;
+    private ?string $companyName;
+    private ?string $companyNipNumber;
 
     /**
      * @return string
@@ -15,10 +15,10 @@ class ClientEditDTO
     }
 
     /**
-     * @param string $companyName
+     * @param ?string $companyName
      * @return ClientEditDTO
      */
-    public function setCompanyName(string $companyName): ClientEditDTO
+    public function setCompanyName(?string $companyName): ClientEditDTO
     {
         $this->companyName = $companyName;
         return $this;
@@ -33,10 +33,10 @@ class ClientEditDTO
     }
 
     /**
-     * @param string $companyNipNumber
+     * @param ?string $companyNipNumber
      * @return ClientEditDTO
      */
-    public function setCompanyNipNumber(string $companyNipNumber): ClientEditDTO
+    public function setCompanyNipNumber(?string $companyNipNumber): ClientEditDTO
     {
         $this->companyNipNumber = $companyNipNumber;
         return $this;
