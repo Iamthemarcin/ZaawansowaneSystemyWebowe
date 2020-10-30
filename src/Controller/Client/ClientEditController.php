@@ -5,6 +5,7 @@ namespace App\Controller\Client;
 use App\Builder\ClientBuilder;
 use App\DTO\Form\ClientAddDTO;
 use App\Entity\Client\ClientEntity;
+use App\Entity\Project\ProjectEntity;
 use App\Factory\ClientFactory;
 use App\Form\Client\ClientAddType;
 use App\Form\Client\ClientEditType;
@@ -36,6 +37,12 @@ class ClientEditController extends AbstractController
 
 
     public function index(ClientEntity $client, Request $request){
+        $company_name = $client->getCompanyName();
+        $projects = $this->em->getRepository(ProjectEntity::class)->findAll();
+
+
+
+
 
         $form = $this->createForm(
             ClientEditType::class,
@@ -54,7 +61,14 @@ class ClientEditController extends AbstractController
                 $client = $this->clientBuilder->createFromEditDTO($client, $dto);
                 $this->em->persist($client);
                 $this->em->flush();
+                foreach ($projects as $project){
+                    if($project->getClient() == $company_name){
+                        $project->setClient($client->getCompanyName());
+                        $this->em->persist($project);
+                        $this->em->flush();
 
+                    }
+                }
                 $this->addFlash('successEdit','Zedytowano klienta!');
             } catch (\Exception $e) {
                 dump($e->getMessage());
