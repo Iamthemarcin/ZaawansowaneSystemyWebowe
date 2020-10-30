@@ -313,13 +313,11 @@
                                     <div class=" header-elements-inline">
 
                                         <h5 > Logi testów</h5>
-                                        <div class='btn-toolbar  pull-right'>
-                                            <div class='btn-group '>
-                                                <button  type="button" class="btn btn-info rounded-round git  ml-5 " onclick="FilterStatus('')">Pokaż wszystko</button>
-                                                <button type="button" class="btn btn-success rounded-round  ml-5 " onclick="FilterStatus('Nieaktywna')">Tylko aktywne</button>
-                                                <button type="button" class="btn btn-danger rounded-round  ml-5" onclick="FilterStatus('Aktywna')">Tylko nieaktywne</button>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class = 'd-inline-flex p-2 flex-row-reverse ' style="width:100%">
+                                        <button  type="button" class="btn btn-info rounded-round git  ml-5  " onclick="FilterStatus('')"><span>Wszystko</span></button>
+                                        <button type="button" class="btn btn-success rounded-round  ml-5 " onclick="FilterStatus('Nieaktywna')"><span>Aktywne</span></button>
+                                        <button type="button" class="btn btn-danger rounded-round  ml-5" onclick="FilterStatus('Aktywna')"><span>Nieaktywne</span></button>
                                     </div>
 
                                     <div class="table-responsive">
