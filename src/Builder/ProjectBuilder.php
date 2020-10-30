@@ -30,6 +30,10 @@ class ProjectBuilder
         $currentProject->setUpdateTest($dto->isUpdateTest());
         $currentProject->setType($dto->getType());
         $currentProject->setClient($dto->getClient());
+        $currentProject->setStatus($dto->isStatus());
+
+
+
 
         $link = new Links();
         if($dto->getLinks() !== null){
