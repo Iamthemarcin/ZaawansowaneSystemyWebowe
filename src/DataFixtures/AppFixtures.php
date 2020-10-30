@@ -84,7 +84,7 @@ class AppFixtures extends Fixture
         $project1->setDomain('http://www.project.com');
         $project1->setMinuteTest(true);
         $project1->setStatus(true);
-        $project1->setType('TestType');
+        $project1->setType('Typ 1');
         $project1->setUpdateTest(true);
 
         $link1 = new Links();
